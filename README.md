@@ -1,4 +1,6 @@
 # React Filestack
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/ZeroCho/react-filestack.svg)](https://greenkeeper.io/)
 react component for **filestack**
 
 ## How to install
