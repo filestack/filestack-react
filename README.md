@@ -24,7 +24,7 @@ You should register for [Filestack](https://www.filestack.com) and get an **API 
 
 **Custom Designed button**
 ```
-<ReactFilestack apikey={Your API Key} options={options} onSuccess={this.yourCallbackFunction} />
+<ReactFilestack apikey={Your API Key} buttonText="Click me" buttonClass="classname" options={options} onSuccess={this.yourCallbackFunction} />
 ```
 
 **Other mode than 'pick'**
@@ -42,8 +42,6 @@ Available modes:
 make your own options and callback function, connect it to the component and get the results(either fpfiles or blob object)
 ```
 const options = {
-  buttonText: 'Pick Me',
-  buttonClass: 'filestack',
   accept: 'image/*',
   fromSources: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP']
 };
@@ -59,7 +57,7 @@ if you want a custom button to be a link, just put **link** props
 ```
 
 ## Result
-![filestack](https://cloud.githubusercontent.com/assets/10962668/16950040/17a2eb94-4df9-11e6-8995-fb120a466400.png)
+![filestack](https://cloud.githubusercontent.com/assets/10962668/23750309/ac3e1080-050f-11e7-922d-ee9deb8251a3.png)
 Works well with IE...
 
 ## Demo
