@@ -3,7 +3,7 @@ react component for **filestack**
 
 ## How to install
 
-This is for v3 filestack api. If you want to use previously v2 filepicker api, go [here](https://npmjs.com/package/react-filepicker)
+This is for v3 filestack api. If you want to use previous v2 filepicker api, go [here](https://npmjs.com/package/react-filepicker)
 
 [Live Demo](https://www.zerocho.com/portfolio/ReactFilestack)
 [NPM](https://npmjs.com/package/react-filestack)
@@ -76,8 +76,8 @@ You can also see live demo here
 > ### mode
 > **optional** string. **default** 'pick'. Look supported modes above.
 
-> ### blob
-> **optional** object. use if you need to insert blob object for upload mode.
+> ### file
+> **optional** object. use if you need to insert file object for upload mode.
 
 > ### log
 > **optional** object. **default** false. choose whether to console.log filepicker process
