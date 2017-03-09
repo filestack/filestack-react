@@ -1,0 +1,30 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "forOf": true,
+      "jsx": true,
+      "es6": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "rules": {
+    "import/no-unresolved": 0,
+    "global-require": 0,
+    "no-console": 0,
+    "max-len": 0,
+    "no-param-reassign": ["error", { "props": false }]
+  },
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "babel"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}
