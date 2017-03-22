@@ -3,7 +3,7 @@ react component for **filestack**
 
 ## How to install
 
-This is for v3 filestack api. If you want to use previous v2 filepicker api, go [here](https://npmjs.com/package/react-filepicker)
+**This is for v3 filestack api. If you want to use previous v2 filepicker api, go [here](https://npmjs.com/package/react-filepicker)**
 
 [Live Demo](https://www.zerocho.com/portfolio/ReactFilestack)
 [NPM](https://npmjs.com/package/react-filestack)
@@ -63,7 +63,7 @@ Works well with IE...
 ## Demo
 git clone this project and open index.html
 You can also see live demo here
-[Link](https://www.zerocho.com/portfolio/ReactFilepicker)
+[Link](https://www.zerocho.com/portfolio/ReactFilestack)
 
 ## Props
 [Official Filestack Documentation](https://filestack.com/docs)
