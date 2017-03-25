@@ -38,10 +38,6 @@ module.exports = [{
         warnings: false,
       },
     }),
-    new webpack.ProvidePlugin({
-      filestack: 'filestack-js',
-      'window.filestack': 'filestack-js'
-    }),
   ],
 }, {
   entry: './src/demo.jsx',
@@ -67,10 +63,6 @@ module.exports = [{
       compress: {
         warnings: false,
       },
-    }),
-    new webpack.ProvidePlugin({
-      filestack: 'filestack-js',
-      'window.filestack': 'filestack-js'
     }),
   ],
 }];
