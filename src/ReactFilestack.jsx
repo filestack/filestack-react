@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import filestack from 'filestack-js';
 
 class ReactFilestack extends Component {
   static defaultProps = {
@@ -6,10 +7,11 @@ class ReactFilestack extends Component {
     link: false,
     buttonText: 'Pick file',
     buttonClass: '',
-    onSuccess: null,
-    onError: null,
+    onSuccess: result => console.log(result),
+    onError: error => console.error(error),
     mode: 'pick',
-    log: false,
+    options: {},
+    security: null,
   };
 
   static propTypes = {
@@ -21,55 +23,54 @@ class ReactFilestack extends Component {
     buttonClass: PropTypes.string,
     onSuccess: PropTypes.func,
     onError: PropTypes.func,
-    log: PropTypes.bool,
     options: PropTypes.objectOf(PropTypes.any),
+    security: PropTypes.objectOf(PropTypes.any),
   };
 
   onClickPick = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    const { apikey, onSuccess, onError, options, mode, file, log } = this.props;
-    const filestack = require('filestack-js').default;
+    const { apikey, onSuccess, onError, options, mode, file } = this.props;
     const onFinished = (result) => {
       if (typeof onSuccess === 'function') {
         onSuccess(result);
-      } else if (log) {
+      } else {
         console.log(result);
       }
     };
     const onFail = (error) => {
       if (typeof onError === 'function') {
         onError(error);
-      } else if (log) {
+      } else {
         console.error(error);
       }
     };
 
-    let client = filestack.init(apikey);
-    if (mode === 'transform') {
-      client = client.transform(options.url, options);
-    } else if (mode === 'retrieve') {
-      client = client.retrieve(options.handle, options);
-    } else if (mode === 'metadata') {
-      client = client.metadata(options.handle, options);
-    } else if (mode === 'storeUrl') {
-      client = client.storeUrl(options.url, options);
-    } else if (mode === 'upload') {
-      client = client.upload(file, options, options);
-    } else if (mode === 'remove') {
-      client = client.remove(options.handle);
-    } else {
-      client = client.pick(options);
-    }
-    if (onSuccess) {
-      client = client.then(onFinished);
-    }
-    if (onError) {
-      client.catch(onFail);
-    }
+    this.initClient(mode, apikey, options, file)
+        .then(onFinished)
+        .catch(onFail);
   };
 
-  render() {
+  initClient = (mode, apikey, options, file, security) => {
+    const client = filestack.init(apikey, security);
+    if (mode === 'transform') {
+      return client.transform(options.url, options);
+    } else if (mode === 'retrieve') {
+      return client.retrieve(options.handle, options);
+    } else if (mode === 'metadata') {
+      return client.metadata(options.handle, options);
+    } else if (mode === 'storeUrl') {
+      return client.storeUrl(options.url, options);
+    } else if (mode === 'upload') {
+      return client.upload(file, options, options);
+    } else if (mode === 'remove') {
+      return client.remove(options.handle);
+    }
+
+    return client.pick(options);
+  };
+
+  render () {
     const { buttonClass, buttonText, link } = this.props;
     const Tag = link ? 'a' : 'button';
     return (

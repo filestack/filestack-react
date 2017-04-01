@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactFilestack from './ReactFilestack';
+import ReactFilestack from '../../src/ReactFilestack';
 import styles from './demo.css';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <div>
       <form>
-        <div>Basic button without options</div>
-        <ReactFilestack apikey={apikey} onSuccess={onSuccess} onError={onError} />
+        <div>Basic button without options, onSuccess, onError</div>
+        <ReactFilestack apikey={apikey} />
       </form>
       <hr />
       <form>

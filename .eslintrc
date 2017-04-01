@@ -16,7 +16,9 @@
     "global-require": 0,
     "no-console": 0,
     "max-len": 0,
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "space-before-function-paren": 0,
+    "space-before-blocks": 0
   },
   "plugins": [
     "react",
