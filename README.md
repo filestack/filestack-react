@@ -89,6 +89,10 @@ You can also see live demo here
 > ### options
 > **optional** object. **Detailed options for button. See Javascript API of [official documentation](https://filestack.com/docs). Put everything in it if you think you have to**
 
+> ### security
+> **optional** object. If you have security enabled, you will need to initialize
+the client with a valid Filestack policy and signature in order to perform the requested call. 
+
 > ### buttonText
 > **optional** string. When using custom button, you can set your own text.
 
@@ -104,6 +108,7 @@ run index.html
 
 ## Contributors
 - Zero Cho
+- [Samuele Zaza](https://github.com/samuxyz)
 
 ## License
 MIT

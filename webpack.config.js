@@ -1,16 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const fs = require('fs');
-
-const rules = [
-  { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
-  {
-    test: /\.css/,
-    use: [
-      'style-loader?sourcemap', 'css-loader?modules&importLoaders=1',
-    ],
-  },
-];
+const rules = require('./webpack.loaders');
 
 module.exports = [{
   entry: './src/ReactFilestack',
@@ -40,14 +31,14 @@ module.exports = [{
     }),
   ],
 }, {
-  entry: './src/demo.jsx',
+  entry: './examples/demo/demo.jsx',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'examples/demo/dist'),
     filename: 'demo.js'
   },
   devtool: 'source-map',
   resolve: {
-    modules: ['node_modules', 'src'],
+    modules: ['node_modules', 'examples/demo'],
     extensions: ['.json', '.js', '.jsx'],
   },
   module: { rules },

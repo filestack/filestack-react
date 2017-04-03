@@ -34,3 +34,4 @@ crashlytics-build.properties
 fabric.properties
 /dist/react-filepicker.js.map
 /dist/demo.js.map
+.DS_Store
