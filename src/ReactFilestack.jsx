@@ -12,6 +12,7 @@ class ReactFilestack extends Component {
     mode: 'pick',
     options: {},
     security: null,
+    children: null,
   };
 
   static propTypes = {
@@ -25,6 +26,7 @@ class ReactFilestack extends Component {
     onError: PropTypes.func,
     options: PropTypes.objectOf(PropTypes.any),
     security: PropTypes.objectOf(PropTypes.any),
+    children: PropTypes.node,
   };
 
   onClickPick = (e) => {
@@ -47,8 +49,8 @@ class ReactFilestack extends Component {
     };
 
     this.initClient(mode, apikey, options, file)
-        .then(onFinished)
-        .catch(onFail);
+      .then(onFinished)
+      .catch(onFail);
   };
 
   initClient = (mode, apikey, options, file, security) => {
@@ -71,7 +73,7 @@ class ReactFilestack extends Component {
   };
 
   render () {
-    const { buttonClass, buttonText, link } = this.props;
+    const { buttonClass, buttonText, link, children } = this.props;
     const Tag = link ? 'a' : 'button';
     return (
       <Tag
@@ -79,7 +81,8 @@ class ReactFilestack extends Component {
         onClick={this.onClickPick}
         className={buttonClass}
       >
-        {buttonText}
+        {!children && buttonText}
+        {children}
       </Tag>
     );
   }

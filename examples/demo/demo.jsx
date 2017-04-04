@@ -41,6 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
         <ReactFilestack apikey={apikey} options={basicOptions} onSuccess={onSuccess} onError={onError} />
       </form>
       <hr />
+      <form>
+        <div>Button with children</div>
+        <ReactFilestack apikey={apikey} link options={basicOptions} onSuccess={onSuccess} onError={onError}>
+          <strong>Display whatever you want</strong>
+        </ReactFilestack>
+      </form>
+      <hr />
     </div>,
     rootNode,
   );
