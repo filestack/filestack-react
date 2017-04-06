@@ -81,8 +81,7 @@ class ReactFilestack extends Component {
         onClick={this.onClickPick}
         className={buttonClass}
       >
-        {!children && buttonText}
-        {children}
+        {children || buttonText}
       </Tag>
     );
   }
