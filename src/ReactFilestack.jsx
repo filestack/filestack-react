@@ -12,6 +12,7 @@ class ReactFilestack extends Component {
     options: {},
     security: null,
     children: null,
+    render: null,
   };
 
   static propTypes = {
@@ -26,6 +27,7 @@ class ReactFilestack extends Component {
     options: PropTypes.objectOf(PropTypes.any),
     security: PropTypes.objectOf(PropTypes.any),
     children: PropTypes.node,
+    render: PropTypes.node,
   };
 
   onClickPick = (e) => {
@@ -73,7 +75,12 @@ class ReactFilestack extends Component {
   };
 
   render () {
-    const { buttonClass, buttonText, link, children } = this.props;
+    const { buttonClass, buttonText, link, children, render: CustomRender } = this.props;
+    if (CustomRender) {
+      return (
+        <CustomRender onPick={this.onClickPick} />
+      );
+    }
     const Tag = link ? 'a' : 'button';
     return (
       <Tag

@@ -48,6 +48,22 @@ document.addEventListener('DOMContentLoaded', () => {
         </ReactFilestack>
       </form>
       <hr />
+      <form>
+        <div>Custom render</div>
+        <ReactFilestack
+          apikey={apikey}
+          options={basicOptions}
+          onSuccess={onSuccess}
+          onError={onError}
+          render={({ onPick }) => (
+            <div>
+              <strong>Find an avatar</strong>
+              <button onClick={onPick}>Pick</button>
+            </div>
+          )}
+        />
+      </form>
+      <hr />
     </div>,
     rootNode,
   );

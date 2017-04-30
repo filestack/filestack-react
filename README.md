@@ -31,6 +31,22 @@ You should register for [Filestack](https://www.filestack.com) and get an **API 
 <ReactFilestack apikey={YOUR_API_KEY} buttonText="Click me" buttonClass="classname" options={options} onSuccess={this.yourCallbackFunction} />
 ```
 
+**Custom render**
+```jsx
+<ReactFilestack
+  apikey={apikey}
+  options={basicOptions}
+  onSuccess={onSuccess}
+  onError={onError}
+  render={({ onPick }) => (
+    <div>
+      <strong>Find an avatar</strong>
+      <button onClick={onPick}>Pick</button>
+    </div>
+  )}
+/>
+```
+
 **Other mode than 'pick'**
 ```jsx
 <ReactFilestack apikey={YOUR_API_KEY} mode="upload" options={options} onSuccess={this.yourCallbackFunction} />
