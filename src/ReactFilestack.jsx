@@ -27,7 +27,7 @@ class ReactFilestack extends Component {
     options: PropTypes.objectOf(PropTypes.any),
     security: PropTypes.objectOf(PropTypes.any),
     children: PropTypes.node,
-    render: PropTypes.node,
+    render: PropTypes.func,
   };
 
   onClickPick = (e) => {
