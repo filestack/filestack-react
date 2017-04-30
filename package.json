@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zerocho/react-filestack.git"
+    "url": "git+https://github.com/filestack/react-filestack.git"
   },
   "keywords": [
     "react-filestack",
@@ -28,9 +28,9 @@
   "author": "ZeroCho",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zerocho/react-filestack/issues"
+    "url": "https://github.com/filestack/react-filestack/issues"
   },
-  "homepage": "https://github.com/zerocho/react-filestack#readme",
+  "homepage": "https://github.com/filestack/react-filestack#readme",
   "dependencies": {
     "filestack-js": "^0.4.1"
   },

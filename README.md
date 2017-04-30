@@ -7,29 +7,33 @@ react component for **filestack**
 
 [Live Demo](https://www.zerocho.com/portfolio/ReactFilestack)
 [NPM](https://npmjs.com/package/react-filestack)
-[Github](https://github.com/zerocho/react-filestack)
-```
+[Github](https://github.com/filestack/react-filestack)
+```shell
 npm install react-filestack
 ```
-## Import
+or
+```shell
+yarn add react-filestack
 ```
+## Import
+```javascript
 var ReactFilestack = require('react-filestack');
 ```
 In ES2015
-```
+```javascript
 import ReactFilestack from 'react-filestack';
 ```
 ## Usage
 You should register for [Filestack](https://www.filestack.com) and get an **API key** first!
 
 **Custom Designed button**
-```
-<ReactFilestack apikey={Your API Key} buttonText="Click me" buttonClass="classname" options={options} onSuccess={this.yourCallbackFunction} />
+```jsx
+<ReactFilestack apikey={YOUR_API_KEY} buttonText="Click me" buttonClass="classname" options={options} onSuccess={this.yourCallbackFunction} />
 ```
 
 **Other mode than 'pick'**
-```
-<ReactFilestack apikey={Your API Key} mode="upload" options={options} onSuccess={this.yourCallbackFunction} />
+```jsx
+<ReactFilestack apikey={YOUR_API_KEY} mode="upload" options={options} onSuccess={this.yourCallbackFunction} />
 ```
 Available modes:
 * upload
@@ -40,10 +44,10 @@ Available modes:
 * remove
 
 make your own options and callback function, connect it to the component and get the results(either fpfiles or blob object)
-```
+```javascript
 const options = {
   accept: 'image/*',
-  fromSources: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP']
+  fromSources: ['local_file_system', 'defaultfacebook', 'clouddrive']
 };
 yourCallbackFunction(result) {
   // handle result here
@@ -52,18 +56,13 @@ yourCallbackFunction(result) {
 
 **Link instead of button**
 if you want a custom button to be a link, just put **link** props
-```
-<ReactFilepicker apikey={Your API Key} link options={options} onSuccess={this.yourCallbackFunction} />
+```jsx
+<ReactFilestack apikey={YOUR_API_KEY} link options={options} onSuccess={this.yourCallbackFunction} />
 ```
 
 ## Result
 ![filestack](https://cloud.githubusercontent.com/assets/10962668/23750309/ac3e1080-050f-11e7-922d-ee9deb8251a3.png)
 Works well with IE...
-
-## Demo
-git clone this project and open index.html
-You can also see live demo here
-[Link](https://www.zerocho.com/portfolio/ReactFilestack)
 
 ## Props
 [Official Filestack Documentation](https://filestack.com/docs)
@@ -78,7 +77,7 @@ You can also see live demo here
 > **optional** object. use if you need to insert file object for upload mode.
 
 > ### log
-> **optional** object. **default** false. choose whether to console.log filepicker process
+> **optional** object. **default** false. choose whether to console.log filestack process
 
 > ### onSuccess
 > **optional** function. get result(fpfiles or blob object) after upload is done.
@@ -91,7 +90,7 @@ You can also see live demo here
 
 > ### security
 > **optional** object. If you have security enabled, you will need to initialize
-the client with a valid Filestack policy and signature in order to perform the requested call. 
+the client with a valid Filestack policy and signature in order to perform the requested call.
 
 > ### buttonText
 > **optional** string. When using custom button, you can set your own text.
@@ -101,10 +100,14 @@ the client with a valid Filestack policy and signature in order to perform the r
 
 ## Wanna Contribute?
 Please contribute to this package via **Pull Request**, or you can open **Issues**!
+```shell
+npm install
 ```
-npm install && npm run build
+or
+```shell
+yarn
+```
 run index.html
-```
 
 ## Contributors
 - Zero Cho
