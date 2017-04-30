@@ -1,6 +1,6 @@
 {
   "name": "react-filestack",
-  "version": "0.6.6",
+  "version": "0.6.8",
   "main": "dist/react-filestack.js",
   "description": "react component for filestack",
   "scripts": {
@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/filestack/react-filestack#readme",
   "dependencies": {
-    "filestack-js": "^0.4.1"
+    "filestack-js": "^0.5.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",

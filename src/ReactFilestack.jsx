@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import filestack from 'filestack-js';
 
 class ReactFilestack extends Component {
   static defaultProps = {
@@ -54,6 +53,7 @@ class ReactFilestack extends Component {
   };
 
   initClient = (mode, apikey, options, file, security) => {
+    const filestack = require('filestack-js').default;
     const client = filestack.init(apikey, security);
     if (mode === 'transform') {
       return client.transform(options.url, options);
