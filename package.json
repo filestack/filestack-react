@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/filestack/react-filestack"
+    "url": "git+https://github.com/filestack/react-filestack.git"
   },
   "keywords": [
     "react-filestack",
