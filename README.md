@@ -76,9 +76,6 @@ Works well with IE...
 > ### file
 > **optional** object. use if you need to insert file object for upload mode.
 
-> ### log
-> **optional** object. **default** false. choose whether to console.log filestack process
-
 > ### onSuccess
 > **optional** function. get result(fpfiles or blob object) after upload is done.
 
