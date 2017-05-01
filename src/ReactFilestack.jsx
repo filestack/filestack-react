@@ -31,7 +31,7 @@ class ReactFilestack extends Component {
   onClickPick = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    const { apikey, onSuccess, onError, options, mode, file } = this.props;
+    const { apikey, onSuccess, onError, options, mode, file, security } = this.props;
     const onFinished = (result) => {
       if (typeof onSuccess === 'function') {
         onSuccess(result);
@@ -47,7 +47,7 @@ class ReactFilestack extends Component {
       }
     };
 
-    this.initClient(mode, apikey, options, file)
+    this.initClient(mode, apikey, options, file, security)
       .then(onFinished)
       .catch(onFail);
   };
