@@ -31,9 +31,6 @@
     "url": "https://github.com/filestack/react-filestack/issues"
   },
   "homepage": "https://github.com/filestack/react-filestack#readme",
-  "dependencies": {
-    "filestack-js": "^0.5.2"
-  },
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
@@ -62,5 +59,8 @@
     "prop-types": "^15.5.8",
     "react": "^15.3.0",
     "react-dom": "^15.3.0"
+  },
+  "dependencies": {
+    "filestack-js": "^0.6.0"
   }
 }

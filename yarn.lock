@@ -72,10 +72,6 @@ anymatch@^1.3.0:
     arrify "^1.0.0"
     micromatch "^2.1.5"
 
-"api-client@http://static.filestackapi.com/packages/api-client/api-client-0.3.5.tar.gz":
-  version "0.3.5"
-  resolved "http://static.filestackapi.com/packages/api-client/api-client-0.3.5.tar.gz#bdd6b0f7474461f8812e115a9014a7981fec6a91"
-
 aproba@^1.0.3:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.1.1.tgz#95d3600f07710aa0e9298c726ad5ecf2eacbabab"
@@ -1596,10 +1592,6 @@ es6-map@^0.1.3:
     es6-symbol "~3.1.1"
     event-emitter "~0.3.5"
 
-es6-promise@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.1.0.tgz#dda03ca8f9f89bc597e689842929de7ba8cebdf0"
-
 es6-set@~0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/es6-set/-/es6-set-0.1.5.tgz#d2b3ec5d4d800ced818db538d28974db0a73ccb1"
@@ -1869,14 +1861,9 @@ filename-regex@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
 
-filestack-js@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/filestack-js/-/filestack-js-0.5.2.tgz#81b3e511aea8939f5ffba0440bb260730e1b7674"
-  dependencies:
-    api-client "http://static.filestackapi.com/packages/api-client/api-client-0.3.5.tar.gz"
-    es6-promise "^4.1.0"
-    logger "http://static.filestackapi.com/packages/logger/logger-1.3.3.tar.gz"
-    picker "http://static.filestackapi.com/packages/picker/picker-0.5.4.tar.gz"
+filestack-js@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/filestack-js/-/filestack-js-0.6.0.tgz#16f5de7424f359d722bfaf6132004473eb06af43"
 
 fill-range@^2.1.0:
   version "2.2.3"
@@ -2560,10 +2547,6 @@ lodash@^4.0.0, lodash@^4.14.0, lodash@^4.2.0, lodash@^4.3.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
-"logger@http://static.filestackapi.com/packages/logger/logger-1.3.3.tar.gz":
-  version "1.3.3"
-  resolved "http://static.filestackapi.com/packages/logger/logger-1.3.3.tar.gz#1125d56e7b8e15dee0d792fcbc573035c78542c3"
-
 longest@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
@@ -2922,10 +2905,6 @@ pbkdf2@^3.0.3:
 performance-now@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
-
-"picker@http://static.filestackapi.com/packages/picker/picker-0.5.4.tar.gz":
-  version "0.5.4"
-  resolved "http://static.filestackapi.com/packages/picker/picker-0.5.4.tar.gz#8a1369700b048435081009ba476fa149f5d9749f"
 
 pify@^2.0.0:
   version "2.3.0"
