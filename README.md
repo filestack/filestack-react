@@ -11,6 +11,7 @@
 * [API Reference](https://filestack.github.io/)
 * [Live Demo](https://www.zerocho.com/portfolio/ReactFilestack)
 * [NPM](https://npmjs.com/package/react-filestack)
+* [Tutorial](https://blog.filestack.com/product-updates/react-package/)
 
 ## Installing
 
