@@ -1,4 +1,6 @@
 [![NPM Version](https://img.shields.io/badge/npm-v0.7.8-red.svg)](https://www.npmjs.com/package/react-filestack)
+[![Package Quality](http://npm.packagequality.com/shield/react-filestack.svg)](http://packagequality.com/#?package=react-filestack)
+
 # React Filestack
 <a href="https://www.filestack.com"><img src="https://filestack.com/themes/filestack/assets/images/press-articles/color.svg" align="left" hspace="10" vspace="6"></a> This is the official React component for Filestack API and content management system that makes it easy to add powerful file uploading and transformation capabilities to any web or mobile application.
 
