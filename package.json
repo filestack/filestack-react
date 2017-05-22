@@ -1,10 +1,10 @@
 {
   "name": "react-filestack",
-  "version": "0.7.8",
+  "version": "0.9.1",
   "main": "dist/react-filestack.js",
   "description": "react component for filestack",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch --no-cache --coverage",
     "build": "rimraf dist && webpack --colors --debug --display-error-details",
     "prepublish": "npm run build",
     "lint": "eslint"
@@ -35,11 +35,18 @@
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.2.1",
+    "babel-jest": "^20.0.3",
     "babel-loader": "^6.4.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-es2015": "^6.24.0",
+    "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-1": "^6.22.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-runtime": "^6.23.0",
     "css-loader": "^0.27.3",
+    "enzyme": "^2.8.2",
+    "enzyme-to-json": "^1.5.1",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-babel": "^4.1.1",
@@ -47,10 +54,14 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "imports-loader": "^0.7.1",
+    "jasmine-reporters": "^2.2.1",
+    "jest-cli": "^20.0.3",
     "prop-types": "latest",
     "raw-loader": "^0.5.1",
-    "react": "latest",
+    "react": "^15.5.4",
+    "react-addons-test-utils": "^15.5.1",
     "react-dom": "latest",
+    "react-test-renderer": "^15.5.4",
     "rimraf": "^2.6.1",
     "style-loader": "^0.16.0",
     "webpack": "^2.3.2"
@@ -62,5 +73,36 @@
   },
   "dependencies": {
     "filestack-js": "^0.6.0"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/tests/"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "testRegex": "\\.(spec|e2e|snapshot)\\.js$",
+    "coverageDirectory": "<rootDir>/tests/__coverage__/",
+    "setupTestFrameworkScriptFile": "<rootDir>/setup-jasmine-env.js",
+    "coverageReporters": [
+      "json",
+      "html",
+      "text"
+    ],
+    "browser": true,
+    "moduleNameMapper": {
+      "components": "<rootDir>/src/components",
+      "utils": "<rootDir>/src/utils",
+      "constants": "<rootDir>/src/constants",
+      "containers": "<rootDir>/src/containers",
+      "reducers": "<rootDir>/src/reducers",
+      "routing": "<rootDir>/src/routing",
+      "actions": "<rootDir>/src/actions",
+      "sagas": "<rootDir>/src/sagas",
+      "widget": "<rootDir>/widget",
+      "mock-data": "<rootDir>/tests/__mocks__/mockData.js",
+      "^.+\\.(scss|css|svg|png)$": "identity-obj-proxy",
+      "src": "<rootDir>/src"
+    }
   }
 }

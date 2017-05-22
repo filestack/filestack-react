@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for react-filestack/src/ReactFilestack.jsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">react-filestack/src</a> ReactFilestack.jsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">89.74% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>35/39</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.82% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>18/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>8/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">89.74% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>35/39</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
+import filestack from 'filestack-js';
+import PropTypes from 'prop-types';
+&nbsp;
+class ReactFilestack extends Component {
+  static defaultProps = {
+    file: null,
+    link: false,
+    buttonText: 'Pick file',
+    buttonClass: '',
+    onSuccess: result =&gt; console.log(result),
+    onError: error =&gt; console.error(error),
+    mode: 'pick',
+    options: {},
+    security: null,
+    children: null,
+    render: null,
+  };
+&nbsp;
+  static propTypes = {
+    file: PropTypes.objectOf(PropTypes.any),
+    apikey: PropTypes.string.isRequired,
+    link: PropTypes.bool,
+    mode: PropTypes.string,
+    buttonText: PropTypes.string,
+    buttonClass: PropTypes.string,
+    onSuccess: PropTypes.func,
+    onError: PropTypes.func,
+    options: PropTypes.objectOf(PropTypes.any),
+    security: PropTypes.objectOf(PropTypes.any),
+    children: PropTypes.node,
+    render: PropTypes.func,
+  };
+&nbsp;
+  onClickPick = (event) =&gt; {
+    event.stopPropagation();
+    event.preventDefault();
+    const { apikey, onSuccess, onError, options, mode, file, security } = this.props;
+    const onFinished = (result) =&gt; {
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof onSuccess === 'function') {
+        onSuccess(result);
+      } else {
+<span class="cstat-no" title="statement not covered" >        console.log(result);</span>
+      }
+    };
+    const onFail = (error) =&gt; {
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof onError === 'function') {
+        onError(error);
+      } else {
+<span class="cstat-no" title="statement not covered" >        console.error(error);</span>
+      }
+    };
+&nbsp;
+    this.initClient(mode, apikey, options, file, security)
+      .then(onFinished)
+      .catch(onFail);
+  };
+&nbsp;
+  initClient = (mode, apikey, options, file, security) =&gt; {
+    const { url, handle } = options;
+    delete options.handle;
+    delete options.url;
+    const client = filestack.init(apikey, security);
+&nbsp;
+    if (mode === 'transform') {
+      return new Promise((resolve, reject) =&gt; {
+        try {
+          resolve(client.transform(url, options));
+        } catch (err) {
+<span class="cstat-no" title="statement not covered" >          reject(err);</span>
+        }
+      });
+    } else if (mode === 'retrieve') {
+      return client.retrieve(handle, options);
+    } else if (mode === 'metadata') {
+      return client.metadata(handle, options);
+    } else if (mode === 'storeUrl') {
+      return client.storeURL(url, options);
+    } else <span class="missing-if-branch" title="if path not taken" >I</span>if (mode === 'upload') {
+<span class="cstat-no" title="statement not covered" >      return client.upload(file, options);</span>
+    } else if (mode === 'remove') {
+      return client.remove(handle, security);
+    }
+&nbsp;
+    return client.pick(options);
+  };
+&nbsp;
+  render () {
+    const { buttonClass, buttonText, link, children, render: CustomRender } = this.props;
+    if (CustomRender) {
+      return (
+        &lt;CustomRender onPick={this.onClickPick} /&gt;
+      );
+    }
+    const Tag = link ? <span class="branch-0 cbranch-no" title="branch not covered" >'a' </span>: 'button';
+    return (
+      &lt;Tag
+        name="filestack"
+        onClick={this.onClickPick}
+        className={buttonClass}
+      &gt;
+        {children || buttonText}
+      &lt;/Tag&gt;
+    );
+  }
+}
+&nbsp;
+export default ReactFilestack;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 22 2017 21:01:43 GMT+0800 (CST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

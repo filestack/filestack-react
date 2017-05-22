@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import filestack from 'filestack-js';
 import PropTypes from 'prop-types';
 
 class ReactFilestack extends Component {
@@ -32,9 +32,9 @@ class ReactFilestack extends Component {
     render: PropTypes.func,
   };
 
-  onClickPick = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
+  onClickPick = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
     const { apikey, onSuccess, onError, options, mode, file, security } = this.props;
     const onFinished = (result) => {
       if (typeof onSuccess === 'function') {
@@ -57,20 +57,29 @@ class ReactFilestack extends Component {
   };
 
   initClient = (mode, apikey, options, file, security) => {
-    const filestack = require('filestack-js').default;
+    const { url, handle } = options;
+    delete options.handle;
+    delete options.url;
     const client = filestack.init(apikey, security);
+
     if (mode === 'transform') {
-      return client.transform(options.url, options);
+      return new Promise((resolve, reject) => {
+        try {
+          resolve(client.transform(url, options));
+        } catch (err) {
+          reject(err);
+        }
+      });
     } else if (mode === 'retrieve') {
-      return client.retrieve(options.handle, options);
+      return client.retrieve(handle, options);
     } else if (mode === 'metadata') {
-      return client.metadata(options.handle, options);
+      return client.metadata(handle, options);
     } else if (mode === 'storeUrl') {
-      return client.storeUrl(options.url, options);
+      return client.storeURL(url, options);
     } else if (mode === 'upload') {
-      return client.upload(file, options, options);
+      return client.upload(file, options);
     } else if (mode === 'remove') {
-      return client.remove(options.handle);
+      return client.remove(handle, security);
     }
 
     return client.pick(options);
