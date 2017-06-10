@@ -150,16 +150,14 @@ the client with a valid Filestack policy and signature in order to perform the r
 > ### buttonClass
 > **optional** string. When using custom button, you can set className to style it.
 
+## Versioning
+Filestack Python SDK follows the [Semantic Versioning](http://semver.org/).
+
+## Issues
+If you have problems, please create a [Github Issue](https://github.com/filestack/react-filestack/issues).
+
 ## Wanna Contribute?
-Please contribute to this package via **Pull Request**, or you can open **Issues**!
-```shell
-npm install
-```
-or
-```shell
-yarn
-```
-run ``/examples/demo/index.html``
+Please see [CONTRIBUTING.md](https://github.com/filestack/react-filestack/blob/master/CONTRIBUTING.md) for details.
 
 ## Contributors
 - Zero Cho
