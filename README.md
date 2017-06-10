@@ -1,4 +1,4 @@
-[![NPM Version](https://img.shields.io/badge/npm-0.9.6-red.svg)](https://www.npmjs.com/package/react-filestack)
+[![NPM Version](https://img.shields.io/badge/npm-0.9.7-red.svg)](https://www.npmjs.com/package/react-filestack)
 [![coverage](https://img.shields.io/badge/coverage-90%25-red.svg)](https://www.npmjs.com/package/react-filestack)
 [![Package Quality](http://npm.packagequality.com/shield/react-filestack.svg)](http://packagequality.com/#?package=react-filestack)
 
@@ -16,22 +16,22 @@
 
 ## Installing
 
-Install ``react-filestack`` through npm
+Install ``filestack-react`` through npm
 
 ```shell
-npm install react-filestack
+npm install filestack-react
 ```
 or
 ```shell
-yarn add react-filestack
+yarn add filestack-react
 ```
 ## Import
 ```javascript
-var ReactFilestack = require('react-filestack');
+var ReactFilestack = require('filestack-react');
 ```
 In ES2015
 ```javascript
-import ReactFilestack from 'react-filestack';
+import ReactFilestack from 'filestack-react';
 ```
 ## Usage
 You should register [Filestack](https://www.filestack.com) website and get an **API key** first!
