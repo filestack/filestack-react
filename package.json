@@ -60,16 +60,11 @@
     "raw-loader": "^0.5.1",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
-    "react-dom": "latest",
+    "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
     "rimraf": "^2.6.1",
     "style-loader": "^0.16.0",
     "webpack": "^2.3.2"
-  },
-  "peerDependencies": {
-    "prop-types": "^15.5.8",
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0"
   },
   "dependencies": {
     "filestack-js": "^0.6.0"
