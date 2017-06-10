@@ -1,4 +1,4 @@
-[![NPM Version](https://img.shields.io/badge/npm-0.9.7-red.svg)](https://www.npmjs.com/package/filestack-react)
+[![NPM Version](https://img.shields.io/badge/npm-1.0.0-red.svg)](https://www.npmjs.com/package/filestack-react)
 [![coverage](https://img.shields.io/badge/coverage-90%25-red.svg)](https://www.npmjs.com/package/filestack-react)
 [![Package Quality](http://npm.packagequality.com/shield/react-filestack.svg)](http://packagequality.com/#?package=react-filestack)
 
@@ -162,6 +162,3 @@ Please see [CONTRIBUTING.md](https://github.com/filestack/filestack-react/blob/m
 ## Contributors
 - Zero Cho
 - [Samuele Zaza](https://github.com/samuxyz)
-
-## License
-MIT

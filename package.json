@@ -1,6 +1,6 @@
 {
   "name": "filestack-react",
-  "version": "0.9.7",
+  "version": "1.0.0",
   "main": "dist/filestack-react.js",
   "description": "react component for filestack",
   "scripts": {
