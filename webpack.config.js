@@ -7,7 +7,7 @@ module.exports = [{
   entry: './src/ReactFilestack',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'react-filestack.js',
+    filename: 'filestack-react.js',
     libraryTarget: 'commonjs2',
   },
   devtool: 'source-map',

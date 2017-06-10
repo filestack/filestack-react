@@ -1,7 +1,7 @@
 {
-  "name": "react-filestack",
+  "name": "filestack-react",
   "version": "0.9.7",
-  "main": "dist/react-filestack.js",
+  "main": "dist/filestack-react.js",
   "description": "react component for filestack",
   "scripts": {
     "test": "jest --watch --no-cache --coverage",
@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/filestack/react-filestack.git"
+    "url": "git+https://github.com/filestack/filestack-react.git"
   },
   "keywords": [
-    "react-filestack",
+    "filestack-react",
     "filestack",
     "filepicker",
     "react",
@@ -28,9 +28,9 @@
   "author": "ZeroCho",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/filestack/react-filestack/issues"
+    "url": "https://github.com/filestack/filestack-react/issues"
   },
-  "homepage": "https://github.com/filestack/react-filestack#readme",
+  "homepage": "https://github.com/filestack/filestack-react#readme",
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",

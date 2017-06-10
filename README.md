@@ -1,8 +1,8 @@
-[![NPM Version](https://img.shields.io/badge/npm-0.9.7-red.svg)](https://www.npmjs.com/package/react-filestack)
-[![coverage](https://img.shields.io/badge/coverage-90%25-red.svg)](https://www.npmjs.com/package/react-filestack)
+[![NPM Version](https://img.shields.io/badge/npm-0.9.7-red.svg)](https://www.npmjs.com/package/filestack-react)
+[![coverage](https://img.shields.io/badge/coverage-90%25-red.svg)](https://www.npmjs.com/package/filestack-react)
 [![Package Quality](http://npm.packagequality.com/shield/react-filestack.svg)](http://packagequality.com/#?package=react-filestack)
 
-# React Filestack
+# Filestack React
 <a href="https://www.filestack.com"><img src="https://filestack.com/themes/filestack/assets/images/press-articles/color.svg" align="left" hspace="10" vspace="6"></a> This is the official React component for Filestack API and content management system that makes it easy to add powerful file uploading and transformation capabilities to any web or mobile application.
 
 ## Resources
@@ -11,7 +11,7 @@
 * [Documentation](https://www.filestack.com/docs)
 * [API Reference](https://filestack.github.io/)
 * [Live Demo](https://www.zerocho.com/portfolio/ReactFilestack)
-* [NPM](https://npmjs.com/package/react-filestack)
+* [NPM](https://npmjs.com/package/filestack-react)
 * [Tutorial](https://blog.filestack.com/product-updates/react-package/)
 
 ## Installing
@@ -154,10 +154,10 @@ the client with a valid Filestack policy and signature in order to perform the r
 Filestack Python SDK follows the [Semantic Versioning](http://semver.org/).
 
 ## Issues
-If you have problems, please create a [Github Issue](https://github.com/filestack/react-filestack/issues).
+If you have problems, please create a [Github Issue](https://github.com/filestack/filestack-react/issues).
 
 ## Wanna Contribute?
-Please see [CONTRIBUTING.md](https://github.com/filestack/react-filestack/blob/master/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING.md](https://github.com/filestack/filestack-react/blob/master/CONTRIBUTING.md) for details.
 
 ## Contributors
 - Zero Cho

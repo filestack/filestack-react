@@ -1,4 +1,6 @@
-## 0.9.6 (June, 10, 2017)
+## 0.9.7 (June, 10, 2017)
+
+Officially changed name to filestack-react
 
 ### features
 

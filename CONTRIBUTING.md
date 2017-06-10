@@ -1,6 +1,6 @@
-# Contributing to react-filestack
+# Contributing to filestack-react
 
-First of all, thank you so much for being interested in contributing to react-filestack. This document will guide you through this process. You can contribute in different ways:
+First of all, thank you so much for being interested in contributing to filestack-react. This document will guide you through this process. You can contribute in different ways:
 
 - Reporting issues
 - Fixing bugs or developing new features
@@ -8,7 +8,7 @@ First of all, thank you so much for being interested in contributing to react-fi
 
 ## Issues
 Feel free to open new issues or participating in the discussion of the existing ones on
-[this repository](https://github.com/filestack/react-filestack/issues), but before doing so, please make sure that the issue is not duplicated and/or the discussion is related to the topic of the issue.
+[this repository](https://github.com/filestack/filestack-react/issues), but before doing so, please make sure that the issue is not duplicated and/or the discussion is related to the topic of the issue.
 
 ## Pull requests
 Code contributions are welcome following a process which guarantees the long-term maintainability of the project.
@@ -18,11 +18,11 @@ You can contribute either with bugfixes or new features. Before submitting a new
 Before starting to code, it is desirable to first open an issue describing the bug or the new feature. Please be sure the issue is not duplicated.
 
 ### Step 2: Fork the repository
-Fork the project https://github.com/filestack/react-filestack into your account. Then, check out your copy of the project locally.
+Fork the project https://github.com/filestack/filestack-react into your account. Then, check out your copy of the project locally.
 ```
 git clone git@github.com:user/react-filestack.git
 cd react-filestack
-git remote add upstream https://github.com/filestack/react-filestack.git
+git remote add upstream https://github.com/filestack/filestack-react.git
 ```
 
 ### Step 3: Create a new feature branch `contrib/issue-number`
