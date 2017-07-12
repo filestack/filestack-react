@@ -151,7 +151,7 @@ the client with a valid Filestack policy and signature in order to perform the r
 > **optional** string. When using custom button, you can set className to style it.
 
 ## Versioning
-Filestack Python SDK follows the [Semantic Versioning](http://semver.org/).
+Filestack React follows the [Semantic Versioning](http://semver.org/).
 
 ## Issues
 If you have problems, please create a [Github Issue](https://github.com/filestack/filestack-react/issues).
