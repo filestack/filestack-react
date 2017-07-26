@@ -1,6 +1,6 @@
 {
   "name": "filestack-react",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "dist/filestack-react.js",
   "description": "react component for filestack",
   "scripts": {
@@ -67,7 +67,7 @@
     "webpack": "^2.3.2"
   },
   "dependencies": {
-    "filestack-js": "^0.6.0"
+    "filestack-js": "^0.8.0"
   },
   "jest": {
     "roots": [
