@@ -1,5 +1,5 @@
-[![NPM Version](https://img.shields.io/badge/npm-1.0.0-red.svg)](https://www.npmjs.com/package/filestack-react)
-[![coverage](https://img.shields.io/badge/coverage-90%25-red.svg)](https://www.npmjs.com/package/filestack-react)
+[![NPM Version](https://img.shields.io/badge/npm-1.1.2-red.svg)](https://www.npmjs.com/package/filestack-react)
+[![coverage](https://img.shields.io/badge/coverage-100%25-red.svg)](https://www.npmjs.com/package/filestack-react)
 [![Package Quality](http://npm.packagequality.com/shield/react-filestack.svg)](http://packagequality.com/#?package=react-filestack)
 
 # Filestack React

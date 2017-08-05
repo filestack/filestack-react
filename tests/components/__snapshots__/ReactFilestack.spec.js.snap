@@ -1,5 +1,509 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<ReactFilestack /> should not accept onError prop different than function type 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <button
+    className=""
+    name="filestack"
+    onClick={[Function]}
+>
+    Pick file
+</button>,
+  "nodes": Array [
+    <button
+      className=""
+      name="filestack"
+      onClick={[Function]}
+>
+      Pick file
+</button>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <ReactFilestack
+        apikey="Acu94EFL1STGYvkM6a8usz"
+        buttonClass=""
+        buttonText="Pick file"
+        file={null}
+        link={false}
+        mode="pick"
+        onError={Object {}}
+        onSuccess={[Function]}
+        options={
+                Object {
+                        "wrong": "wrong",
+                      }
+        }
+        render={null}
+        security={null}
+/>,
+      "_debugID": 26,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": ReactFilestack {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "initClient": [Function],
+        "onClickPick": [Function],
+        "props": Object {
+          "apikey": "Acu94EFL1STGYvkM6a8usz",
+          "buttonClass": "",
+          "buttonText": "Pick file",
+          "children": null,
+          "file": null,
+          "link": false,
+          "mode": "pick",
+          "onError": Object {},
+          "onSuccess": [Function],
+          "options": Object {
+            "wrong": "wrong",
+          },
+          "render": null,
+          "security": null,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 13,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <button
+          className=""
+          name="filestack"
+          onClick={[Function]}
+>
+          Pick file
+</button>,
+        "_debugID": 27,
+        "_renderedOutput": <button
+          className=""
+          name="filestack"
+          onClick={[Function]}
+>
+          Pick file
+</button>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <ReactFilestack
+    apikey="Acu94EFL1STGYvkM6a8usz"
+    buttonClass=""
+    buttonText="Pick file"
+    file={null}
+    link={false}
+    mode="pick"
+    onError={Object {}}
+    onSuccess={[Function]}
+    options={
+        Object {
+            "wrong": "wrong",
+          }
+    }
+    render={null}
+    security={null}
+/>,
+}
+`;
+
+exports[`<ReactFilestack /> should not accept onSuccess prop different than function type 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <button
+    className=""
+    name="filestack"
+    onClick={[Function]}
+>
+    Pick file
+</button>,
+  "nodes": Array [
+    <button
+      className=""
+      name="filestack"
+      onClick={[Function]}
+>
+      Pick file
+</button>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <ReactFilestack
+        apikey="Acu94EFL1STGYvkM6a8usz"
+        buttonClass=""
+        buttonText="Pick file"
+        file={
+                Blob {
+                        Symbol(impl): BlobImpl {
+                          "_buffer": Object {
+                            "data": Array [
+                              123,
+                              10,
+                              32,
+                              32,
+                              34,
+                              104,
+                              101,
+                              108,
+                              108,
+                              111,
+                              34,
+                              58,
+                              32,
+                              34,
+                              119,
+                              111,
+                              114,
+                              108,
+                              100,
+                              34,
+                              10,
+                              125,
+                            ],
+                            "type": "Buffer",
+                          },
+                          "isClosed": false,
+                          "type": "application/json",
+                          Symbol(wrapper): [Circular],
+                        },
+                      }
+        }
+        link={false}
+        mode="upload"
+        onError={[Function]}
+        onSuccess={Object {}}
+        options={Object {}}
+        render={null}
+        security={null}
+/>,
+      "_debugID": 24,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": ReactFilestack {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "initClient": [Function],
+        "onClickPick": [Function],
+        "props": Object {
+          "apikey": "Acu94EFL1STGYvkM6a8usz",
+          "buttonClass": "",
+          "buttonText": "Pick file",
+          "children": null,
+          "file": Blob {
+            Symbol(impl): BlobImpl {
+              "_buffer": Object {
+                "data": Array [
+                  123,
+                  10,
+                  32,
+                  32,
+                  34,
+                  104,
+                  101,
+                  108,
+                  108,
+                  111,
+                  34,
+                  58,
+                  32,
+                  34,
+                  119,
+                  111,
+                  114,
+                  108,
+                  100,
+                  34,
+                  10,
+                  125,
+                ],
+                "type": "Buffer",
+              },
+              "isClosed": false,
+              "type": "application/json",
+              Symbol(wrapper): [Circular],
+            },
+          },
+          "link": false,
+          "mode": "upload",
+          "onError": [Function],
+          "onSuccess": Object {},
+          "options": Object {},
+          "render": null,
+          "security": null,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 12,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <button
+          className=""
+          name="filestack"
+          onClick={[Function]}
+>
+          Pick file
+</button>,
+        "_debugID": 25,
+        "_renderedOutput": <button
+          className=""
+          name="filestack"
+          onClick={[Function]}
+>
+          Pick file
+</button>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <ReactFilestack
+    apikey="Acu94EFL1STGYvkM6a8usz"
+    buttonClass=""
+    buttonText="Pick file"
+    file={
+        Blob {
+            Symbol(impl): BlobImpl {
+              "_buffer": Object {
+                "data": Array [
+                  123,
+                  10,
+                  32,
+                  32,
+                  34,
+                  104,
+                  101,
+                  108,
+                  108,
+                  111,
+                  34,
+                  58,
+                  32,
+                  34,
+                  119,
+                  111,
+                  114,
+                  108,
+                  100,
+                  34,
+                  10,
+                  125,
+                ],
+                "type": "Buffer",
+              },
+              "isClosed": false,
+              "type": "application/json",
+              Symbol(wrapper): [Circular],
+            },
+          }
+    }
+    link={false}
+    mode="upload"
+    onError={[Function]}
+    onSuccess={Object {}}
+    options={Object {}}
+    render={null}
+    security={null}
+/>,
+}
+`;
+
+exports[`<ReactFilestack /> should not allow wrong option properties 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <button
+    className=""
+    name="filestack"
+    onClick={[Function]}
+>
+    Pick file
+</button>,
+  "nodes": Array [
+    <button
+      className=""
+      name="filestack"
+      onClick={[Function]}
+>
+      Pick file
+</button>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <ReactFilestack
+        apikey="Acu94EFL1STGYvkM6a8usz"
+        buttonClass=""
+        buttonText="Pick file"
+        file={null}
+        link={false}
+        mode="pick"
+        onError={[Function]}
+        onSuccess={[Function]}
+        options={
+                Object {
+                        "wrong": "handle",
+                      }
+        }
+        render={null}
+        security={null}
+/>,
+      "_debugID": 8,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": ReactFilestack {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "initClient": [Function],
+        "onClickPick": [Function],
+        "props": Object {
+          "apikey": "Acu94EFL1STGYvkM6a8usz",
+          "buttonClass": "",
+          "buttonText": "Pick file",
+          "children": null,
+          "file": null,
+          "link": false,
+          "mode": "pick",
+          "onError": [Function],
+          "onSuccess": [Function],
+          "options": Object {
+            "wrong": "handle",
+          },
+          "render": null,
+          "security": null,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 4,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <button
+          className=""
+          name="filestack"
+          onClick={[Function]}
+>
+          Pick file
+</button>,
+        "_debugID": 9,
+        "_renderedOutput": <button
+          className=""
+          name="filestack"
+          onClick={[Function]}
+>
+          Pick file
+</button>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <ReactFilestack
+    apikey="Acu94EFL1STGYvkM6a8usz"
+    buttonClass=""
+    buttonText="Pick file"
+    file={null}
+    link={false}
+    mode="pick"
+    onError={[Function]}
+    onSuccess={[Function]}
+    options={
+        Object {
+            "wrong": "handle",
+          }
+    }
+    render={null}
+    security={null}
+/>,
+}
+`;
+
 exports[`<ReactFilestack /> should render ReactFilestack component 1`] = `
 <button
   className=""
@@ -10,7 +514,7 @@ exports[`<ReactFilestack /> should render ReactFilestack component 1`] = `
 </button>
 `;
 
-exports[`<ReactFilestack /> should render paid invoice 1`] = `
+exports[`<ReactFilestack /> should render the component 1`] = `
 <test
   onPick={[Function]}
 />
@@ -59,7 +563,7 @@ ShallowWrapper {
         render={null}
         security={null}
 />,
-      "_debugID": 8,
+      "_debugID": 10,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": ReactFilestack {
@@ -94,7 +598,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 4,
+      "_mountOrder": 5,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -108,7 +612,7 @@ ShallowWrapper {
 >
           Pick file
 </button>,
-        "_debugID": 9,
+        "_debugID": 11,
         "_renderedOutput": <button
           className=""
           name="filestack"
@@ -182,36 +686,7 @@ ShallowWrapper {
         mode="pick"
         onError={[Function]}
         onSuccess={[Function]}
-        options={
-                Object {
-                        "disableTransformer": false,
-                        "fromSources": Array [
-                          "local_file_system",
-                          "imagesearch",
-                          "facebook",
-                          "instagram",
-                          "googledrive",
-                          "dropbox",
-                        ],
-                        "hideWhenUploading": false,
-                        "lang": "en",
-                        "loadCss": "https://static.filestackapi.com/picker/v3/0.6.4/main.css",
-                        "maxFiles": 1,
-                        "minFiles": 1,
-                        "preferLinkOverStore": false,
-                        "startUploadingWhenMaxFilesReached": false,
-                        "transformations": Object {
-                          "crop": Object {
-                            "circle": true,
-                          },
-                          "filters": Array [
-                            "sepia",
-                            "monochrome",
-                          ],
-                        },
-                        "uploadInBackground": true,
-                      }
-        }
+        options={Object {}}
         render={null}
         security={null}
 />,
@@ -233,34 +708,7 @@ ShallowWrapper {
           "mode": "pick",
           "onError": [Function],
           "onSuccess": [Function],
-          "options": Object {
-            "disableTransformer": false,
-            "fromSources": Array [
-              "local_file_system",
-              "imagesearch",
-              "facebook",
-              "instagram",
-              "googledrive",
-              "dropbox",
-            ],
-            "hideWhenUploading": false,
-            "lang": "en",
-            "loadCss": "https://static.filestackapi.com/picker/v3/0.6.4/main.css",
-            "maxFiles": 1,
-            "minFiles": 1,
-            "preferLinkOverStore": false,
-            "startUploadingWhenMaxFilesReached": false,
-            "transformations": Object {
-              "crop": Object {
-                "circle": true,
-              },
-              "filters": Array [
-                "sepia",
-                "monochrome",
-              ],
-            },
-            "uploadInBackground": true,
-          },
+          "options": Object {},
           "render": null,
           "security": null,
         },
@@ -319,36 +767,7 @@ ShallowWrapper {
     mode="pick"
     onError={[Function]}
     onSuccess={[Function]}
-    options={
-        Object {
-            "disableTransformer": false,
-            "fromSources": Array [
-              "local_file_system",
-              "imagesearch",
-              "facebook",
-              "instagram",
-              "googledrive",
-              "dropbox",
-            ],
-            "hideWhenUploading": false,
-            "lang": "en",
-            "loadCss": "https://static.filestackapi.com/picker/v3/0.6.4/main.css",
-            "maxFiles": 1,
-            "minFiles": 1,
-            "preferLinkOverStore": false,
-            "startUploadingWhenMaxFilesReached": false,
-            "transformations": Object {
-              "crop": Object {
-                "circle": true,
-              },
-              "filters": Array [
-                "sepia",
-                "monochrome",
-              ],
-            },
-            "uploadInBackground": true,
-          }
-    }
+    options={Object {}}
     render={null}
     security={null}
 />,
@@ -403,7 +822,7 @@ ShallowWrapper {
                       }
         }
 />,
-      "_debugID": 10,
+      "_debugID": 12,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": ReactFilestack {
@@ -441,7 +860,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 5,
+      "_mountOrder": 6,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -455,7 +874,7 @@ ShallowWrapper {
 >
           Pick file
 </button>,
-        "_debugID": 11,
+        "_debugID": 13,
         "_renderedOutput": <button
           className=""
           name="filestack"
@@ -538,7 +957,7 @@ ShallowWrapper {
         render={null}
         security={null}
 />,
-      "_debugID": 14,
+      "_debugID": 16,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": ReactFilestack {
@@ -573,7 +992,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 7,
+      "_mountOrder": 8,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -587,7 +1006,7 @@ ShallowWrapper {
 >
           Pick file
 </button>,
-        "_debugID": 15,
+        "_debugID": 17,
         "_renderedOutput": <button
           className=""
           name="filestack"
@@ -665,7 +1084,7 @@ ShallowWrapper {
         render={null}
         security={null}
 />,
-      "_debugID": 12,
+      "_debugID": 14,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": ReactFilestack {
@@ -700,7 +1119,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 6,
+      "_mountOrder": 7,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -714,7 +1133,7 @@ ShallowWrapper {
 >
           Pick file
 </button>,
-        "_debugID": 13,
+        "_debugID": 15,
         "_renderedOutput": <button
           className=""
           name="filestack"
@@ -792,7 +1211,7 @@ ShallowWrapper {
         render={null}
         security={null}
 />,
-      "_debugID": 16,
+      "_debugID": 18,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": ReactFilestack {
@@ -827,7 +1246,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 8,
+      "_mountOrder": 9,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -841,7 +1260,7 @@ ShallowWrapper {
 >
           Pick file
 </button>,
-        "_debugID": 17,
+        "_debugID": 19,
         "_renderedOutput": <button
           className=""
           name="filestack"
@@ -870,6 +1289,373 @@ ShallowWrapper {
     onError={[Function]}
     onSuccess={[Function]}
     options={Object {}}
+    render={null}
+    security={null}
+/>,
+}
+`;
+
+exports[`<ReactFilestack /> should run upload with mock data 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <button
+    className=""
+    name="filestack"
+    onClick={[Function]}
+>
+    Pick file
+</button>,
+  "nodes": Array [
+    <button
+      className=""
+      name="filestack"
+      onClick={[Function]}
+>
+      Pick file
+</button>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <ReactFilestack
+        apikey="Acu94EFL1STGYvkM6a8usz"
+        buttonClass=""
+        buttonText="Pick file"
+        file={
+                Blob {
+                        Symbol(impl): BlobImpl {
+                          "_buffer": Object {
+                            "data": Array [
+                              123,
+                              10,
+                              32,
+                              32,
+                              34,
+                              104,
+                              101,
+                              108,
+                              108,
+                              111,
+                              34,
+                              58,
+                              32,
+                              34,
+                              119,
+                              111,
+                              114,
+                              108,
+                              100,
+                              34,
+                              10,
+                              125,
+                            ],
+                            "type": "Buffer",
+                          },
+                          "isClosed": false,
+                          "type": "application/json",
+                          Symbol(wrapper): [Circular],
+                        },
+                      }
+        }
+        link={false}
+        mode="upload"
+        onError={[Function]}
+        onSuccess={[Function]}
+        options={Object {}}
+        render={null}
+        security={null}
+/>,
+      "_debugID": 22,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": ReactFilestack {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "initClient": [Function],
+        "onClickPick": [Function],
+        "props": Object {
+          "apikey": "Acu94EFL1STGYvkM6a8usz",
+          "buttonClass": "",
+          "buttonText": "Pick file",
+          "children": null,
+          "file": Blob {
+            Symbol(impl): BlobImpl {
+              "_buffer": Object {
+                "data": Array [
+                  123,
+                  10,
+                  32,
+                  32,
+                  34,
+                  104,
+                  101,
+                  108,
+                  108,
+                  111,
+                  34,
+                  58,
+                  32,
+                  34,
+                  119,
+                  111,
+                  114,
+                  108,
+                  100,
+                  34,
+                  10,
+                  125,
+                ],
+                "type": "Buffer",
+              },
+              "isClosed": false,
+              "type": "application/json",
+              Symbol(wrapper): [Circular],
+            },
+          },
+          "link": false,
+          "mode": "upload",
+          "onError": [Function],
+          "onSuccess": [Function],
+          "options": Object {},
+          "render": null,
+          "security": null,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 11,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <button
+          className=""
+          name="filestack"
+          onClick={[Function]}
+>
+          Pick file
+</button>,
+        "_debugID": 23,
+        "_renderedOutput": <button
+          className=""
+          name="filestack"
+          onClick={[Function]}
+>
+          Pick file
+</button>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <ReactFilestack
+    apikey="Acu94EFL1STGYvkM6a8usz"
+    buttonClass=""
+    buttonText="Pick file"
+    file={
+        Blob {
+            Symbol(impl): BlobImpl {
+              "_buffer": Object {
+                "data": Array [
+                  123,
+                  10,
+                  32,
+                  32,
+                  34,
+                  104,
+                  101,
+                  108,
+                  108,
+                  111,
+                  34,
+                  58,
+                  32,
+                  34,
+                  119,
+                  111,
+                  114,
+                  108,
+                  100,
+                  34,
+                  10,
+                  125,
+                ],
+                "type": "Buffer",
+              },
+              "isClosed": false,
+              "type": "application/json",
+              Symbol(wrapper): [Circular],
+            },
+          }
+    }
+    link={false}
+    mode="upload"
+    onError={[Function]}
+    onSuccess={[Function]}
+    options={Object {}}
+    render={null}
+    security={null}
+/>,
+}
+`;
+
+exports[`<ReactFilestack /> should throw an exception with transform and wrong options properties 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <button
+    className=""
+    name="filestack"
+    onClick={[Function]}
+>
+    Pick file
+</button>,
+  "nodes": Array [
+    <button
+      className=""
+      name="filestack"
+      onClick={[Function]}
+>
+      Pick file
+</button>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <ReactFilestack
+        apikey="Acu94EFL1STGYvkM6a8usz"
+        buttonClass=""
+        buttonText="Pick file"
+        file={null}
+        link={false}
+        mode="transform"
+        onError={[Function]}
+        onSuccess={[Function]}
+        options={
+                Object {
+                        "wrong": "wrong",
+                      }
+        }
+        render={null}
+        security={null}
+/>,
+      "_debugID": 20,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": ReactFilestack {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "initClient": [Function],
+        "onClickPick": [Function],
+        "props": Object {
+          "apikey": "Acu94EFL1STGYvkM6a8usz",
+          "buttonClass": "",
+          "buttonText": "Pick file",
+          "children": null,
+          "file": null,
+          "link": false,
+          "mode": "transform",
+          "onError": [Function],
+          "onSuccess": [Function],
+          "options": Object {
+            "wrong": "wrong",
+          },
+          "render": null,
+          "security": null,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 10,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <button
+          className=""
+          name="filestack"
+          onClick={[Function]}
+>
+          Pick file
+</button>,
+        "_debugID": 21,
+        "_renderedOutput": <button
+          className=""
+          name="filestack"
+          onClick={[Function]}
+>
+          Pick file
+</button>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <ReactFilestack
+    apikey="Acu94EFL1STGYvkM6a8usz"
+    buttonClass=""
+    buttonText="Pick file"
+    file={null}
+    link={false}
+    mode="transform"
+    onError={[Function]}
+    onSuccess={[Function]}
+    options={
+        Object {
+            "wrong": "wrong",
+          }
+    }
     render={null}
     security={null}
 />,

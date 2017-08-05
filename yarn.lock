@@ -2129,9 +2129,9 @@ fileset@^2.0.2:
     glob "^7.0.3"
     minimatch "^3.0.3"
 
-filestack-js@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/filestack-js/-/filestack-js-0.6.0.tgz#16f5de7424f359d722bfaf6132004473eb06af43"
+filestack-js@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/filestack-js/-/filestack-js-0.8.1.tgz#324a7cbe4a356551931806ae1e21a9177183650f"
 
 fill-range@^2.1.0:
   version "2.2.3"
