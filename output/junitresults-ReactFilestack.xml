@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
- <testsuite name="&lt;ReactFilestack /&gt;" timestamp="2017-05-22T21:01:43" hostname="localhost" time="0.072" errors="0" tests="8" skipped="0" disabled="0" failures="0">
-  <testcase classname="&lt;ReactFilestack /&gt;" name="should render ReactFilestack component" time="0.012" />
-  <testcase classname="&lt;ReactFilestack /&gt;" name="should render paid invoice" time="0.004" />
-  <testcase classname="&lt;ReactFilestack /&gt;" name="should run pick as default" time="0.027" />
-  <testcase classname="&lt;ReactFilestack /&gt;" name="should run metadata and mock handle" time="0.008" />
-  <testcase classname="&lt;ReactFilestack /&gt;" name="should run remove width mock handle and security" time="0.005" />
-  <testcase classname="&lt;ReactFilestack /&gt;" name="should run storeUrl with mock url" time="0.006" />
-  <testcase classname="&lt;ReactFilestack /&gt;" name="should run retrieve with mock handle" time="0.004" />
-  <testcase classname="&lt;ReactFilestack /&gt;" name="should run transform with mock url" time="0.003" />
+ <testsuite name="&lt;ReactFilestack /&gt;" timestamp="2017-08-22T21:18:10" hostname="localhost" time="0.037" errors="0" tests="13" skipped="0" disabled="0" failures="0">
+  <testcase classname="&lt;ReactFilestack /&gt;" name="should render ReactFilestack component" time="0.002" />
+  <testcase classname="&lt;ReactFilestack /&gt;" name="should render the component" time="0.002" />
+  <testcase classname="&lt;ReactFilestack /&gt;" name="should run pick as default" time="0.004" />
+  <testcase classname="&lt;ReactFilestack /&gt;" name="should not allow wrong option properties" time="0.003" />
+  <testcase classname="&lt;ReactFilestack /&gt;" name="should run metadata and mock handle" time="0.002" />
+  <testcase classname="&lt;ReactFilestack /&gt;" name="should run remove width mock handle and security" time="0.004" />
+  <testcase classname="&lt;ReactFilestack /&gt;" name="should run storeUrl with mock url" time="0.003" />
+  <testcase classname="&lt;ReactFilestack /&gt;" name="should run retrieve with mock handle" time="0.003" />
+  <testcase classname="&lt;ReactFilestack /&gt;" name="should run transform with mock url" time="0.002" />
+  <testcase classname="&lt;ReactFilestack /&gt;" name="should throw an exception with transform and wrong options properties" time="0.002" />
+  <testcase classname="&lt;ReactFilestack /&gt;" name="should run upload with mock data" time="0.004" />
+  <testcase classname="&lt;ReactFilestack /&gt;" name="should not accept onSuccess prop different than function type" time="0.003" />
+  <testcase classname="&lt;ReactFilestack /&gt;" name="should not accept onError prop different than function type" time="0.002" />
  </testsuite>
 </testsuites>

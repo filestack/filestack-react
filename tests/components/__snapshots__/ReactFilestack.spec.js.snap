@@ -34,6 +34,7 @@ ShallowWrapper {
         apikey="Acu94EFL1STGYvkM6a8usz"
         buttonClass=""
         buttonText="Pick file"
+        cname={null}
         file={null}
         link={false}
         mode="pick"
@@ -60,6 +61,7 @@ ShallowWrapper {
           "buttonClass": "",
           "buttonText": "Pick file",
           "children": null,
+          "cname": null,
           "file": null,
           "link": false,
           "mode": "pick",
@@ -121,6 +123,7 @@ ShallowWrapper {
     apikey="Acu94EFL1STGYvkM6a8usz"
     buttonClass=""
     buttonText="Pick file"
+    cname={null}
     file={null}
     link={false}
     mode="pick"
@@ -171,6 +174,7 @@ ShallowWrapper {
         apikey="Acu94EFL1STGYvkM6a8usz"
         buttonClass=""
         buttonText="Pick file"
+        cname={null}
         file={
                 Blob {
                         Symbol(impl): BlobImpl {
@@ -228,6 +232,7 @@ ShallowWrapper {
           "buttonClass": "",
           "buttonText": "Pick file",
           "children": null,
+          "cname": null,
           "file": Blob {
             Symbol(impl): BlobImpl {
               "_buffer": Object {
@@ -320,6 +325,7 @@ ShallowWrapper {
     apikey="Acu94EFL1STGYvkM6a8usz"
     buttonClass=""
     buttonText="Pick file"
+    cname={null}
     file={
         Blob {
             Symbol(impl): BlobImpl {
@@ -401,6 +407,7 @@ ShallowWrapper {
         apikey="Acu94EFL1STGYvkM6a8usz"
         buttonClass=""
         buttonText="Pick file"
+        cname={null}
         file={null}
         link={false}
         mode="pick"
@@ -427,6 +434,7 @@ ShallowWrapper {
           "buttonClass": "",
           "buttonText": "Pick file",
           "children": null,
+          "cname": null,
           "file": null,
           "link": false,
           "mode": "pick",
@@ -488,6 +496,7 @@ ShallowWrapper {
     apikey="Acu94EFL1STGYvkM6a8usz"
     buttonClass=""
     buttonText="Pick file"
+    cname={null}
     file={null}
     link={false}
     mode="pick"
@@ -554,6 +563,7 @@ ShallowWrapper {
         apikey="Acu94EFL1STGYvkM6a8usz"
         buttonClass=""
         buttonText="Pick file"
+        cname={null}
         file={null}
         link={false}
         mode="metadata"
@@ -576,6 +586,7 @@ ShallowWrapper {
           "buttonClass": "",
           "buttonText": "Pick file",
           "children": null,
+          "cname": null,
           "file": null,
           "link": false,
           "mode": "metadata",
@@ -635,6 +646,7 @@ ShallowWrapper {
     apikey="Acu94EFL1STGYvkM6a8usz"
     buttonClass=""
     buttonText="Pick file"
+    cname={null}
     file={null}
     link={false}
     mode="metadata"
@@ -681,6 +693,7 @@ ShallowWrapper {
         apikey="Acu94EFL1STGYvkM6a8usz"
         buttonClass=""
         buttonText="Pick file"
+        cname={null}
         file={null}
         link={false}
         mode="pick"
@@ -703,6 +716,7 @@ ShallowWrapper {
           "buttonClass": "",
           "buttonText": "Pick file",
           "children": null,
+          "cname": null,
           "file": null,
           "link": false,
           "mode": "pick",
@@ -762,6 +776,7 @@ ShallowWrapper {
     apikey="Acu94EFL1STGYvkM6a8usz"
     buttonClass=""
     buttonText="Pick file"
+    cname={null}
     file={null}
     link={false}
     mode="pick"
@@ -808,6 +823,7 @@ ShallowWrapper {
         apikey="Acu94EFL1STGYvkM6a8usz"
         buttonClass=""
         buttonText="Pick file"
+        cname={null}
         file={null}
         link={false}
         mode="remove"
@@ -835,6 +851,7 @@ ShallowWrapper {
           "buttonClass": "",
           "buttonText": "Pick file",
           "children": null,
+          "cname": null,
           "file": null,
           "link": false,
           "mode": "remove",
@@ -897,6 +914,7 @@ ShallowWrapper {
     apikey="Acu94EFL1STGYvkM6a8usz"
     buttonClass=""
     buttonText="Pick file"
+    cname={null}
     file={null}
     link={false}
     mode="remove"
@@ -948,6 +966,7 @@ ShallowWrapper {
         apikey="Acu94EFL1STGYvkM6a8usz"
         buttonClass=""
         buttonText="Pick file"
+        cname={null}
         file={null}
         link={false}
         mode="retrieve"
@@ -970,6 +989,7 @@ ShallowWrapper {
           "buttonClass": "",
           "buttonText": "Pick file",
           "children": null,
+          "cname": null,
           "file": null,
           "link": false,
           "mode": "retrieve",
@@ -1029,6 +1049,7 @@ ShallowWrapper {
     apikey="Acu94EFL1STGYvkM6a8usz"
     buttonClass=""
     buttonText="Pick file"
+    cname={null}
     file={null}
     link={false}
     mode="retrieve"
@@ -1075,6 +1096,7 @@ ShallowWrapper {
         apikey="Acu94EFL1STGYvkM6a8usz"
         buttonClass=""
         buttonText="Pick file"
+        cname={null}
         file={null}
         link={false}
         mode="storeUrl"
@@ -1097,6 +1119,7 @@ ShallowWrapper {
           "buttonClass": "",
           "buttonText": "Pick file",
           "children": null,
+          "cname": null,
           "file": null,
           "link": false,
           "mode": "storeUrl",
@@ -1156,6 +1179,7 @@ ShallowWrapper {
     apikey="Acu94EFL1STGYvkM6a8usz"
     buttonClass=""
     buttonText="Pick file"
+    cname={null}
     file={null}
     link={false}
     mode="storeUrl"
@@ -1202,6 +1226,7 @@ ShallowWrapper {
         apikey="Acu94EFL1STGYvkM6a8usz"
         buttonClass=""
         buttonText="Pick file"
+        cname={null}
         file={null}
         link={false}
         mode="transform"
@@ -1224,6 +1249,7 @@ ShallowWrapper {
           "buttonClass": "",
           "buttonText": "Pick file",
           "children": null,
+          "cname": null,
           "file": null,
           "link": false,
           "mode": "transform",
@@ -1283,6 +1309,7 @@ ShallowWrapper {
     apikey="Acu94EFL1STGYvkM6a8usz"
     buttonClass=""
     buttonText="Pick file"
+    cname={null}
     file={null}
     link={false}
     mode="transform"
@@ -1329,6 +1356,7 @@ ShallowWrapper {
         apikey="Acu94EFL1STGYvkM6a8usz"
         buttonClass=""
         buttonText="Pick file"
+        cname={null}
         file={
                 Blob {
                         Symbol(impl): BlobImpl {
@@ -1386,6 +1414,7 @@ ShallowWrapper {
           "buttonClass": "",
           "buttonText": "Pick file",
           "children": null,
+          "cname": null,
           "file": Blob {
             Symbol(impl): BlobImpl {
               "_buffer": Object {
@@ -1478,6 +1507,7 @@ ShallowWrapper {
     apikey="Acu94EFL1STGYvkM6a8usz"
     buttonClass=""
     buttonText="Pick file"
+    cname={null}
     file={
         Blob {
             Symbol(impl): BlobImpl {
@@ -1559,6 +1589,7 @@ ShallowWrapper {
         apikey="Acu94EFL1STGYvkM6a8usz"
         buttonClass=""
         buttonText="Pick file"
+        cname={null}
         file={null}
         link={false}
         mode="transform"
@@ -1585,6 +1616,7 @@ ShallowWrapper {
           "buttonClass": "",
           "buttonText": "Pick file",
           "children": null,
+          "cname": null,
           "file": null,
           "link": false,
           "mode": "transform",
@@ -1646,6 +1678,7 @@ ShallowWrapper {
     apikey="Acu94EFL1STGYvkM6a8usz"
     buttonClass=""
     buttonText="Pick file"
+    cname={null}
     file={null}
     link={false}
     mode="transform"

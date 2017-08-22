@@ -1,4 +1,4 @@
-[![NPM Version](https://img.shields.io/badge/npm-1.1.2-red.svg)](https://www.npmjs.com/package/filestack-react)
+[![NPM Version](https://img.shields.io/badge/npm-1.2.2-red.svg)](https://www.npmjs.com/package/filestack-react)
 [![coverage](https://img.shields.io/badge/coverage-100%25-red.svg)](https://www.npmjs.com/package/filestack-react)
 [![Package Quality](http://npm.packagequality.com/shield/react-filestack.svg)](http://packagequality.com/#?package=react-filestack)
 
@@ -149,6 +149,9 @@ the client with a valid Filestack policy and signature in order to perform the r
 
 > ### buttonClass
 > **optional** string. When using custom button, you can set className to style it.
+
+> ### cname
+> **optional** Custom domain to use for all URLs. This requires the custom CNAME feature on your Filestack app.
 
 ## Versioning
 Filestack React follows the [Semantic Versioning](http://semver.org/).

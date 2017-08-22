@@ -15,6 +15,7 @@ class ReactFilestack extends Component {
     security: null,
     children: null,
     render: null,
+    cname: null,
   };
 
   static propTypes = {
@@ -30,12 +31,22 @@ class ReactFilestack extends Component {
     security: PropTypes.objectOf(PropTypes.any),
     children: PropTypes.node,
     render: PropTypes.func,
+    cname: PropTypes.string,
   };
 
   onClickPick = (event) => {
     event.stopPropagation();
     event.preventDefault();
-    const { apikey, onSuccess, onError, options, mode, file, security } = this.props;
+    const {
+      apikey,
+      onSuccess,
+      onError,
+      options,
+      mode,
+      file,
+      security,
+      cname
+    } = this.props;
     const onFinished = (result) => {
       if (typeof onSuccess === 'function') {
         onSuccess(result);
@@ -51,16 +62,16 @@ class ReactFilestack extends Component {
       }
     };
 
-    this.initClient(mode, apikey, options, file, security)
+    this.initClient(mode, apikey, options, file, security, cname)
       .then(onFinished)
       .catch(onFail);
   };
 
-  initClient = (mode, apikey, options, file, security) => {
+  initClient = (mode, apikey, options, file, security, cname) => {
     const { url, handle } = options;
     delete options.handle;
     delete options.url;
-    const client = filestack.init(apikey, security);
+    const client = filestack.init(apikey, security, cname);
 
     if (mode === 'transform') {
       return new Promise((resolve, reject) => {
