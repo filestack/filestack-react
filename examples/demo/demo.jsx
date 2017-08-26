@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactFilestack from '../../src/ReactFilestack';
+import ReactFilestack, { client } from '../../src';
 import styles from './demo.css';
+
+const log = (result) => {
+  console.log(JSON.stringify(result));
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   const rootNode = document.createElement('div');
@@ -67,4 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>,
     rootNode,
   );
+  // Directly call Filestack client
+  const filestack = client.init(apikey);
+  filestack.metadata('itIVgYY9SkacOHF1m6B8', { height: true, width: true }).then(log)
 });

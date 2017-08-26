@@ -1,4 +1,4 @@
-[![NPM Version](https://img.shields.io/badge/npm-1.2.3-red.svg)](https://www.npmjs.com/package/filestack-react)
+[![NPM Version](https://img.shields.io/badge/npm-1.3.4-red.svg)](https://www.npmjs.com/package/filestack-react)
 [![coverage](https://img.shields.io/badge/coverage-100%25-red.svg)](https://www.npmjs.com/package/filestack-react)
 [![Package Quality](http://npm.packagequality.com/shield/react-filestack.svg)](http://packagequality.com/#?package=react-filestack)
 
@@ -32,6 +32,13 @@ In ES2015
 ```javascript
 import ReactFilestack from 'filestack-react';
 ```
+
+## Import with filestack-js client
+```javascript
+import ReactFilestack, { client } from 'filestack-react';
+```
+*client is available from version 1.3.4*
+
 ## Usage
 You should register [Filestack](https://www.filestack.com) website and get an **API key** first!
 
@@ -107,6 +114,16 @@ You can pass a custom prop **link**.
   onSuccess={this.yourCallbackFunction}
   link
 />
+```
+
+**Filestack-js client**
+
+You can also import the official client and decouple its React component ReactFilestack.
+However, you will need to initialize it with the API key and optional security options.
+
+```javascript
+import { client } from 'filestack-react';
+const filestack = client.init('YOUR_API_KEY', security);
 ```
 
 ## Result
