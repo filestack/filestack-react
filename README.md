@@ -1,4 +1,4 @@
-[![NPM Version](https://img.shields.io/badge/npm-1.3.4-red.svg)](https://www.npmjs.com/package/filestack-react)
+[![NPM Version](https://img.shields.io/badge/npm-1.3.5-red.svg)](https://www.npmjs.com/package/filestack-react)
 [![coverage](https://img.shields.io/badge/coverage-100%25-red.svg)](https://www.npmjs.com/package/filestack-react)
 [![Package Quality](http://npm.packagequality.com/shield/react-filestack.svg)](http://packagequality.com/#?package=react-filestack)
 
@@ -126,9 +126,17 @@ import { client } from 'filestack-react';
 const filestack = client.init('YOUR_API_KEY', security);
 ```
 
-## Result
+## Examples
 
 You can find the example in ``/examples/demo``.
+
+Run
+
+```javascript
+yarn start
+```
+
+and connect to localhost:8080.
 
 ![filestack](https://cloud.githubusercontent.com/assets/10962668/23750309/ac3e1080-050f-11e7-922d-ee9deb8251a3.png)
 
