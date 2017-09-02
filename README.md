@@ -1,4 +1,4 @@
-[![NPM Version](https://img.shields.io/badge/npm-1.3.5-red.svg)](https://www.npmjs.com/package/filestack-react)
+[![NPM Version](https://img.shields.io/badge/npm-1.3.6-red.svg)](https://www.npmjs.com/package/filestack-react)
 [![coverage](https://img.shields.io/badge/coverage-100%25-red.svg)](https://www.npmjs.com/package/filestack-react)
 [![Package Quality](http://npm.packagequality.com/shield/react-filestack.svg)](http://packagequality.com/#?package=react-filestack)
 
@@ -128,7 +128,7 @@ const filestack = client.init('YOUR_API_KEY', security);
 
 ## Examples
 
-You can find the example in ``/examples/demo``.
+You can find the examples of using Pick in ``/examples/demo``.
 
 Run
 
@@ -137,6 +137,8 @@ yarn start
 ```
 
 and connect to localhost:8080.
+
+To try different functions go to ``/examples/demo2`` and follow the same steps to run it.
 
 ![filestack](https://cloud.githubusercontent.com/assets/10962668/23750309/ac3e1080-050f-11e7-922d-ee9deb8251a3.png)
 
