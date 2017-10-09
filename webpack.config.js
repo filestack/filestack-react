@@ -4,7 +4,7 @@ const fs = require('fs');
 const rules = require('./webpack.loaders');
 
 module.exports = {
-  entry: './src/ReactFilestack',
+  entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'filestack-react.js',
