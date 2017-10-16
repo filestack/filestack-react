@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'filestack-react.js',
-    libraryTarget: 'commonjs2',
+    libraryTarget: 'umd',
   },
   devtool: 'source-map',
   resolve: {
@@ -16,6 +16,9 @@ module.exports = {
     extensions: ['.js', '.json', '.jsx'],
   },
   module: { rules },
+  externals: [
+    'react', 'filestack-js', 'prop-types'
+  ],
   plugins: [
     new webpack.LoaderOptionsPlugin({
       minimize: true,
