@@ -15,14 +15,14 @@
 
 ## Installing
 
-Install ``filestack-react`` through npm
+Install ``filestack-react`` and ``filestack-js`` through npm
 
 ```shell
-npm install filestack-react
+npm install filestack-react filestack-js
 ```
 or
 ```shell
-yarn add filestack-react
+yarn add filestack-react filestack-js
 ```
 ## Import
 ```javascript
