@@ -67,7 +67,7 @@
     "webpack": "^2.3.2"
   },
   "peerDependencies": {
-    "filestack-js": "^0.9.8",
+    "filestack-js": "^0.11.2",
     "react": "^15.5.4"
   },
   "jest": {
