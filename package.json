@@ -58,7 +58,7 @@
     "jest-cli": "^20.0.3",
     "prop-types": "^15.5.10",
     "raw-loader": "^0.5.1",
-    "react": "^15.5.4",
+    "react": "^16.4.0",
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
@@ -68,7 +68,7 @@
   },
   "peerDependencies": {
     "filestack-js": "^0.11.2",
-    "react": "^15.5.4"
+    "react": "^16.4.0"
   },
   "jest": {
     "roots": [
