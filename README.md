@@ -1,4 +1,4 @@
-[![NPM Version](https://img.shields.io/badge/npm-1.3.8-red.svg)](https://www.npmjs.com/package/filestack-react)
+<a href="https://npmjs.com/package/filestack-react"><img src="https://img.shields.io/npm/v/filestack-react.svg" /></a>
 [![coverage](https://img.shields.io/badge/coverage-100%25-red.svg)](https://www.npmjs.com/package/filestack-react)
 [![Package Quality](http://npm.packagequality.com/shield/react-filestack.svg)](http://packagequality.com/#?package=react-filestack)
 
