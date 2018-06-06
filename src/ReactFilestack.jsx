@@ -86,7 +86,6 @@ class ReactFilestack extends Component {
         try {
           resolve(client.transform(handle, options));
         } catch (err) {
-          console.log(err);
           reject(err);
         }
       });

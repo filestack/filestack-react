@@ -55,7 +55,6 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "imports-loader": "^0.7.1",
-    "jasmine-reporters": "^2.3.1",
     "jest-cli": "^23.1.0",
     "prop-types": "^15.6.1",
     "raw-loader": "^0.5.1",
@@ -83,7 +82,9 @@
       "node_modules"
     ],
     "testRegex": "\\.(spec|e2e|snapshot)\\.js$",
-    "collectCoverageFrom": ["<rootDir>/src/**/*.{js,jsx}"],
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.{js,jsx}"
+    ],
     "coverageDirectory": "<rootDir>/tests/__coverage__/",
     "coverageReporters": [
       "json",
