@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --watch --no-cache --coverage",
     "build": "rimraf dist && webpack --colors -p --display-error-details",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "lint": "eslint"
   },
   "repository": {
@@ -45,8 +45,8 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-runtime": "^6.23.0",
     "css-loader": "^0.27.3",
-    "enzyme": "^2.8.2",
-    "enzyme-to-json": "^1.5.1",
+    "enzyme": "^3.3.0",
+    "enzyme-to-json": "^3.3.4",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-babel": "^4.1.1",
@@ -54,21 +54,20 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "imports-loader": "^0.7.1",
-    "jasmine-reporters": "^2.2.1",
+    "jasmine-reporters": "^2.3.1",
     "jest-cli": "^20.0.3",
-    "prop-types": "^15.5.10",
+    "prop-types": "^15.6.1",
     "raw-loader": "^0.5.1",
-    "react": "^15.5.4",
-    "react-addons-test-utils": "^15.5.1",
-    "react-dom": "^15.5.4",
-    "react-test-renderer": "^15.5.4",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-test-renderer": "^16.4.0",
     "rimraf": "^2.6.1",
     "style-loader": "^0.16.0",
     "webpack": "^2.3.2"
   },
   "peerDependencies": {
-    "filestack-js": "^0.11.2",
-    "react": "^15.5.4"
+    "filestack-js": "^1.0.1",
+    "react": "^16.4.0"
   },
   "jest": {
     "roots": [
@@ -100,5 +99,8 @@
       "^.+\\.(scss|css|svg|png)$": "identity-obj-proxy",
       "src": "<rootDir>/src"
     }
+  },
+  "dependencies": {
+    "filestack-js": "^1.0.1"
   }
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { client } from '../../src';
-import Container from './components/Container';
+import Container from './src/Container';
 
 const apikey = 'Acu94EFL1STGYvkM6a8usz';
 
-render (
+render(
   <Container apikey={apikey} />,
   document.getElementById('app'),
 );

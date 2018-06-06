@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import filestack from 'filestack-js';
+import * as filestack from 'filestack-js';
 import PropTypes from 'prop-types';
 
 class ReactFilestack extends Component {
@@ -16,6 +16,7 @@ class ReactFilestack extends Component {
     children: null,
     render: null,
     cname: null,
+    sessionCache: false,
   };
 
   static propTypes = {
@@ -32,6 +33,7 @@ class ReactFilestack extends Component {
     children: PropTypes.node,
     render: PropTypes.func,
     cname: PropTypes.string,
+    sessionCache: PropTypes.bool,
   };
 
   onClickPick = (event) => {
@@ -45,8 +47,10 @@ class ReactFilestack extends Component {
       mode,
       file,
       security,
-      cname
+      cname,
+      sessionCache,
     } = this.props;
+
     const onFinished = (result) => {
       if (typeof onSuccess === 'function') {
         onSuccess(result);
@@ -62,22 +66,27 @@ class ReactFilestack extends Component {
       }
     };
 
-    this.initClient(mode, apikey, options, file, security, cname)
+    this.initClient(mode, apikey, options, file, security, cname, sessionCache)
       .then(onFinished)
       .catch(onFail);
   };
 
-  initClient = (mode, apikey, options, file, security, cname) => {
+  initClient = (mode, apikey, options, file, security, cname, sessionCache) => {
     const { url, handle } = options;
     delete options.handle;
     delete options.url;
-    const client = filestack.init(apikey, security, cname);
+    const client = filestack.init(apikey, {
+      security,
+      cname,
+      sessionCache,
+    });
 
     if (mode === 'transform') {
       return new Promise((resolve, reject) => {
         try {
-          resolve(client.transform(url, options));
+          resolve(client.transform(handle, options));
         } catch (err) {
+          console.log(err);
           reject(err);
         }
       });
@@ -93,7 +102,9 @@ class ReactFilestack extends Component {
       return client.remove(handle, security);
     }
 
-    return client.pick(options);
+    return new Promise((resolve) => {
+      client.picker({ ...options, onUploadDone: resolve }).open();
+    });
   };
 
   render () {

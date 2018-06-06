@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Sam Zaza",
-  "email" : "zaza.samuele@gmail.com",
+  "email": "zaza.samuele@gmail.com",
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server"
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
   }
 }
