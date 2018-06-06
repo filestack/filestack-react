@@ -3,31 +3,11 @@ import PropTypes from 'prop-types';
 import ReactFilestack from '../../../src';
 import styles from '../style.css';
 
-const onSuccess = result => {
-  console.log('result', result);
-};
-
-const onError = error => {
-  console.error('error', error);
-};
-
-const basicOptions = {
-  accept: 'image/*',
-  fromSources: ['facebook', 'gmail', 'github'],
-  maxSize: 1024 * 1024,
-  maxFiles: 3,
-};
-
 const transformOptions = {
-  url: 'https://process.filestackapi.com/FGs2lXrQRziCX06TBvC1',
+  handle: 'FGs2lXrQRziCX06TBvC1',
   crop: {
-    dim: {
-      x: 600,
-      y: 900,
-      width: 600,
-      height: 600,
-    },
-  }
+    dim: [600, 900, 600, 600],
+  },
 };
 
 export default class Container extends Component {
@@ -61,7 +41,7 @@ export default class Container extends Component {
 
           <form>
             <h2>2. Transform</h2>
-            <p>Click on the Button to transform <i>https://process.filestackapi.com/FGs2lXrQRziCX06TBvC1</i></p>
+            <p>Click on the Button to transform <i>https://cdn.filestackcontent.com/FGs2lXrQRziCX06TBvC1</i></p>
             <ReactFilestack
               apikey={apikey}
               buttonText="Click!"

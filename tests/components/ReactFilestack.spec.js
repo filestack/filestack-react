@@ -1,20 +1,20 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { configure, shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import ReactFilestack from '../../src/ReactFilestack';
 
-const test = () => <div>test</div>;
+configure({ adapter: new Adapter() });
+
+const test = () => <div>test</div>; // eslint-disable-line
 
 const apikey = 'Acu94EFL1STGYvkM6a8usz';
-
-const toggleDialog = jest.fn();
-const getInvoices = jest.fn();
 
 describe('<ReactFilestack />', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(
-      <ReactFilestack apikey={apikey} />
+      <ReactFilestack apikey={apikey} />,
     );
   });
 
@@ -31,8 +31,8 @@ describe('<ReactFilestack />', () => {
         onError: (error) => {
           console.error('error', error);
         },
-        render: test
-      }
+        render: test,
+      },
     );
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
@@ -53,7 +53,7 @@ describe('<ReactFilestack />', () => {
   it('should run metadata and mock handle', () => {
     wrapper.setProps({
       mode: 'metadata',
-      options: { handle: 'handle' }
+      options: { handle: 'handle' },
     });
     wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
     expect(wrapper).toMatchSnapshot();
@@ -63,7 +63,7 @@ describe('<ReactFilestack />', () => {
     wrapper.setProps({
       mode: 'remove',
       options: { handle: 'handle' },
-      security: { policy: 'policy', signature: 'signature' }
+      security: { policy: 'policy', signature: 'signature' },
     });
     wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
     expect(wrapper).toMatchSnapshot();
@@ -72,7 +72,7 @@ describe('<ReactFilestack />', () => {
   it('should run storeUrl with mock url', () => {
     wrapper.setProps({
       mode: 'storeUrl',
-      options: { url: 'url' }
+      options: { url: 'url' },
     });
     wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
     expect(wrapper).toMatchSnapshot();
@@ -81,7 +81,7 @@ describe('<ReactFilestack />', () => {
   it('should run retrieve with mock handle', () => {
     wrapper.setProps({
       mode: 'retrieve',
-      options: { handle: 'handle' }
+      options: { handle: 'handle' },
     });
     wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
     expect(wrapper).toMatchSnapshot();
@@ -90,7 +90,7 @@ describe('<ReactFilestack />', () => {
   it('should run transform with mock url', () => {
     wrapper.setProps({
       mode: 'transform',
-      options: { url: 'url' }
+      options: { url: 'url' },
     });
     wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
     expect(wrapper).toMatchSnapshot();
@@ -99,7 +99,7 @@ describe('<ReactFilestack />', () => {
   it('should throw an exception with transform and wrong options properties', () => {
     wrapper.setProps({
       mode: 'transform',
-      options: { url: 'url', wrong: 'wrong' },
+      options: { handle: 'abc123', wrong: 'wrong' },
     });
     wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
     expect(wrapper).toMatchSnapshot();
@@ -109,35 +109,9 @@ describe('<ReactFilestack />', () => {
     wrapper.setProps({
       mode: 'upload',
       options: { url: 'url' },
-      file: new Blob([JSON.stringify({ hello: "world" }, null, 2)], { type : 'application/json' }),
+      file: new Blob([JSON.stringify({ hello: 'world' }, null, 2)], { type: 'application/json' }),
     });
     wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
     expect(wrapper).toMatchSnapshot();
   });
-
-  it('should not accept onSuccess prop different than function type', () => {
-    wrapper.setProps({
-      mode: 'upload',
-      options: { url: 'url' },
-      file: new Blob([JSON.stringify({ hello: "world" }, null, 2)], { type : 'application/json' }),
-      onSuccess: {},
-    });
-    wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should not accept onError prop different than function type', () => {
-    wrapper.setProps({
-      mode: 'pick',
-      options: { url: 'url', wrong: 'wrong' },
-      onError: {},
-    });
-    wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-
-
-
-
 });

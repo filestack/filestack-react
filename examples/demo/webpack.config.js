@@ -1,13 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
-const fs = require('fs');
 const rules = require('./webpack.loaders');
 
 const config = {
   entry: './index.js',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'demo.js'
+    filename: 'demo.js',
   },
   devtool: 'source-map',
   resolve: {
@@ -15,7 +14,7 @@ const config = {
     extensions: ['.json', '.js', '.jsx'],
   },
   module: { rules },
-  devServer:{
+  devServer: {
     historyApiFallback: true,
     hot: true,
     inline: true,
@@ -26,7 +25,7 @@ const config = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin({
-      multistep: true
+      multistep: true,
     }),
   ],
 };

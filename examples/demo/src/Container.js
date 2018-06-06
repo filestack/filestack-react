@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import ReactFilestack from '../../../src';
 import styles from '../style.css';
 
-const onSuccess = result => {
+const onSuccess = (result) => {
   console.log('result', result);
 };
 
-const onError = error => {
+const onError = (error) => {
   console.error('error', error);
 };
 

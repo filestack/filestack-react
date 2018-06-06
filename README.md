@@ -15,18 +15,15 @@
 
 ## Installing
 
-Install ``filestack-react`` and ``filestack-js`` through npm
+Install ``filestack-react`` and ``filestack-js`` through npm.
 
 ```shell
 npm install filestack-react filestack-js
 ```
-or
-```shell
-yarn add filestack-react filestack-js
-```
+
 ## Import
 ```javascript
-var ReactFilestack = require('filestack-react');
+const ReactFilestack = require('filestack-react');
 ```
 In ES2015
 ```javascript
@@ -40,7 +37,7 @@ import ReactFilestack, { client } from 'filestack-react';
 *client is available from version 1.3.4*
 
 ## Usage
-You should register [Filestack](https://www.filestack.com) website and get an **API key** first!
+You should register on the [Filestack](https://www.filestack.com) website and get an **API key** first!
 
 **1. Custom Designed button**
 ```jsx
@@ -80,12 +77,12 @@ You should register [Filestack](https://www.filestack.com) website and get an **
 ```
 
 Available modes:
-* [upload](https://www.filestack.com/docs/javascript-api/upload-v3)
-* [transform](https://www.filestack.com/docs/javascript-api/transform-v3)
-* [retrieve](https://www.filestack.com/docs/javascript-api/retrieve-v3)
-* [storeUrl](https://www.filestack.com/docs/javascript-api/store-url-v3)
-* [metadata](https://www.filestack.com/docs/javascript-api/metadata-v3)
-* [remove](https://www.filestack.com/docs/javascript-api/remove-v3)
+* [upload](https://filestack.github.io/filestack-js/classes/client.html#upload)
+* [transform](https://filestack.github.io/filestack-js/classes/client.html#transform)
+* [retrieve](https://filestack.github.io/filestack-js/classes/client.html#retrieve)
+* [storeUrl](https://filestack.github.io/filestack-js/classes/client.html#storeurl)
+* [metadata](https://filestack.github.io/filestack-js/classes/client.html#metadata)
+* [remove](https://filestack.github.io/filestack-js/classes/client.html#remove)
 
 Define your own options object and callback function, connect them to the component and get the result from Filestack:
 
@@ -116,14 +113,14 @@ You can pass a custom prop **link**.
 />
 ```
 
-**Filestack-js client**
+**filestack-js client**
 
 You can also import the official client and decouple its React component ReactFilestack.
-However, you will need to initialize it with the API key and optional security options.
+However, you will need to initialize it with the API key and any [client options](https://filestack.github.io/filestack-js/interfaces/clientoptions.html) you need such as security, cname, and sessionCache.
 
 ```javascript
 import { client } from 'filestack-react';
-const filestack = client.init('YOUR_API_KEY', security);
+const filestack = client.init('YOUR_API_KEY', options);
 ```
 
 ## Examples
@@ -133,7 +130,7 @@ You can find the examples of using Pick in ``/examples/demo``.
 Run
 
 ```javascript
-yarn start
+npm start
 ```
 
 and connect to localhost:8080.
@@ -144,7 +141,7 @@ To try different functions go to ``/examples/demo2`` and follow the same steps t
 
 
 ## Available Props
-[Official Filestack Documentation](https://filestack.com/docs)
+Please also see the [Official JavaScript API reference](https://filestack.github.io/filestack-js)
 
 > ### apikey
 > **required**, string. An API key for Filestack.
@@ -162,9 +159,7 @@ To try different functions go to ``/examples/demo2`` and follow the same steps t
 > **optional** function. Handle errors.
 
 > ### options
-> **optional** object. Detailed options to customize the mode behavior.
->
-> See Javascript API from  the[official documentation](https://filestack.com/docs).
+> **optional** object. Detailed options to customize the specific mode behavior. For example, for `pick` mode the [following options](https://filestack.github.io/filestack-js/interfaces/pickeroptions.html) are supported.
 
 > ### security
 > **optional** object. If you have security enabled, you will need to initialize
@@ -178,6 +173,9 @@ the client with a valid Filestack policy and signature in order to perform the r
 
 > ### cname
 > **optional** Custom domain to use for all URLs. This requires the custom CNAME feature on your Filestack app.
+
+> ### sessionCache
+> **optional** If true then remember users (up to session expiry) when using the Filestack Cloud API. By default users need to authenticate on every pick.
 
 ## Versioning
 Filestack React follows the [Semantic Versioning](http://semver.org/).
