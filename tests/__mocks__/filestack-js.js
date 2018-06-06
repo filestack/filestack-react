@@ -16,7 +16,8 @@ const mockPickResult = [
     container: "filestack-website-uploads",
   },
 ];
-const mockMetadaResult = {
+
+const mockMetadataResult = {
   mimetype: "image/jpeg",
   uploaded: 1432816978028.804,
   container: "fp-documentation-assets",
@@ -27,6 +28,7 @@ const mockMetadaResult = {
   path: "9fKltFQHQ36VIjkM5WKt_phone.jpg",
   size:150870,
 };
+
 const mockStoreUrlResult = {
   container: "filestack-website-uploads",
   url: "https://cdn.filestackcontent.com/HYXDljGcRF29T1dCDzNw",
@@ -36,6 +38,7 @@ const mockStoreUrlResult = {
   size: 1033409,
   handle: "HYXDljGcRF29T1dCDzNw",
 };
+
 const mockRetrieveResult = {
   mimetype: "text/html",
   uploaded: 1475978840682.282,
@@ -47,7 +50,9 @@ const mockRetrieveResult = {
   path: "r8GXa5EDTUCFW1FLdWzL_filestack.html",
   size: 251220,
 };
+
 const mockTransformResult = 'https://process.filestackapi.com/A1nL8omiAR8W7pHi3cotzz/crop=dim:[600,900,600,600]/vignette=amount:50,blurmode:gaussian/https://d1wtqaffaaj63z.cloudfront.net/images/NY_199_E_of_Hammertown_2014.jpg';
+
 const mockUploadResult = {
   handle: "KL0OM5j9SGuebGJvYC2V",
   url: "https://cdn.filestackcontent.com/KL0OM5j9SGuebGJvYC2V",
@@ -59,50 +64,46 @@ const mockUploadResult = {
   status: "Stored",
 };
 
-
-const filestack = {
-  init: (apikey, security) => {
-    return {
-      pick: (options)  => {
-        return new Promise((resolve, reject) => {
-          if(options.wrong) {
+export const init = () => {
+  return {
+    picker: (options) => {
+      return {
+        open: () => new Promise((resolve) => {
+          if (options.wrong) {
             reject('wrong options property');
           }
-
           resolve(mockPickResult);
-        });
-      },
-      metadata: (handle, options) => {
-        return new Promise((resolve, reject) => {
-           resolve(mockMetadaResult);
-        });
-      },
-      remove: (handle, security) => {
-        return new Promise((resolve, reject) => {
-           resolve('removed');
-        });
-      },
-      storeURL: (url, options) => {
-        return new Promise((resolve, reject) => {
-           resolve(mockStoreUrlResult);
-        });
-      },
-      retrieve: (handle, options) => {
-        return new Promise((resolve, reject) => {
-           resolve(mockRetrieveResult);
-        });
-      },
-      transform: (url, options) => {
-        if (options.wrong) throw 'Error';
-        return mockTransformResult;
-      },
-      upload: (file, options) => {
-        return new Promise((resolve, reject) => {
-           resolve(mockUploadResult);
-        });
-      },
-    };
-  },
+        }),
+      };
+    },
+    metadata: () => {
+      return new Promise((resolve) => {
+        resolve(mockMetadataResult);
+      });
+    },
+    remove: () => {
+      return new Promise((resolve) => {
+        resolve('removed');
+      });
+    },
+    storeURL: () => {
+      return new Promise((resolve) => {
+        resolve(mockStoreUrlResult);
+      });
+    },
+    retrieve: (handle) => {
+      return new Promise((resolve) => {
+        resolve(mockRetrieveResult);
+      });
+    },
+    transform: (url, options) => {
+      if (options.wrong) throw new Error('Error');
+      return mockTransformResult;
+    },
+    upload: () => {
+      return new Promise((resolve) => {
+        resolve(mockUploadResult);
+      });
+    },
+  };
 };
-
-export default filestack;

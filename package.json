@@ -2,7 +2,7 @@
   "name": "filestack-react",
   "version": "1.3.9",
   "main": "dist/filestack-react.js",
-  "description": "react component for filestack",
+  "description": "React component wrapper for filestack-js",
   "scripts": {
     "test": "jest --watch --no-cache --coverage",
     "build": "rimraf dist && webpack --colors -p --display-error-details",
@@ -46,6 +46,7 @@
     "babel-runtime": "^6.23.0",
     "css-loader": "^0.27.3",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
@@ -55,7 +56,7 @@
     "eslint-plugin-react": "^6.10.3",
     "imports-loader": "^0.7.1",
     "jasmine-reporters": "^2.3.1",
-    "jest-cli": "^20.0.3",
+    "jest-cli": "^23.1.0",
     "prop-types": "^15.6.1",
     "raw-loader": "^0.5.1",
     "react": "^16.4.0",
@@ -73,12 +74,17 @@
     "roots": [
       "<rootDir>/tests/"
     ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/__coverage__",
+      "<rootDir>/__tests__/__mocks__",
+      "<rootDir>/node_modules"
+    ],
     "moduleDirectories": [
       "node_modules"
     ],
     "testRegex": "\\.(spec|e2e|snapshot)\\.js$",
+    "collectCoverageFrom": ["<rootDir>/src/**/*.{js,jsx}"],
     "coverageDirectory": "<rootDir>/tests/__coverage__/",
-    "setupTestFrameworkScriptFile": "<rootDir>/setup-jasmine-env.js",
     "coverageReporters": [
       "json",
       "html",
@@ -86,21 +92,9 @@
     ],
     "browser": true,
     "moduleNameMapper": {
-      "components": "<rootDir>/src/components",
-      "utils": "<rootDir>/src/utils",
-      "constants": "<rootDir>/src/constants",
-      "containers": "<rootDir>/src/containers",
-      "reducers": "<rootDir>/src/reducers",
-      "routing": "<rootDir>/src/routing",
-      "actions": "<rootDir>/src/actions",
-      "sagas": "<rootDir>/src/sagas",
-      "widget": "<rootDir>/widget",
       "mock-data": "<rootDir>/tests/__mocks__/mockData.js",
       "^.+\\.(scss|css|svg|png)$": "identity-obj-proxy",
       "src": "<rootDir>/src"
     }
-  },
-  "dependencies": {
-    "filestack-js": "^1.0.1"
   }
 }

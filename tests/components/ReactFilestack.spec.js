@@ -1,7 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { configure, shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import ReactFilestack from '../../src/ReactFilestack';
+
+configure({ adapter: new Adapter() });
 
 const test = () => <div>test</div>; // eslint-disable-line
 
@@ -96,7 +99,7 @@ describe('<ReactFilestack />', () => {
   it('should throw an exception with transform and wrong options properties', () => {
     wrapper.setProps({
       mode: 'transform',
-      options: { url: 'url', wrong: 'wrong' },
+      options: { handle: 'abc123', wrong: 'wrong' },
     });
     wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
     expect(wrapper).toMatchSnapshot();
@@ -107,27 +110,6 @@ describe('<ReactFilestack />', () => {
       mode: 'upload',
       options: { url: 'url' },
       file: new Blob([JSON.stringify({ hello: 'world' }, null, 2)], { type: 'application/json' }),
-    });
-    wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should not accept onSuccess prop different than function type', () => {
-    wrapper.setProps({
-      mode: 'upload',
-      options: { url: 'url' },
-      file: new Blob([JSON.stringify({ hello: 'world' }, null, 2)], { type: 'application/json' }),
-      onSuccess: {},
-    });
-    wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should not accept onError prop different than function type', () => {
-    wrapper.setProps({
-      mode: 'pick',
-      options: { url: 'url', wrong: 'wrong' },
-      onError: {},
     });
     wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
     expect(wrapper).toMatchSnapshot();
