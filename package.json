@@ -31,6 +31,9 @@
     "url": "https://github.com/filestack/filestack-react/issues"
   },
   "homepage": "https://github.com/filestack/filestack-react#readme",
+  "dependencies": {
+    "filestack-js": "^1.14.1"
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
@@ -55,6 +58,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "imports-loader": "^0.8.0",
+    "jest": "^24.1.0",
     "jest-cli": "^24.1.0",
     "prop-types": "^15.7.1",
     "raw-loader": "^1.0.0",
@@ -66,10 +70,6 @@
     "terser-webpack-plugin": "^1.2.2",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3"
-  },
-  "peerDependencies": {
-    "filestack-js": "^1.0.1",
-    "react": "^16.8.1"
   },
   "jest": {
     "roots": [
@@ -99,8 +99,5 @@
       "^.+\\.(scss|css|svg|png)$": "identity-obj-proxy",
       "src": "<rootDir>/src"
     }
-  },
-  "dependencies": {
-    "filestack-js": "^1.14.1"
   }
 }

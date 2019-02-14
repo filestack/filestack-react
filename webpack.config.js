@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const fs = require('fs');
 const rules = require('./webpack.loaders');
 const TerserPlugin = require('terser-webpack-plugin');
 
