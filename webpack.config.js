@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const fs = require('fs');
 const rules = require('./webpack.loaders');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -19,18 +20,25 @@ module.exports = {
   externals: [
     'react', 'filestack-js', 'prop-types'
   ],
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        sourceMap: true,
+        terserOptions: {
+          compress: {
+            warnings: false
+          }
+        }
+      }),
+    ],
+  },
   plugins: [
     new webpack.LoaderOptionsPlugin({
       minimize: true,
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false,
-      },
     }),
   ],
 };

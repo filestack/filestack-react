@@ -1,12 +1,11 @@
 {
   "presets": [
-    ["latest", { "modules": false }],
-    "react",
-    "stage-2"
+    "@babel/preset-env",
+    "@babel/react"
   ],
   "plugins": [
     [
-      "transform-class-properties"
+      "@babel/plugin-proposal-class-properties"
     ]
   ]
 }
