@@ -6,7 +6,7 @@ import ReactFilestack from '../../src/ReactFilestack';
 
 configure({ adapter: new Adapter() });
 
-const test = () => <div>test</div>; // eslint-disable-line
+const test = () => <div>test</div> // eslint-disable-line
 
 const apikey = 'Acu94EFL1STGYvkM6a8usz';
 
