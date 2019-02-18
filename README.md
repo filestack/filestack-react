@@ -9,7 +9,7 @@
 
 * [Filestack](https://www.filestack.com)
 * [Documentation](https://www.filestack.com/docs)
-* [Live Demo](https://www.zerocho.com/portfolio/ReactFilestack)
+* [Live Demo](https://codepen.io/Skayfer/pen/GzPYOP)
 * [NPM](https://npmjs.com/package/filestack-react)
 * [Tutorial](https://blog.filestack.com/product-updates/react-package/)
 
@@ -125,19 +125,14 @@ const filestack = client.init('YOUR_API_KEY', options);
 
 ## Examples
 
-You can find the examples of using Pick in ``/examples/demo``.
+You can find examples used in livedemo in ``/examples/demo``.
 
-Run
+Go to the /examples/demo and type
 
 ```javascript
+npm i
 npm start
 ```
-
-and connect to localhost:8080.
-
-To try different functions go to ``/examples/demo2`` and follow the same steps to run it.
-
-![filestack](https://cloud.githubusercontent.com/assets/10962668/23750309/ac3e1080-050f-11e7-922d-ee9deb8251a3.png)
 
 
 ## Available Props
