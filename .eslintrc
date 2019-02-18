@@ -19,8 +19,17 @@
     "max-len": 0,
     "no-param-reassign": ["error", { "props": false }],
     "space-before-function-paren": 0,
-    "space-before-blocks": 0
+    "space-before-blocks": 0,
+    "no-else-return": 0
   },
+  "overrides": [
+    {
+      "files": ["tests/**/*spec.js"],
+      "rules": {
+        "no-global-assign": 0
+      }
+    }
+  ],
   "plugins": [
     "react",
     "jsx-a11y",

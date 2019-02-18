@@ -3,7 +3,7 @@
 [![Package Quality](http://npm.packagequality.com/shield/react-filestack.svg)](http://packagequality.com/#?package=react-filestack)
 
 # Filestack React
-<a href="https://www.filestack.com"><img src="https://filestack.com/themes/filestack/assets/images/press-articles/color.svg" align="left" hspace="10" vspace="6"></a> This is the official React component for Filestack API and content management system that makes it easy to add powerful file uploading and transformation capabilities to any web or mobile application.
+<a href="https://www.filestack.com"><img src="https://assets.filestack.com/docs_v2/fs-logo.svg" align="left" hspace="10" vspace="6"></a> This is the official React component for Filestack API and content management system that makes it easy to add powerful file uploading and transformation capabilities to any web or mobile application.
 
 ## Resources
 
@@ -15,17 +15,17 @@
 
 ## Installing
 
-Install ``filestack-react`` and ``filestack-js`` through npm.
+Install ``filestack-react`` through npm.
 
 ```shell
-npm install filestack-react filestack-js
+npm i filestack-react
 ```
 
 ## Import
 ```javascript
 const ReactFilestack = require('filestack-react');
 ```
-In ES2015
+In ES2015 and newer
 ```javascript
 import ReactFilestack from 'filestack-react';
 ```

@@ -10,6 +10,11 @@ const test = () => <div>test</div>; // eslint-disable-line
 
 const apikey = 'Acu94EFL1STGYvkM6a8usz';
 
+console = {
+  log: jest.fn(),
+  error: jest.fn(),
+};
+
 describe('<ReactFilestack />', () => {
   let wrapper;
   beforeEach(() => {

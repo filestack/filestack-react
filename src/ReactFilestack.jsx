@@ -107,7 +107,9 @@ class ReactFilestack extends Component {
   };
 
   render () {
-    const { buttonClass, buttonText, link, children, render: CustomRender } = this.props;
+    const {
+      buttonClass, buttonText, link, children, render: CustomRender,
+    } = this.props;
     if (CustomRender) {
       return (
         <CustomRender onPick={this.onClickPick} />
