@@ -1,10 +1,14 @@
 html {
   height: 100%;
   width: 100%;
+  position: relative;
   background: #e2e2e2;
 }
 
 body {
+  height: 100%;
+  width: 100%;
+  position: relative;
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -19,16 +23,10 @@ code {
     monospace;
 }
 
-.examples {
-  margin-top: 50px;
-}
-
-hr {
-  margin: 50px;
-}
-
-#testContainer4 {
-  height: 500px;
+#root, .App {
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
 button {
@@ -49,7 +47,7 @@ button {
   display: inline-block;
   height: 34px;
   padding: 4px 30px 5px 40px;
-  margin: 20px;
+  margin: 10px;
 }
 
 button::after {
@@ -62,6 +60,28 @@ button::after {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAICAYAAAA1BOUGAAAABGdBTUEAALGPC/xhBQAAAGlJREFUCB1j/P//vw4DA4MiEKOD+0xAkatA/AJNBsS/ysTIyPgfyDgHxO+hCkD0Oag4RAhoPDsQm4NoqCIGBiBnAhBjAxNAkkxAvBZNFsQHuQesmxPIOQZVAKI54UZDFYgABbcBsQhMAgDIVGYSqZsn6wAAAABJRU5ErkJggg==");
 }
 
-.label {
-  margin-bottom: 10px;
+.main {
+  height: 100%;
+  position: relative;
+  display: flex;
+  padding-top: 50px;
+}
+
+.examples {
+  width: 350px;
+  display: inline-block;
+  margin-right: 10px;
+  border-right: 2px solid #aaa;
+  height: 100%;
+}
+
+.example {
+  border-top: 2px solid #aaa;
+  padding: 15px 0;
+}
+
+#testContainer {
+  height: 500px;
+  width: calc(100% - 360px);
+  margin-left: 10px;
 }
