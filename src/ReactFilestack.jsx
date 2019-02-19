@@ -11,12 +11,17 @@ class ReactFilestack extends Component {
     onSuccess: result => console.log(result),
     onError: error => console.error(error),
     mode: 'pick',
-    options: {},
+    options: {
+      onOpen() {
+        console.timeEnd();
+      },
+    },
     security: null,
     children: null,
     render: null,
     cname: null,
     sessionCache: false,
+    pickerPreload: false,
   };
 
   static propTypes = {
@@ -34,75 +39,109 @@ class ReactFilestack extends Component {
     render: PropTypes.func,
     cname: PropTypes.string,
     sessionCache: PropTypes.bool,
+    pickerPreload: PropTypes.bool,
   };
 
-  onClickPick = (event) => {
-    event.stopPropagation();
-    event.preventDefault();
+  constructor(props) {
+    super(props);
     const {
       apikey,
-      onSuccess,
-      onError,
-      options,
-      mode,
-      file,
       security,
       cname,
       sessionCache,
+      pickerPreload,
     } = this.props;
-
-    const onFinished = (result) => {
-      if (typeof onSuccess === 'function') {
-        onSuccess(result);
-      } else {
-        console.log(result);
-      }
-    };
-    const onFail = (error) => {
-      if (typeof onError === 'function') {
-        onError(error);
-      } else {
-        console.error(error);
-      }
-    };
-
-    this.initClient(mode, apikey, options, file, security, cname, sessionCache)
-      .then(onFinished)
-      .catch(onFail);
-  };
-
-  initClient = (mode, apikey, options, file, security, cname, sessionCache) => {
-    const { url, handle } = options;
-    delete options.handle;
-    delete options.url;
     const client = filestack.init(apikey, {
       security,
       cname,
       sessionCache,
     });
 
+    this.state = {
+      client,
+      picker: pickerPreload ? this.initPicker(client) : null,
+    };
+
+    this.onFinished = this.onFinished.bind(this);
+    this.onFail = this.onFail.bind(this);
+    this.initPicker = this.initPicker.bind(this);
+  }
+
+  initPicker = (client) => {
+    const { options } = this.props;
+    return client.picker({ ...options, onUploadDone: this.onFinished });
+  }
+
+  onClickPick = (event) => {
+    console.time();
+    event.stopPropagation();
+    event.preventDefault();
+    const {
+      client,
+      picker,
+    } = this.state;
+    const {
+      options,
+      mode,
+      file,
+      security,
+      pickerPreload,
+    } = this.props;
+
+    if (!pickerPreload && !picker) {
+      this.setState({ picker: this.initPicker(client) });
+    }
+    this.callPicker(mode, options, file, security)
+      .then(this.onFinished)
+      .catch(this.onFail);
+  };
+
+  onFinished = (result) => {
+    const { onSuccess } = this.props;
+    if (typeof onSuccess === 'function') {
+      onSuccess(result);
+    } else {
+      console.log(result);
+    }
+  };
+
+  onFail = (error) => {
+    const { onError } = this.props;
+    if (typeof onError === 'function') {
+      onError(error);
+    } else {
+      console.error(error);
+    }
+  };
+
+  callPicker = (mode, options, file, security) => {
+    const { picker } = this.state;
+    const { url, handle } = options;
+    delete options.handle;
+    delete options.url;
+
     if (mode === 'transform') {
       return new Promise((resolve, reject) => {
         try {
-          resolve(client.transform(handle, options));
+          resolve(picker.transform(handle, options));
         } catch (err) {
           reject(err);
         }
       });
     } else if (mode === 'retrieve') {
-      return client.retrieve(handle, options);
+      return picker.retrieve(handle, options);
     } else if (mode === 'metadata') {
-      return client.metadata(handle, options);
+      return picker.metadata(handle, options);
     } else if (mode === 'storeUrl') {
-      return client.storeURL(url, options);
+      return picker.storeURL(url, options);
     } else if (mode === 'upload') {
-      return client.upload(file, options);
+      return picker.upload(file, options);
     } else if (mode === 'remove') {
-      return client.remove(handle, security);
+      return picker.remove(handle, security);
     }
 
-    return new Promise((resolve) => {
-      client.picker({ ...options, onUploadDone: resolve }).open();
+    return new Promise(() => {
+      picker.open();
     });
   };
 
