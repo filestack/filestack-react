@@ -51,6 +51,7 @@ class ReactFilestack extends Component {
       sessionCache,
       pickerPreload,
     } = this.props;
+    console.log('###2', pickerPreload)
     const client = filestack.init(apikey, {
       security,
       cname,
@@ -65,9 +66,11 @@ class ReactFilestack extends Component {
     this.onFinished = this.onFinished.bind(this);
     this.onFail = this.onFail.bind(this);
     this.initPicker = this.initPicker.bind(this);
+    this.callPicker = this.callPicker.bind(this);
   }
 
   initPicker = (client) => {
+    //if client
     const { options } = this.props;
     return client.picker({ ...options, onUploadDone: this.onFinished });
   }
@@ -88,9 +91,6 @@ class ReactFilestack extends Component {
       pickerPreload,
     } = this.props;
 
-    if (!pickerPreload && !picker) {
-      this.setState({ picker: this.initPicker(client) });
-    }
     this.callPicker(mode, options, file, security)
       .then(this.onFinished)
       .catch(this.onFail);
@@ -141,7 +141,14 @@ class ReactFilestack extends Component {
     }
 
     return new Promise(() => {
-      picker.open();
+      console.log('###5', this.state);
+      if (this.props.pickerPreload) {
+        console.log('###6');
+        picker.open();
+      } else {
+        console.log('###7');
+        this.initPicker(this.state.client).open();
+      }
     });
   };
 
