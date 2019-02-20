@@ -11,17 +11,13 @@ class ReactFilestack extends Component {
     onSuccess: result => console.log(result),
     onError: error => console.error(error),
     mode: 'pick',
-    options: {
-      onOpen() {
-        console.timeEnd();
-      },
-    },
+    options: {},
     security: null,
     children: null,
     render: null,
     cname: null,
     sessionCache: false,
-    pickerPreload: false,
+    preload: false,
   };
 
   static propTypes = {
@@ -39,7 +35,7 @@ class ReactFilestack extends Component {
     render: PropTypes.func,
     cname: PropTypes.string,
     sessionCache: PropTypes.bool,
-    pickerPreload: PropTypes.bool,
+    preload: PropTypes.bool,
   };
 
   constructor(props) {
@@ -49,9 +45,9 @@ class ReactFilestack extends Component {
       security,
       cname,
       sessionCache,
-      pickerPreload,
+      preload,
+      options,
     } = this.props;
-    console.log('###2', pickerPreload)
     const client = filestack.init(apikey, {
       security,
       cname,
@@ -60,38 +56,31 @@ class ReactFilestack extends Component {
 
     this.state = {
       client,
-      picker: pickerPreload ? this.initPicker(client) : null,
+      picker: preload ? client.picker({ ...options, onUploadDone: this.onFinished }) : null,
     };
 
     this.onFinished = this.onFinished.bind(this);
     this.onFail = this.onFail.bind(this);
-    this.initPicker = this.initPicker.bind(this);
-    this.callPicker = this.callPicker.bind(this);
-  }
-
-  initPicker = (client) => {
-    //if client
-    const { options } = this.props;
-    return client.picker({ ...options, onUploadDone: this.onFinished });
   }
 
   onClickPick = (event) => {
-    console.time();
     event.stopPropagation();
     event.preventDefault();
+
     const {
       client,
       picker,
     } = this.state;
+
     const {
       options,
       mode,
       file,
       security,
-      pickerPreload,
+      preload,
     } = this.props;
 
-    this.callPicker(mode, options, file, security)
+    this.callPicker(mode, options, file, security, preload, client, picker)
       .then(this.onFinished)
       .catch(this.onFail);
   };
@@ -114,11 +103,12 @@ class ReactFilestack extends Component {
     }
   };
 
-  callPicker = (mode, options, file, security) => {
-    const { picker } = this.state;
+  callPicker = (mode, options, file, security, preload, client, picker) => {
     const { url, handle } = options;
     delete options.handle;
     delete options.url;
+
+    console.log('###1', picker)
 
     if (mode === 'transform') {
       return new Promise((resolve, reject) => {
@@ -141,13 +131,10 @@ class ReactFilestack extends Component {
     }
 
     return new Promise(() => {
-      console.log('###5', this.state);
-      if (this.props.pickerPreload) {
-        console.log('###6');
+      if (preload) {
         picker.open();
       } else {
-        console.log('###7');
-        this.initPicker(this.state.client).open();
+        client.picker({ ...options, onUploadDone: this.onFinished }).open();
       }
     });
   };
