@@ -53,7 +53,6 @@ class ReactFilestack extends Component {
       cname,
       sessionCache,
     });
-
     this.state = {
       client,
       picker: preload ? client.picker({ ...options, onUploadDone: this.onFinished }) : null,
@@ -107,8 +106,6 @@ class ReactFilestack extends Component {
     const { url, handle } = options;
     delete options.handle;
     delete options.url;
-
-    console.log('###1', picker)
 
     if (mode === 'transform') {
       return new Promise((resolve, reject) => {
