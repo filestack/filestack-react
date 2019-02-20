@@ -3,7 +3,7 @@
 [![Package Quality](http://npm.packagequality.com/shield/react-filestack.svg)](http://packagequality.com/#?package=react-filestack)
 
 # Filestack React
-<a href="https://www.filestack.com"><img src="https://assets.filestack.com/docs_v2/fs-logo.svg" align="left" hspace="10" vspace="6"></a> This is the official React component for Filestack API and content management system that makes it easy to add powerful file uploading and transformation capabilities to any web or mobile application.
+<a href="https://www.filestack.com"><img src="https://github.com/filestack/filestack-android/raw/master/logo.svg?sanitize=true" align="left" hspace="10" vspace="6"></a> This is the official React component for Filestack API and content management system that makes it easy to add powerful file uploading and transformation capabilities to any web or mobile application.
 
 ## Resources
 
