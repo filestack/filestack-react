@@ -22,6 +22,8 @@ exports[`<ReactFilestack /> should run metadata and mock handle 1`] = `ShallowWr
 
 exports[`<ReactFilestack /> should run pick as default 1`] = `ShallowWrapper {}`;
 
+exports[`<ReactFilestack /> should run properly when called with preload prop 1`] = `ShallowWrapper {}`;
+
 exports[`<ReactFilestack /> should run remove width mock handle and security 1`] = `ShallowWrapper {}`;
 
 exports[`<ReactFilestack /> should run retrieve with mock handle 1`] = `ShallowWrapper {}`;

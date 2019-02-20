@@ -113,21 +113,21 @@ class ReactFilestack extends Component {
     if (mode === 'transform') {
       return new Promise((resolve, reject) => {
         try {
-          resolve(picker.transform(handle, options));
+          resolve(client.transform(handle, options));
         } catch (err) {
           reject(err);
         }
       });
     } else if (mode === 'retrieve') {
-      return picker.retrieve(handle, options);
+      return client.retrieve(handle, options);
     } else if (mode === 'metadata') {
-      return picker.metadata(handle, options);
+      return client.metadata(handle, options);
     } else if (mode === 'storeUrl') {
-      return picker.storeURL(url, options);
+      return client.storeURL(url, options);
     } else if (mode === 'upload') {
-      return picker.upload(file, options);
+      return client.upload(file, options);
     } else if (mode === 'remove') {
-      return picker.remove(handle, security);
+      return client.remove(handle, security);
     }
 
     return new Promise(() => {

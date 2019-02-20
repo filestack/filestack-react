@@ -119,4 +119,12 @@ describe('<ReactFilestack />', () => {
     wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('should run properly when called with preload prop', () => {
+    wrapper.setProps({
+      preload: true,
+    });
+    wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
+    expect(wrapper).toMatchSnapshot();
+  });
 });
