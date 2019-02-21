@@ -36,3 +36,4 @@ fabric.properties
 /dist/demo.js.map
 .DS_Store
 /tests/__coverage__/
+/examples/demo/build/

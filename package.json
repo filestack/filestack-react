@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/filestack/filestack-react#readme",
   "dependencies": {
-    "filestack-js": "^1.14.1"
+    "filestack-js": "^1.14.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
