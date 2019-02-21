@@ -55,7 +55,7 @@ class ReactFilestack extends Component {
     });
     this.state = {
       client,
-      picker: preload ? client.picker({ ...options, onUploadDone: this.onFinished }) : null,
+      picker: preload ? client.picker({ ...options }) : null,
     };
 
     this.onFinished = this.onFinished.bind(this);
@@ -88,8 +88,6 @@ class ReactFilestack extends Component {
     const { onSuccess } = this.props;
     if (typeof onSuccess === 'function') {
       onSuccess(result);
-    } else {
-      console.log(result);
     }
   };
 
@@ -127,11 +125,11 @@ class ReactFilestack extends Component {
       return client.remove(handle, security);
     }
 
-    return new Promise(() => {
+    return new Promise((resolve) => {
       if (preload) {
         picker.open();
       } else {
-        client.picker({ ...options, onUploadDone: this.onFinished }).open();
+        client.picker({ ...options, onUploadDone: resolve }).open();
       }
     });
   };
