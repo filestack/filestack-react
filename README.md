@@ -3,13 +3,13 @@
 [![Package Quality](http://npm.packagequality.com/shield/react-filestack.svg)](http://packagequality.com/#?package=react-filestack)
 
 # Filestack React
-<a href="https://www.filestack.com"><img src="https://assets.filestack.com/docs_v2/fs-logo.svg" align="left" hspace="10" vspace="6"></a> This is the official React component for Filestack API and content management system that makes it easy to add powerful file uploading and transformation capabilities to any web or mobile application.
+<a href="https://www.filestack.com"><img src="https://github.com/filestack/filestack-android/raw/master/logo.svg?sanitize=true" align="left" hspace="10" vspace="6"></a> This is the official React component for Filestack API and content management system that makes it easy to add powerful file uploading and transformation capabilities to any web or mobile application.
 
 ## Resources
 
 * [Filestack](https://www.filestack.com)
 * [Documentation](https://www.filestack.com/docs)
-* [Live Demo](https://www.zerocho.com/portfolio/ReactFilestack)
+* [Live Demo](https://codepen.io/Skayfer/pen/GzPYOP)
 * [NPM](https://npmjs.com/package/filestack-react)
 * [Tutorial](https://blog.filestack.com/product-updates/react-package/)
 
@@ -125,19 +125,14 @@ const filestack = client.init('YOUR_API_KEY', options);
 
 ## Examples
 
-You can find the examples of using Pick in ``/examples/demo``.
+You can find examples used in livedemo in ``/examples/demo``.
 
-Run
+Go to the /examples/demo and type
 
 ```javascript
+npm i
 npm start
 ```
-
-and connect to localhost:8080.
-
-To try different functions go to ``/examples/demo2`` and follow the same steps to run it.
-
-![filestack](https://cloud.githubusercontent.com/assets/10962668/23750309/ac3e1080-050f-11e7-922d-ee9deb8251a3.png)
 
 
 ## Available Props
