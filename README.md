@@ -47,6 +47,7 @@ You should register on the [Filestack](https://www.filestack.com) website and ge
   buttonClass="classname"
   options={options}
   onSuccess={this.yourCallbackFunction}
+  preload={true}
 />
 ```
 
@@ -57,6 +58,7 @@ You should register on the [Filestack](https://www.filestack.com) website and ge
   options={options}
   onSuccess={onSuccess}
   onError={onError}
+  preload={true}
   render={({ onPick }) => (
     <div>
       <strong>Find an avatar</strong>
@@ -73,6 +75,7 @@ You should register on the [Filestack](https://www.filestack.com) website and ge
   mode="upload"
   options={options}
   onSuccess={onSuccess}
+  preload={true}
 />
 ```
 
@@ -143,6 +146,9 @@ Please also see the [Official JavaScript API reference](https://filestack.github
 
 > ### mode
 > **optional**, string. **default** 'pick'. Can be one of pick, upload, transform, retrieve, metadata, remove.
+
+> ### preload
+> **optional**, boolean. default false. If set on true the component will prepare all necessary assets like scripts and styles when a constructor will be called. Otherwise all assets are downloaded during onClick event.
 
 > ### file
 > **optional** object. use it to insert a file object in upload mode.

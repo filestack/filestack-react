@@ -1,3 +1,12 @@
+## 2.0.1 (February 25, 2019)
+
+### updates
+- Updated most of the dependencies to the newest version including filestack-js lib.
+
+### others
+- Update readme, add new demo
+
+
 ## 2.0.0 (June 6, 2018)
 
 Updated to support filestack-js 1.0 and React 16.0 as peer dependencies.
