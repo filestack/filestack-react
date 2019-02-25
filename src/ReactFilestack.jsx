@@ -17,6 +17,7 @@ class ReactFilestack extends Component {
     render: null,
     cname: null,
     sessionCache: false,
+    preload: false,
   };
 
   static propTypes = {
@@ -34,52 +35,75 @@ class ReactFilestack extends Component {
     render: PropTypes.func,
     cname: PropTypes.string,
     sessionCache: PropTypes.bool,
+    preload: PropTypes.bool,
   };
 
-  onClickPick = (event) => {
-    event.stopPropagation();
-    event.preventDefault();
+  constructor(props) {
+    super(props);
     const {
       apikey,
-      onSuccess,
-      onError,
-      options,
-      mode,
-      file,
       security,
       cname,
       sessionCache,
+      preload,
+      options,
     } = this.props;
-
-    const onFinished = (result) => {
-      if (typeof onSuccess === 'function') {
-        onSuccess(result);
-      } else {
-        console.log(result);
-      }
-    };
-    const onFail = (error) => {
-      if (typeof onError === 'function') {
-        onError(error);
-      } else {
-        console.error(error);
-      }
-    };
-
-    this.initClient(mode, apikey, options, file, security, cname, sessionCache)
-      .then(onFinished)
-      .catch(onFail);
-  };
-
-  initClient = (mode, apikey, options, file, security, cname, sessionCache) => {
-    const { url, handle } = options;
-    delete options.handle;
-    delete options.url;
     const client = filestack.init(apikey, {
       security,
       cname,
       sessionCache,
     });
+    this.state = {
+      client,
+      picker: preload ? client.picker({ ...options, onUploadDone: this.onFinished }) : null,
+    };
+
+    this.onFinished = this.onFinished.bind(this);
+    this.onFail = this.onFail.bind(this);
+  }
+
+  onClickPick = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+
+    const {
+      client,
+      picker,
+    } = this.state;
+
+    const {
+      options,
+      mode,
+      file,
+      security,
+      preload,
+    } = this.props;
+
+    this.callPicker(mode, options, file, security, preload, client, picker)
+      .then(this.onFinished)
+      .catch(this.onFail);
+  };
+
+  onFinished = (result) => {
+    const { onSuccess } = this.props;
+    if (typeof onSuccess === 'function' && result) {
+      onSuccess(result);
+    }
+  };
+
+  onFail = (error) => {
+    const { onError } = this.props;
+    if (typeof onError === 'function') {
+      onError(error);
+    } else {
+      console.error(error);
+    }
+  };
+
+  callPicker = (mode, options, file, security, preload, client, picker) => {
+    const { url, handle } = options;
+    delete options.handle;
+    delete options.url;
 
     if (mode === 'transform') {
       return new Promise((resolve, reject) => {
@@ -102,7 +126,12 @@ class ReactFilestack extends Component {
     }
 
     return new Promise((resolve) => {
-      client.picker({ ...options, onUploadDone: resolve }).open();
+      if (preload) {
+        picker.open();
+        resolve();
+      } else {
+        client.picker({ ...options, onUploadDone: resolve }).open();
+      }
     });
   };
 
