@@ -4,7 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## 2.0.2 (2019-02-25)
 
-
+### Features
+- Added a new preload option (According to the https://github.com/filestack/filestack-react/issues/42)
 
 ## 2.0.1 (February 25, 2019)
 
@@ -17,11 +18,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## 2.0.0 (June 6, 2018)
 
-Updated to support filestack-js 1.0 and React 16.0 as peer dependencies.
+- Updated to support filestack-js 1.0 and React 16.0 as peer dependencies.
 
 ## 1.0.0 (June 10, 2017)
 
-Officially changed name to filestack-react
+- Officially changed name to filestack-react
 
 ### features
 
