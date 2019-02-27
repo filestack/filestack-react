@@ -9,7 +9,7 @@
 
 * [Filestack](https://www.filestack.com)
 * [Documentation](https://www.filestack.com/docs)
-* [Live Demo](https://codepen.io/Skayfer/pen/GzPYOP)
+* [Live Demo](https://codepen.io/Filestack/pen/KEpVdR)
 * [NPM](https://npmjs.com/package/filestack-react)
 * [Tutorial](https://blog.filestack.com/product-updates/react-package/)
 
