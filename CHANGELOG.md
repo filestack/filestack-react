@@ -4,16 +4,21 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.0.4](https://github.com/filestack/filestack-react/compare/v2.0.3...v2.0.4) (2019-04-15)
 
+### fixes
+- Fix demo page
+
+### updates
+- Update filestack-js to 2.0.6
 
 
 ## [2.0.3](https://github.com/filestack/filestack-react/compare/v2.0.2...v2.0.3) (2019-04-12)
 
-### others
+### updates
 - Update filestack-js to 2.0.5
 
 ## 2.0.2 (2019-02-25)
 
-### Features
+### features
 - Added a new preload option (According to the https://github.com/filestack/filestack-react/issues/42)
 
 ## 2.0.1 (February 25, 2019)
