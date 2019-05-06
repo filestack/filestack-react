@@ -4,7 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.0.6](https://github.com/filestack/filestack-react/compare/v2.0.5...v2.0.6) (2019-05-06)
 
-
+### updates
+- Update filestack-js to 2.1.0
 
 ## [2.0.5](https://github.com/filestack/filestack-react/compare/v2.0.4...v2.0.5) (2019-04-18)
 
