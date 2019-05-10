@@ -3,49 +3,32 @@ import * as filestack from 'filestack-js';
 import PropTypes from 'prop-types';
 
 class ReactFilestack extends Component {
-  // static defaultProps = {
-  //   file: null,
-  //   link: false,
-  //   buttonText: 'Pick file',
-  //   buttonClass: '',
-  //   onSuccess: result => console.log(result),
-  //   onError: error => console.error(error),
-  //   mode: 'pick',
-  //   options: {},
-  //   security: null,
-  //   children: null,
-  //   render: null,
-  //   cname: null,
-  //   sessionCache: false,
-  //   preload: false,
-  // };
-
   static defaultProps = {
     action: 'pick',
-    pickerDisplayMode: 'direct',
+    pickerDisplayMode: {
+      type: 'immediate',
+      customText: 'Pick file',
+      customClass: 'filestack-react',
+    },
     pickerOptions: {},
     onUploadSuccess: result => console.log(result),
     onUploadError: error => console.error(error),
     clientOptions: {},
     file: null,
     customRender: null,
-    children: null,
   };
 
   static propTypes = {
     apikey: PropTypes.string.isRequired,
     action: PropTypes.oneOf(['transform', 'retrieve', 'metadata', 'storeUrl', 'upload', 'remove', 'pick']),
-    // FIXME
-    pickerDisplayMode: PropTypes.oneOf(['direct', {
-      type: PropTypes.oneOf(['button', 'link']),
-      text: PropTypes.string,
-      class: PropTypes.string,
-      preload: PropTypes.bool,
-    }]),
+    pickerDisplayMode: PropTypes.shape({
+      type: PropTypes.oneOf(['immediate', 'button', 'link']),
+      customText: PropTypes.string,
+      customClass: PropTypes.string,
+    }),
     pickerOptions: PropTypes.objectOf(PropTypes.any),
     onUploadSuccess: PropTypes.func,
     onUploadError: PropTypes.func,
-    // FIXME
     clientOptions: PropTypes.shape({
       cname: PropTypes.string,
       security: PropTypes.objectOf(PropTypes.any),
@@ -53,31 +36,48 @@ class ReactFilestack extends Component {
     }),
     file: PropTypes.objectOf(PropTypes.any),
     customRender: PropTypes.func,
-    children: PropTypes.node,
   };
 
   constructor(props) {
     super(props);
     const {
       apikey,
-      security,
-      cname,
-      sessionCache,
-      preload,
+      clientOptions,
       pickerOptions,
     } = this.props;
-    const client = filestack.init(apikey, {
-      security,
-      cname,
-      sessionCache,
-    });
+    const client = filestack.init(apikey, clientOptions);
     this.state = {
       client,
-      picker: preload ? client.picker({ ...pickerOptions, onUploadDone: this.onFinished }) : null,
+      picker: client.picker({ ...pickerOptions, onUploadDone: this.onFinished }),
     };
 
     this.onFinished = this.onFinished.bind(this);
     this.onFail = this.onFail.bind(this);
+  }
+
+  componentWillMount () {
+    const {
+      picker,
+    } = this.state;
+    const {
+      pickerDisplayMode,
+    } = this.props;
+    if (pickerDisplayMode.type === 'immediate') {
+      console.log('### callPicker');
+      picker.open();
+    }
+  }
+
+  componentWillUnmount() {
+    const {
+      picker,
+    } = this.state;
+    const {
+      pickerDisplayMode,
+    } = this.props;
+    if (pickerDisplayMode.type === 'immediate') {
+      picker.close();
+    }
   }
 
   onClickPick = (event) => {
@@ -93,11 +93,10 @@ class ReactFilestack extends Component {
       pickerOptions,
       action,
       file,
-      security,
-      preload,
+      clientOptions,
     } = this.props;
 
-    this.callPicker(action, pickerOptions, file, security, preload, client, picker)
+    this.callPicker(action, pickerOptions, file, clientOptions.security, client, picker)
       .then(this.onFinished)
       .catch(this.onFail);
   };
@@ -118,7 +117,8 @@ class ReactFilestack extends Component {
     }
   };
 
-  callPicker = (action, pickerOptions, file, security, preload, client, picker) => {
+  callPicker = (action, pickerOptions, file, security, client, picker) => {
+    console.log('### callPicker');
     const { url, handle } = pickerOptions;
     delete pickerOptions.handle;
     delete pickerOptions.url;
@@ -144,34 +144,37 @@ class ReactFilestack extends Component {
     }
 
     return new Promise((resolve) => {
-      if (preload) {
-        picker.open();
-        resolve();
-      } else {
-        client.picker({ ...pickerOptions, onUploadDone: resolve }).open();
-      }
+      picker.open();
+      resolve();
     });
   };
 
   render () {
     const {
-      buttonClass, buttonText, link, children, customRender,
+      customRender: CustomRender, pickerDisplayMode: { type, customText, customClass },
     } = this.props;
-    if (customRender) {
+    if (CustomRender) {
       return (
-        <customRender onPick={this.onClickPick} />
+        <CustomRender onPick={this.onClickPick} />
+      );
+    } else if (type === 'immediate') {
+      return (null);
+    } else {
+      const tagMap = {
+        button: 'button',
+        link: 'a',
+      };
+      const Tag = tagMap[type];
+      return (
+        <Tag
+          name="filestack"
+          onClick={this.onClickPick}
+          className={customClass}
+        >
+          {customText}
+        </Tag>
       );
     }
-    const Tag = link ? 'a' : 'button';
-    return (
-      <Tag
-        name="filestack"
-        onClick={this.onClickPick}
-        className={buttonClass}
-      >
-        {children || buttonText}
-      </Tag>
-    );
   }
 }
 
