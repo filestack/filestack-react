@@ -10,31 +10,33 @@ class ReactFilestack extends Component {
       customText: 'Pick file',
       customClass: 'filestack-react',
     },
-    pickerOptions: {},
-    onUploadSuccess: result => console.log(result),
-    onUploadError: error => console.error(error),
+    actionOptions: {},
+    onSuccess: result => console.log(result),
+    onError: error => console.error(error),
     clientOptions: {},
     file: null,
+    source: null,
     customRender: null,
   };
 
   static propTypes = {
     apikey: PropTypes.string.isRequired,
-    action: PropTypes.oneOf(['transform', 'retrieve', 'metadata', 'storeUrl', 'upload', 'remove', 'pick']),
+    action: PropTypes.oneOf(['transform', 'retrieve', 'metadata', 'storeUrl', 'upload', 'remove', 'pick', 'removeMetadata', 'preview']),
     pickerDisplayMode: PropTypes.shape({
       type: PropTypes.oneOf(['immediate', 'button', 'link']),
       customText: PropTypes.string,
       customClass: PropTypes.string,
     }),
-    pickerOptions: PropTypes.objectOf(PropTypes.any),
-    onUploadSuccess: PropTypes.func,
-    onUploadError: PropTypes.func,
+    actionOptions: PropTypes.objectOf(PropTypes.any),
+    onSuccess: PropTypes.func,
+    onError: PropTypes.func,
     clientOptions: PropTypes.shape({
       cname: PropTypes.string,
       security: PropTypes.objectOf(PropTypes.any),
       sessionCache: PropTypes.bool,
     }),
     file: PropTypes.objectOf(PropTypes.any),
+    source: PropTypes.string,
     customRender: PropTypes.func,
   };
 
@@ -43,12 +45,13 @@ class ReactFilestack extends Component {
     const {
       apikey,
       clientOptions,
-      pickerOptions,
+      actionOptions,
+      action,
     } = this.props;
     const client = filestack.init(apikey, clientOptions);
     this.state = {
       client,
-      picker: client.picker({ ...pickerOptions, onUploadDone: this.onFinished }),
+      picker: action === 'pick' ? client.picker({ ...actionOptions, onUploadDone: this.onFinished }) : null,
     };
 
     this.onFinished = this.onFinished.bind(this);
@@ -57,96 +60,159 @@ class ReactFilestack extends Component {
 
   componentWillMount () {
     const {
-      picker,
-    } = this.state;
-    const {
       pickerDisplayMode,
     } = this.props;
     if (pickerDisplayMode.type === 'immediate') {
-      console.log('### callPicker');
-      picker.open();
+      this.completeAction()
+        .then(this.onFinished)
+        .catch(this.onFail);
     }
   }
 
   componentWillUnmount() {
     const {
+      action,
+    } = this.props;
+    const {
       picker,
     } = this.state;
-    const {
-      pickerDisplayMode,
-    } = this.props;
-    if (pickerDisplayMode.type === 'immediate') {
+    if (action === 'pick') {
       picker.close();
     }
   }
 
+  /**
+   * Initial function called when component button or link clicked
+   */
   onClickPick = (event) => {
     event.stopPropagation();
     event.preventDefault();
 
-    const {
-      client,
-      picker,
-    } = this.state;
-
-    const {
-      pickerOptions,
-      action,
-      file,
-      clientOptions,
-    } = this.props;
-
-    this.callPicker(action, pickerOptions, file, clientOptions.security, client, picker)
+    this.completeAction()
       .then(this.onFinished)
       .catch(this.onFail);
   };
 
+  /**
+   * Function which will be executed after succesful completed action
+   */
   onFinished = (result) => {
-    const { onUploadSuccess } = this.props;
-    if (typeof onUploadSuccess === 'function' && result) {
-      onUploadSuccess(result);
+    const { onSuccess } = this.props;
+    if (typeof onSuccess === 'function' && result) {
+      onSuccess(result);
     }
   };
 
+  /**
+   * Function which will be executed while some error occurs during the action
+   */
   onFail = (error) => {
-    const { onUploadError } = this.props;
-    if (typeof onUploadError === 'function') {
-      onUploadError(error);
+    const { onError } = this.props;
+    if (typeof onError === 'function') {
+      onError(error);
     } else {
       console.error(error);
     }
   };
 
-  callPicker = (action, pickerOptions, file, security, client, picker) => {
-    console.log('### callPicker');
-    const { url, handle } = pickerOptions;
-    delete pickerOptions.handle;
-    delete pickerOptions.url;
+  /**
+   * Complete executing of provided action
+   */
+  completeAction = () => {
+    const {
+      client,
+      picker,
+    } = this.state;
+    const {
+      actionOptions,
+      action,
+      clientOptions: { security },
+      file,
+      source,
+    } = this.props;
+
+    // return new Promise((resolve, reject) => {
+    //   try {
+    //     if (action === 'pick') {
+    //       picker.open();
+    //       resolve();
+    //     }
+    //   } catch (err) {
+    //     reject(err);
+    //   }
+    // });
 
     if (action === 'transform') {
       return new Promise((resolve, reject) => {
         try {
-          resolve(client.transform(handle, pickerOptions));
+          resolve(client.transform(source, actionOptions));
         } catch (err) {
           reject(err);
         }
       });
     } else if (action === 'retrieve') {
-      return client.retrieve(handle, pickerOptions);
+      return new Promise((resolve, reject) => {
+        try {
+          resolve(client.retrieve(source, actionOptions, security));
+        } catch (err) {
+          reject(err);
+        }
+      });
     } else if (action === 'metadata') {
-      return client.metadata(handle, pickerOptions);
+      return new Promise((resolve, reject) => {
+        try {
+          resolve(client.metadata(source, actionOptions, security));
+        } catch (err) {
+          reject(err);
+        }
+      });
     } else if (action === 'storeUrl') {
-      return client.storeURL(url, pickerOptions);
+      return new Promise((resolve, reject) => {
+        try {
+          resolve(client.storeURL(source, actionOptions, security));
+        } catch (err) {
+          reject(err);
+        }
+      });
     } else if (action === 'upload') {
-      return client.upload(file, pickerOptions);
+      return new Promise((resolve, reject) => {
+        try {
+          resolve(client.upload(file, actionOptions));
+        } catch (err) {
+          reject(err);
+        }
+      });
     } else if (action === 'remove') {
-      return client.remove(handle, security);
+      return new Promise((resolve, reject) => {
+        try {
+          resolve(client.remove(source, security));
+        } catch (err) {
+          reject(err);
+        }
+      });
+    } else if (action === 'removeMetadata') {
+      return new Promise((resolve, reject) => {
+        try {
+          resolve(client.removeMetadata(source, security));
+        } catch (err) {
+          reject(err);
+        }
+      });
+    } else if (action === 'preview') {
+      return new Promise((resolve, reject) => {
+        try {
+          resolve(client.preview(source, actionOptions));
+        } catch (err) {
+          reject(err);
+        }
+      });
     }
 
-    return new Promise((resolve) => {
-      picker.open();
-      resolve();
-    });
+    // return new Promise((resolve) => {
+    //   picker.open();
+    //   resolve();
+    // });
+    return picker.open();
   };
 
   render () {
