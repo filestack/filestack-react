@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 class ReactFilestack extends Component {
   static defaultProps = {
     action: 'pick',
-    pickerDisplayMode: {
-      type: 'immediate',
+    componentDisplayMode: {
+      type: 'button',
       customText: 'Pick file',
       customClass: 'filestack-react',
     },
@@ -22,7 +22,7 @@ class ReactFilestack extends Component {
   static propTypes = {
     apikey: PropTypes.string.isRequired,
     action: PropTypes.oneOf(['transform', 'retrieve', 'metadata', 'storeUrl', 'upload', 'remove', 'pick', 'removeMetadata', 'preview']),
-    pickerDisplayMode: PropTypes.shape({
+    componentDisplayMode: PropTypes.shape({
       type: PropTypes.oneOf(['immediate', 'button', 'link']),
       customText: PropTypes.string,
       customClass: PropTypes.string,
@@ -60,9 +60,10 @@ class ReactFilestack extends Component {
 
   componentWillMount () {
     const {
-      pickerDisplayMode,
+      componentDisplayMode,
+      customRender,
     } = this.props;
-    if (pickerDisplayMode.type === 'immediate') {
+    if (componentDisplayMode.type === 'immediate' && !customRender) {
       this.completeAction()
         .then(this.onFinished)
         .catch(this.onFail);
@@ -83,6 +84,7 @@ class ReactFilestack extends Component {
 
   /**
    * Initial function called when component button or link clicked
+   * @param {object} event - A click event object
    */
   onClickPick = (event) => {
     event.stopPropagation();
@@ -95,6 +97,7 @@ class ReactFilestack extends Component {
 
   /**
    * Function which will be executed after succesful completed action
+   * @param {object} result - A promise result object
    */
   onFinished = (result) => {
     const { onSuccess } = this.props;
@@ -105,6 +108,7 @@ class ReactFilestack extends Component {
 
   /**
    * Function which will be executed while some error occurs during the action
+   * @param {object} error - A Promise error object
    */
   onFail = (error) => {
     const { onError } = this.props;
@@ -131,17 +135,6 @@ class ReactFilestack extends Component {
       source,
     } = this.props;
 
-    // return new Promise((resolve, reject) => {
-    //   try {
-    //     if (action === 'pick') {
-    //       picker.open();
-    //       resolve();
-    //     }
-    //   } catch (err) {
-    //     reject(err);
-    //   }
-    // });
-
     if (action === 'transform') {
       return new Promise((resolve, reject) => {
         try {
@@ -151,73 +144,26 @@ class ReactFilestack extends Component {
         }
       });
     } else if (action === 'retrieve') {
-      return new Promise((resolve, reject) => {
-        try {
-          resolve(client.retrieve(source, actionOptions, security));
-        } catch (err) {
-          reject(err);
-        }
-      });
+      return client.retrieve(source, actionOptions, security);
     } else if (action === 'metadata') {
-      return new Promise((resolve, reject) => {
-        try {
-          resolve(client.metadata(source, actionOptions, security));
-        } catch (err) {
-          reject(err);
-        }
-      });
+      return client.metadata(source, actionOptions, security);
     } else if (action === 'storeUrl') {
-      return new Promise((resolve, reject) => {
-        try {
-          resolve(client.storeURL(source, actionOptions, security));
-        } catch (err) {
-          reject(err);
-        }
-      });
+      return client.storeURL(source, actionOptions, security);
     } else if (action === 'upload') {
-      return new Promise((resolve, reject) => {
-        try {
-          resolve(client.upload(file, actionOptions));
-        } catch (err) {
-          reject(err);
-        }
-      });
+      return client.upload(file, actionOptions);
     } else if (action === 'remove') {
-      return new Promise((resolve, reject) => {
-        try {
-          resolve(client.remove(source, security));
-        } catch (err) {
-          reject(err);
-        }
-      });
+      return client.remove(source, security);
     } else if (action === 'removeMetadata') {
-      return new Promise((resolve, reject) => {
-        try {
-          resolve(client.removeMetadata(source, security));
-        } catch (err) {
-          reject(err);
-        }
-      });
+      return client.removeMetadata(source, security);
     } else if (action === 'preview') {
-      return new Promise((resolve, reject) => {
-        try {
-          resolve(client.preview(source, actionOptions));
-        } catch (err) {
-          reject(err);
-        }
-      });
+      return client.preview(source, actionOptions);
     }
-
-    // return new Promise((resolve) => {
-    //   picker.open();
-    //   resolve();
-    // });
     return picker.open();
   };
 
   render () {
     const {
-      customRender: CustomRender, pickerDisplayMode: { type, customText, customClass },
+      customRender: CustomRender, componentDisplayMode: { type, customText, customClass },
     } = this.props;
     if (CustomRender) {
       return (

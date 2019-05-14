@@ -15,7 +15,7 @@ console = {
 };
 
 const pickerMock = jest.fn(() => ({
-  open: jest.fn(),
+  open: jest.fn(() => Promise.resolve()),
 }));
 
 jest.spyOn(filestack, 'init').mockImplementation(() => ({
@@ -54,7 +54,7 @@ describe('<ReactFilestack />', () => {
       onError: (error) => {
         console.error('error', error);
       },
-      render: test,
+      customRender: test,
     };
     wrapper = createWrapper(props);
     expect(shallowToJson(wrapper)).toMatchSnapshot();
@@ -68,7 +68,7 @@ describe('<ReactFilestack />', () => {
 
   it('should not allow wrong option properties', () => {
     props = {
-      options: { wrong: 'handle' },
+      actionOptions: { wrong: 'handle' },
     };
     wrapper = createWrapper(props);
     wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
@@ -77,8 +77,8 @@ describe('<ReactFilestack />', () => {
 
   it('should run metadata and mock handle', () => {
     props = {
-      mode: 'metadata',
-      options: { handle: 'handle' },
+      action: 'metadata',
+      actionOptions: { handle: 'handle' },
     };
     wrapper = createWrapper(props);
     wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
@@ -153,14 +153,6 @@ describe('<ReactFilestack />', () => {
     };
     wrapper = createWrapper(props);
     expect(pickerMock).toHaveBeenCalledTimes(1);
-    wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
-    expect(pickerMock).toHaveBeenCalledTimes(1);
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should create picker instance after click on the button when preload false(default)', () => {
-    wrapper = createWrapper();
-    expect(pickerMock).toHaveBeenCalledTimes(0);
     wrapper.find('button').simulate('click', { stopPropagation () {}, preventDefault() {} });
     expect(pickerMock).toHaveBeenCalledTimes(1);
     expect(wrapper).toMatchSnapshot();
