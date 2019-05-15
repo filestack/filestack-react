@@ -21,7 +21,7 @@ class ReactFilestack extends Component {
 
   static propTypes = {
     apikey: PropTypes.string.isRequired,
-    action: PropTypes.oneOf(['transform', 'retrieve', 'metadata', 'storeUrl', 'upload', 'remove', 'pick', 'removeMetadata', 'preview']),
+    action: PropTypes.oneOf(['transform', 'retrieve', 'metadata', 'storeUrl', 'upload', 'remove', 'pick', 'removeMetadata', 'preview', 'logout']),
     componentDisplayMode: PropTypes.shape({
       type: PropTypes.oneOf(['immediate', 'button', 'link']),
       customText: PropTypes.string,
@@ -135,30 +135,24 @@ class ReactFilestack extends Component {
       source,
     } = this.props;
 
-    if (action === 'transform') {
-      return new Promise((resolve, reject) => {
+    switch (action) {
+      case 'transform': return new Promise((resolve, reject) => {
         try {
           resolve(client.transform(source, actionOptions));
         } catch (err) {
           reject(err);
         }
       });
-    } else if (action === 'retrieve') {
-      return client.retrieve(source, actionOptions, security);
-    } else if (action === 'metadata') {
-      return client.metadata(source, actionOptions, security);
-    } else if (action === 'storeUrl') {
-      return client.storeURL(source, actionOptions, security);
-    } else if (action === 'upload') {
-      return client.upload(file, actionOptions);
-    } else if (action === 'remove') {
-      return client.remove(source, security);
-    } else if (action === 'removeMetadata') {
-      return client.removeMetadata(source, security);
-    } else if (action === 'preview') {
-      return client.preview(source, actionOptions);
+      case 'retrieve': return client.retrieve(source, actionOptions, security);
+      case 'metadata': return client.metadata(source, actionOptions, security);
+      case 'storeUrl': return client.storeURL(source, actionOptions, security);
+      case 'upload': return client.upload(file, actionOptions);
+      case 'remove': return client.remove(source, security);
+      case 'removeMetadata': return client.removeMetadata(source, security);
+      case 'preview': return client.preview(source, actionOptions);
+      case 'logout': return client.logout(actionOptions);
+      default: return picker.open();
     }
-    return picker.open();
   };
 
   render () {

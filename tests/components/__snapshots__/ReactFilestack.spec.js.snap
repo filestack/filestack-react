@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ReactFilestack /> should create picker instance before click on the button when preload true 1`] = `ShallowWrapper {}`;
+exports[`<ReactFilestack /> should be able to run logout action 1`] = `ShallowWrapper {}`;
+
+exports[`<ReactFilestack /> should be able to run preview action 1`] = `ShallowWrapper {}`;
+
+exports[`<ReactFilestack /> should be able to run removeMetadata action 1`] = `ShallowWrapper {}`;
+
+exports[`<ReactFilestack /> should create picker instance before click on the button (old preload option is now default behaviour) 1`] = `ShallowWrapper {}`;
 
 exports[`<ReactFilestack /> should not allow wrong option properties 1`] = `ShallowWrapper {}`;
 
