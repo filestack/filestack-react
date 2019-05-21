@@ -19,6 +19,7 @@
   - [Examples](#examples)
   - [filestack-js Client](#filestack-js-client)
   - [SSR](#ssr)
+  - [Migration from 1.x.x and 2.x.x](#migration-from-1.x.x-and-2.x.x)
 - [Live demo](#live-demo)
 - [Development](#development)
 - [Documentation](#documentation)
@@ -150,6 +151,30 @@ If you need to use filestack-react with SSR project or site generators like Gats
 [issue57](https://github.com/filestack/filestack-react/issues/57)
 <br>
 [issue65](https://github.com/filestack/filestack-react/issues/65)
+
+### Migration from 1.x.x and 2.x.x
+One of the changes introduced in the new version are  rethinked props that the component accepts, so that the use of the component is as straightforward as possible.
+Below you will find information about what happened to each of the options available in 2.x.x :
+
+| 2.x.x          | 3.0.0                            | Comment                                                                       |
+|----------------|----------------------------------|-------------------------------------------------------------------------------|
+| apikey         | apikey                           |                                                                               |
+| mode           | action                           |                                                                               |
+| options        | actionOptions                    | We want to emphasize that this option is associated with 'action'             |
+| preload        | N/A                              | Now, component is at default preloading neccessary js assets, styles, images  |
+| file            | file                              |                                                                               |
+| onSuccess      | onSuccess                        |                                                                               |
+| onError        | onError                          |                                                                               |
+| options.handle | source                           | Handle or url used by specific action is now stored in separate prop           |
+| options.url    | source                           | Handle or url used by specific action is now stored in separate prop           |
+| security       | clientOptions.security           | Options used to initialize filestack client are now grouped in ‘clientOptions’ |
+| buttonText     | componentDisplayMode.customText  | Use componentDisplayMode option (see examples)                                |
+| buttonClass    | componentDisplayMode.customClass | Use componentDisplayMode option (see examples)                                |
+| cname          | clientOptions.cname              | Options used to initialize filestack client are now grouped in ‘clientOptions’ |
+| sessionCache   | clientOptions.sessionCache       | Options used to initialize filestack client are now grouped in ‘clientOptions’ |
+| render         | customRender                     |                                                                               |
+| children       | N/A                              | Use customRender instead                                                      |
+
 
 ## Live demo
 Check demo at codepen
