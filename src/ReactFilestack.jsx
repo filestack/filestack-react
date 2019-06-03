@@ -4,86 +4,101 @@ import PropTypes from 'prop-types';
 
 class ReactFilestack extends Component {
   static defaultProps = {
-    file: null,
-    link: false,
-    buttonText: 'Pick file',
-    buttonClass: '',
+    action: 'pick',
+    componentDisplayMode: {
+      type: 'button',
+      customText: 'Pick file',
+      customClass: 'filestack-react',
+    },
+    actionOptions: {},
     onSuccess: result => console.log(result),
     onError: error => console.error(error),
-    mode: 'pick',
-    options: {},
-    security: null,
-    children: null,
-    render: null,
-    cname: null,
-    sessionCache: false,
-    preload: false,
+    clientOptions: {},
+    file: null,
+    source: null,
+    customRender: null,
   };
 
   static propTypes = {
-    file: PropTypes.objectOf(PropTypes.any),
     apikey: PropTypes.string.isRequired,
-    link: PropTypes.bool,
-    mode: PropTypes.string,
-    buttonText: PropTypes.string,
-    buttonClass: PropTypes.string,
+    action: PropTypes.oneOf(['transform', 'retrieve', 'metadata', 'storeUrl', 'upload', 'remove', 'pick', 'removeMetadata', 'preview', 'logout']),
+    componentDisplayMode: PropTypes.shape({
+      type: PropTypes.oneOf(['immediate', 'button', 'link']),
+      customText: PropTypes.string,
+      customClass: PropTypes.string,
+    }),
+    actionOptions: PropTypes.objectOf(PropTypes.any),
     onSuccess: PropTypes.func,
     onError: PropTypes.func,
-    options: PropTypes.objectOf(PropTypes.any),
-    security: PropTypes.objectOf(PropTypes.any),
-    children: PropTypes.node,
-    render: PropTypes.func,
-    cname: PropTypes.string,
-    sessionCache: PropTypes.bool,
-    preload: PropTypes.bool,
+    clientOptions: PropTypes.shape({
+      cname: PropTypes.string,
+      security: PropTypes.objectOf(PropTypes.any),
+      sessionCache: PropTypes.bool,
+    }),
+    file: PropTypes.objectOf(PropTypes.any),
+    source: PropTypes.string,
+    customRender: PropTypes.func,
   };
 
   constructor(props) {
     super(props);
     const {
       apikey,
-      security,
-      cname,
-      sessionCache,
-      preload,
-      options,
+      clientOptions,
+      actionOptions,
+      action,
     } = this.props;
-    const client = filestack.init(apikey, {
-      security,
-      cname,
-      sessionCache,
-    });
+    const client = filestack.init(apikey, clientOptions);
     this.state = {
       client,
-      picker: preload ? client.picker({ ...options, onUploadDone: this.onFinished }) : null,
+      picker: action === 'pick' ? client.picker({ ...actionOptions, onUploadDone: this.onFinished }) : null,
     };
 
     this.onFinished = this.onFinished.bind(this);
     this.onFail = this.onFail.bind(this);
   }
 
+  componentWillMount () {
+    const {
+      componentDisplayMode,
+      customRender,
+    } = this.props;
+    if (componentDisplayMode.type === 'immediate' && !customRender) {
+      this.completeAction()
+        .then(this.onFinished)
+        .catch(this.onFail);
+    }
+  }
+
+  componentWillUnmount() {
+    const {
+      action,
+    } = this.props;
+    const {
+      picker,
+    } = this.state;
+    if (action === 'pick') {
+      picker.close();
+    }
+  }
+
+  /**
+   * Initial function called when component button or link clicked
+   * @param {object} event - A click event object
+   */
   onClickPick = (event) => {
     event.stopPropagation();
     event.preventDefault();
 
-    const {
-      client,
-      picker,
-    } = this.state;
-
-    const {
-      options,
-      mode,
-      file,
-      security,
-      preload,
-    } = this.props;
-
-    this.callPicker(mode, options, file, security, preload, client, picker)
+    this.completeAction()
       .then(this.onFinished)
       .catch(this.onFail);
   };
 
+  /**
+   * Function which will be executed after succesful completed action
+   * @param {object} result - A promise result object
+   */
   onFinished = (result) => {
     const { onSuccess } = this.props;
     if (typeof onSuccess === 'function' && result) {
@@ -91,6 +106,10 @@ class ReactFilestack extends Component {
     }
   };
 
+  /**
+   * Function which will be executed while some error occurs during the action
+   * @param {object} error - A Promise error object
+   */
   onFail = (error) => {
     const { onError } = this.props;
     if (typeof onError === 'function') {
@@ -100,60 +119,68 @@ class ReactFilestack extends Component {
     }
   };
 
-  callPicker = (mode, options, file, security, preload, client, picker) => {
-    const { url, handle } = options;
-    delete options.handle;
-    delete options.url;
+  /**
+   * Complete executing of provided action
+   */
+  completeAction = () => {
+    const {
+      client,
+      picker,
+    } = this.state;
+    const {
+      actionOptions,
+      action,
+      clientOptions: { security },
+      file,
+      source,
+    } = this.props;
 
-    if (mode === 'transform') {
-      return new Promise((resolve, reject) => {
+    switch (action) {
+      case 'transform': return new Promise((resolve, reject) => {
         try {
-          resolve(client.transform(handle, options));
+          resolve(client.transform(source, actionOptions));
         } catch (err) {
           reject(err);
         }
       });
-    } else if (mode === 'retrieve') {
-      return client.retrieve(handle, options);
-    } else if (mode === 'metadata') {
-      return client.metadata(handle, options);
-    } else if (mode === 'storeUrl') {
-      return client.storeURL(url, options);
-    } else if (mode === 'upload') {
-      return client.upload(file, options);
-    } else if (mode === 'remove') {
-      return client.remove(handle, security);
+      case 'retrieve': return client.retrieve(source, actionOptions, security);
+      case 'metadata': return client.metadata(source, actionOptions, security);
+      case 'storeUrl': return client.storeURL(source, actionOptions, security);
+      case 'upload': return client.upload(file, actionOptions);
+      case 'remove': return client.remove(source, security);
+      case 'removeMetadata': return client.removeMetadata(source, security);
+      case 'preview': return client.preview(source, actionOptions);
+      case 'logout': return client.logout(actionOptions);
+      default: return picker.open();
     }
-
-    return new Promise((resolve) => {
-      if (preload) {
-        picker.open();
-        resolve();
-      } else {
-        client.picker({ ...options, onUploadDone: resolve }).open();
-      }
-    });
   };
 
   render () {
     const {
-      buttonClass, buttonText, link, children, render: CustomRender,
+      customRender: CustomRender, componentDisplayMode: { type, customText, customClass },
     } = this.props;
     if (CustomRender) {
       return (
         <CustomRender onPick={this.onClickPick} />
       );
+    } else if (type === 'immediate') {
+      return (null);
+    } else {
+      const tagMap = {
+        button: 'button',
+        link: 'a',
+      };
+      const Tag = tagMap[type];
+      return (
+        <Tag
+          name="filestack"
+          onClick={this.onClickPick}
+          className={customClass}
+        >
+          {customText}
+        </Tag>
+      );
     }
-    const Tag = link ? 'a' : 'button';
-    return (
-      <Tag
-        name="filestack"
-        onClick={this.onClickPick}
-        className={buttonClass}
-      >
-        {children || buttonText}
-      </Tag>
-    );
   }
 }
 
