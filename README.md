@@ -1,6 +1,6 @@
-<p align="center" style="font-size:40px">
+<h1 align="center">
   filestack-react
-</p>
+</h1>
 <p align="center">
   React component which allow you to easily integrate powerful filestack-api into your app.
 </p>

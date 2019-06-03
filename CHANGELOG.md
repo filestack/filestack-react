@@ -2,9 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [2.0.7](https://github.com/filestack/filestack-react/compare/v2.0.6...v2.0.7) (2019-06-03)
+## [3.0.0](https://github.com/filestack/filestack-react/compare/v2.0.6...v3.0.0) (2019-06-03)
 
+### features
+- [BREAKING CHANGE] Refactor a structure of component props
+- Add posibility to display picker immediately after component was mounted
 
+### updates
+- Update filestack-js to 3.x.x
+
+### others
+- Update readme
 
 ## [2.0.6](https://github.com/filestack/filestack-react/compare/v2.0.5...v2.0.6) (2019-05-06)
 
