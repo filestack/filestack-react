@@ -96,7 +96,7 @@ import ReactFilestack from 'filestack-react';
 **Show picker directly after component is mounted**
 ```jsx
 <ReactFilestack
-  apikey='A0NTRSxHcR66kmTku9Gcsz'
+  apikey={YOUR_API_KEY}
   componentDisplayMode={{
     type: 'immediate'
   }}/>
@@ -105,7 +105,7 @@ import ReactFilestack from 'filestack-react';
 **Show picker directly and embed it inside specific container**
 ```jsx
 <ReactFilestack
-  apikey='A0NTRSxHcR66kmTku9Gcsz'
+  apikey={YOUR_API_KEY}
   componentDisplayMode={{
     type: 'immediate'
   }}
