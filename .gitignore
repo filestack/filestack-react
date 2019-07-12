@@ -37,3 +37,4 @@ fabric.properties
 .DS_Store
 /tests/__coverage__/
 /examples/demo/build/
+/examples/demo/package-lock.json
