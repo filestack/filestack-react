@@ -1,6 +1,6 @@
 {
   "name": "filestack-react",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "main": "dist/filestack-react.js",
   "description": "React component wrapper for filestack-js",
   "scripts": {

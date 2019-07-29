@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [3.1.0](https://github.com/filestack/filestack-react/compare/v3.0.1...v3.1.0) (2019-07-29)
+
+
+### Features
+
+* **componentDisplayMode:** Merge passed a prop object with a default ([#71](https://github.com/filestack/filestack-react/issues/71)) ([49ae02f](https://github.com/filestack/filestack-react/commit/49ae02f))
+
+
+
 ## [3.0.1](https://github.com/filestack/filestack-react/compare/v3.0.0...v3.0.1) (2019-06-28)
 - Update demo dependencies
 
