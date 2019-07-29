@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      apiKey: 'A0NTRSxHcR66kmTku9Gcsz',
+      apiKey: '',
       example: null
     };
   }
