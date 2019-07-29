@@ -22,11 +22,7 @@ class ReactFilestack extends Component {
   static propTypes = {
     apikey: PropTypes.string.isRequired,
     action: PropTypes.oneOf(['transform', 'retrieve', 'metadata', 'storeUrl', 'upload', 'remove', 'pick', 'removeMetadata', 'preview', 'logout']),
-    componentDisplayMode: PropTypes.shape({
-      type: PropTypes.oneOf(['immediate', 'button', 'link']),
-      customText: PropTypes.string,
-      customClass: PropTypes.string,
-    }),
+    componentDisplayMode: PropTypes.objectOf(PropTypes.any),
     actionOptions: PropTypes.objectOf(PropTypes.any),
     onSuccess: PropTypes.func,
     onError: PropTypes.func,
@@ -47,23 +43,31 @@ class ReactFilestack extends Component {
       clientOptions,
       actionOptions,
       action,
+      componentDisplayMode,
     } = this.props;
+    const defaultComponentDisplayMode = {
+      type: 'button',
+      customText: 'Pick file',
+      customClass: 'filestack-react',
+    };
     const client = filestack.init(apikey, clientOptions);
     this.state = {
       client,
       picker: action === 'pick' ? client.picker({ ...actionOptions, onUploadDone: this.onFinished }) : null,
+      componentDisplayModeMerged: { ...defaultComponentDisplayMode, ...componentDisplayMode },
     };
-
     this.onFinished = this.onFinished.bind(this);
     this.onFail = this.onFail.bind(this);
   }
 
   componentWillMount () {
     const {
-      componentDisplayMode,
       customRender,
     } = this.props;
-    if (componentDisplayMode.type === 'immediate' && !customRender) {
+    const {
+      componentDisplayModeMerged,
+    } = this.state;
+    if (componentDisplayModeMerged.type === 'immediate' && !customRender) {
       this.completeAction()
         .then(this.onFinished)
         .catch(this.onFail);
@@ -157,8 +161,11 @@ class ReactFilestack extends Component {
 
   render () {
     const {
-      customRender: CustomRender, componentDisplayMode: { type, customText, customClass },
+      customRender: CustomRender,
     } = this.props;
+    const {
+      componentDisplayModeMerged: { type, customText, customClass },
+    } = this.state;
     if (CustomRender) {
       return (
         <CustomRender onPick={this.onClickPick} />

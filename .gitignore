@@ -38,3 +38,4 @@ fabric.properties
 /tests/__coverage__/
 /examples/demo/build/
 /examples/demo/package-lock.json
+/dist
