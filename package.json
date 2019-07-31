@@ -4,7 +4,8 @@
   "main": "dist/filestack-react.js",
   "description": "React component wrapper for filestack-js",
   "scripts": {
-    "test": "jest --watch --no-cache --coverage",
+    "test": "jest --no-cache --coverage",
+    "test:Watch": "jest --watch --no-cache --coverage",
     "build": "rimraf dist && webpack --colors -p --display-error-details",
     "lint": "eslint src/**/*.js src/**/*.jsx tests/**/*spec.js",
     "release": "npm test && npm run build && standard-version"
