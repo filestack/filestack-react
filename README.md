@@ -6,6 +6,9 @@
   React component which allow you to easily integrate powerful filestack-api into your app.
 </p>
 <p align="center">
+  <a href="https://travis-ci.org/filestack/filestack-react">
+    <img src="https://travis-ci.org/filestack/filestack-react.svg?branch=master" />
+  </a>
   <a href="https://npmjs.com/package/filestack-react">
     <img src="https://img.shields.io/npm/v/filestack-react.svg" />
   </a>
