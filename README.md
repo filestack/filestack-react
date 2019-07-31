@@ -1,3 +1,4 @@
+<p align="center"><img src="logo.svg" align="center" width="80"/></p>
 <h1 align="center">
   filestack-react
 </h1>
@@ -9,6 +10,8 @@
     <img src="https://img.shields.io/npm/v/filestack-react.svg" />
   </a>
   <img src="https://img.shields.io/bundlephobia/min/filestack-react.svg" />
+  <br>
+  <img src="https://badges.herokuapp.com/browsers?labels=none&googlechrome=latest&firefox=latest&microsoftedge=latest&iexplore=11&safari=latest&iphone=latest" />
 </p>
 <hr>
 
@@ -27,7 +30,7 @@
 - [Future](#future)
 
 ## Overview
-filestack-react is a kind of wrapper on [filestack-js](https://github.com/filestack/filestack-js) sdk which allow you to integrate with filestack service in just a few lines of code. Almost all you can do with [filestack-js](https://filestack.github.io/filestack-js/index.html) you can do with this component.
+filestack-react is a wrapper on [filestack-js](https://github.com/filestack/filestack-js) sdk which allow you to integrate with Filestack service in just a few lines of code. Almost all you can do with [filestack-js](https://filestack.github.io/filestack-js/index.html) you can do with this component.
 
 ## Usage
 Install it through NPM
