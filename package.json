@@ -7,7 +7,7 @@
     "test": "jest --no-cache --coverage",
     "test:Watch": "jest --watch --no-cache --coverage",
     "build": "rimraf dist && webpack --colors -p --display-error-details",
-    "lint": "eslint src/**/*.js src/**/*.jsx tests/**/*spec.js",
+    "lint": "eslint src/**/*.js src/**/*.jsx tests/**/*spec.js && tsc --noEmit",
     "release": "npm test && npm run build && standard-version"
   },
   "repository": {
@@ -45,6 +45,7 @@
     "@babel/preset-stage-1": "^7.0.0",
     "@babel/preset-stage-2": "^7.0.0",
     "@babel/runtime": "^7.3.1",
+    "@types/react": "^16.9.34",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
     "babel-loader": "^8.0.5",
@@ -71,6 +72,7 @@
     "standard-version": "^5.0.0",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "^1.2.2",
+    "typescript": "^3.8.3",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3"
   },
