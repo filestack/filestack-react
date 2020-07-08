@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import * as filestack from "filestack-js";
 import PropTypes from "prop-types";
 
-console.log("fs-react-core");
-
 class ReactFilestack extends Component {
   static defaultProps = {
     action: "pick",
