@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import * as filestack from "filestack-js";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import * as filestack from 'filestack-js';
+import PropTypes from 'prop-types';
 
 class ReactFilestack extends Component {
   static defaultProps = {
-    action: "pick",
+    action: 'pick',
     componentDisplayMode: {
-      type: "button",
-      customText: "Pick file",
-      customClass: "filestack-react",
+      type: 'button',
+      customText: 'Pick file',
+      customClass: 'filestack-react',
     },
     actionOptions: {},
     onSuccess: (result) => console.log(result),
@@ -21,19 +21,7 @@ class ReactFilestack extends Component {
 
   static propTypes = {
     apikey: PropTypes.string.isRequired,
-    action: PropTypes.oneOf([
-      "transform",
-      "retrieve",
-      "metadata",
-      "storeUrl",
-      "upload",
-      "multiupload",
-      "remove",
-      "pick",
-      "removeMetadata",
-      "preview",
-      "logout",
-    ]),
+    action: PropTypes.oneOf(['transform', 'retrieve', 'metadata', 'storeUrl', 'upload', 'multiupload', 'remove', 'pick', 'removeMetadata', 'preview', 'logout']),
     componentDisplayMode: PropTypes.objectOf(PropTypes.any),
     actionOptions: PropTypes.objectOf(PropTypes.any),
     onSuccess: PropTypes.func,
@@ -50,25 +38,16 @@ class ReactFilestack extends Component {
 
   constructor(props) {
     super(props);
-    const {
-      apikey,
-      clientOptions,
-      actionOptions,
-      action,
-      componentDisplayMode,
-    } = this.props;
+    const { apikey, clientOptions, actionOptions, action, componentDisplayMode } = this.props;
     const defaultComponentDisplayMode = {
-      type: "button",
-      customText: "Pick file",
-      customClass: "filestack-react",
+      type: 'button',
+      customText: 'Pick file',
+      customClass: 'filestack-react',
     };
     const client = filestack.init(apikey, clientOptions);
     this.state = {
       client,
-      picker:
-        action === "pick"
-          ? client.picker({ ...actionOptions, onUploadDone: this.onFinished })
-          : null,
+      picker: action === 'pick' ? client.picker({ ...actionOptions, onUploadDone: this.onFinished }) : null,
       componentDisplayModeMerged: {
         ...defaultComponentDisplayMode,
         ...componentDisplayMode,
@@ -81,7 +60,7 @@ class ReactFilestack extends Component {
   componentDidMount() {
     const { customRender } = this.props;
     const { componentDisplayModeMerged } = this.state;
-    if (componentDisplayModeMerged.type === "immediate" && !customRender) {
+    if (componentDisplayModeMerged.type === 'immediate' && !customRender) {
       this.completeAction().then(this.onFinished).catch(this.onFail);
     }
   }
@@ -89,7 +68,7 @@ class ReactFilestack extends Component {
   componentWillUnmount() {
     const { action } = this.props;
     const { picker } = this.state;
-    if (action === "pick") {
+    if (action === 'pick') {
       picker.close();
     }
   }
@@ -111,7 +90,7 @@ class ReactFilestack extends Component {
    */
   onFinished = (result) => {
     const { onSuccess } = this.props;
-    if (typeof onSuccess === "function" && result) {
+    if (typeof onSuccess === 'function' && result) {
       onSuccess(result);
     }
   };
@@ -122,7 +101,7 @@ class ReactFilestack extends Component {
    */
   onFail = (error) => {
     const { onError } = this.props;
-    if (typeof onError === "function") {
+    if (typeof onError === 'function') {
       onError(error);
     } else {
       console.error(error);
@@ -143,7 +122,7 @@ class ReactFilestack extends Component {
     } = this.props;
 
     switch (action) {
-      case "transform":
+      case 'transform':
         return new Promise((resolve, reject) => {
           try {
             resolve(client.transform(source, actionOptions));
@@ -151,23 +130,23 @@ class ReactFilestack extends Component {
             reject(err);
           }
         });
-      case "retrieve":
+      case 'retrieve':
         return client.retrieve(source, actionOptions, security);
-      case "metadata":
+      case 'metadata':
         return client.metadata(source, actionOptions, security);
-      case "storeUrl":
+      case 'storeUrl':
         return client.storeURL(source, actionOptions, security);
-      case "upload":
+      case 'upload':
         return client.upload(file, actionOptions);
-      case "multiupload":
+      case 'multiupload':
         return client.multiupload(file, actionOptions, security);
-      case "remove":
+      case 'remove':
         return client.remove(source, security);
-      case "removeMetadata":
+      case 'removeMetadata':
         return client.removeMetadata(source, security);
-      case "preview":
+      case 'preview':
         return client.preview(source, actionOptions);
-      case "logout":
+      case 'logout':
         return client.logout(actionOptions);
       default:
         return picker.open();
@@ -181,25 +160,27 @@ class ReactFilestack extends Component {
     } = this.state;
     if (CustomRender) {
       return <CustomRender onPick={this.onClickPick} />;
-    } else if (type === "immediate") {
+    } else if (type === 'immediate') {
       return null;
     } else {
       const tagMap = {
-        button: "button",
-        link: "a",
+        button: 'button',
+        link: 'a',
       };
       const Tag = tagMap[type];
       return (
-        <Tag
-          name="filestack"
-          onClick={this.onClickPick}
-          className={customClass}
-        >
+        <Tag name="filestack" onClick={this.onClickPick} className={customClass}>
           {customText}
         </Tag>
       );
     }
   }
 }
+
+ReactFilestack.defaultProps = {
+  catName: 'Sandy',
+  eyeColor: 'deepblue',
+  age: '120',
+};
 
 export default ReactFilestack;
