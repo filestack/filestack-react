@@ -54,7 +54,7 @@ class ReactFilestack extends Component {
     this.onFail = this.onFail.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { customRender } = this.props;
     const { componentDisplayModeMerged } = this.state;
     if (componentDisplayModeMerged.type === 'immediate' && !customRender) {
