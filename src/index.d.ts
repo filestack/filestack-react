@@ -1,16 +1,6 @@
 import React from 'react';
 
-type FilestackAction =
-  | 'transform'
-  | 'retrieve'
-  | 'metadata'
-  | 'storeUrl'
-  | 'upload'
-  | 'remove'
-  | 'pick'
-  | 'removeMetadata'
-  | 'preview'
-  | 'logout';
+type FilestackAction = 'transform' | 'retrieve' | 'metadata' | 'storeUrl' | 'upload' | 'multiupload' | 'remove' | 'pick' | 'removeMetadata' | 'preview' | 'logout';
 
 type ComponentDisplayModeType = 'button' | 'link' | 'immediate';
 
@@ -26,6 +16,7 @@ interface Props {
     customText?: string;
     customClass?: string;
   };
+  // actionOptions
   onSuccess?: (result: FilestackResult) => void;
   onError?: (error: FilestackError) => void;
   clientOptions?: {
@@ -33,8 +24,8 @@ interface Props {
     security?: {
       policy?: string;
       signature?: string;
-      sessionCache?: boolean;
     };
+    sessionCache?: boolean;
   };
   file?: File;
   source?: string;
