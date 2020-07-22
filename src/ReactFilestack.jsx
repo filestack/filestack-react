@@ -118,6 +118,8 @@ class ReactFilestack extends Component {
       source,
     } = this.props;
 
+    console.log('action => ', action);
+
     switch (action) {
       case 'transform':
         return new Promise((resolve, reject) => {
@@ -136,7 +138,7 @@ class ReactFilestack extends Component {
       case 'upload':
         return client.upload(file, actionOptions);
       case 'multiupload':
-        return client.upload(file, actionOptions);
+        return client.multiupload(file, actionOptions);
       case 'remove':
         return client.remove(source, security);
       case 'removeMetadata':
