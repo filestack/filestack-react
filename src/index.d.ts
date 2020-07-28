@@ -1,4 +1,5 @@
 import React from 'react';
+import { PickerFileMetadata } from 'filestack-js';
 
 type FilestackAction = 'transform' | 'retrieve' | 'metadata' | 'storeUrl' | 'upload' | 'multiupload' | 'remove' | 'pick' | 'removeMetadata' | 'preview' | 'logout';
 
@@ -6,7 +7,7 @@ type ComponentDisplayModeType = 'button' | 'link' | 'immediate';
 
 interface FilestackResult {}
 
-interface FilestackError {}
+// interface FilestackError {}
 
 interface Props {
   apikey: string;
@@ -17,8 +18,8 @@ interface Props {
     customClass?: string;
   };
   // actionOptions
-  onSuccess?: (result: FilestackResult) => void;
-  onError?: (error: FilestackError) => void;
+  onSuccess?: (result: PickerFileMetadata[]) => void;
+  onError?: (error: PickerFileMetadata[]) => void;
   clientOptions?: {
     cname?: string;
     security?: {
