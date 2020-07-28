@@ -5,10 +5,6 @@ type FilestackAction = 'transform' | 'retrieve' | 'metadata' | 'storeUrl' | 'upl
 
 type ComponentDisplayModeType = 'button' | 'link' | 'immediate';
 
-interface FilestackResult {}
-
-// interface FilestackError {}
-
 interface Props {
   apikey: string;
   action?: FilestackAction;
