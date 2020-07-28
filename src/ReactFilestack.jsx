@@ -118,8 +118,6 @@ class ReactFilestack extends Component {
       source,
     } = this.props;
 
-    console.log('action => ', action);
-
     switch (action) {
       case 'transform':
         return new Promise((resolve, reject) => {
