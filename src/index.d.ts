@@ -35,8 +35,3 @@ interface Props {
 
 declare class ReactFilestack extends React.Component<Props> {}
 export default ReactFilestack;
-
-declare module 'filestack-react' {
-  // @ts-ignore
-  console.log('test');
-}
