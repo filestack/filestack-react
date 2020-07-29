@@ -13,7 +13,6 @@ interface Props {
     customText?: string;
     customClass?: string;
   };
-  // actionOptions
   onSuccess?: (result: PickerFileMetadata[]) => void;
   onError?: (error: PickerFileMetadata[]) => void;
   clientOptions?: ClientOptions;
