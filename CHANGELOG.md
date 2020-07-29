@@ -1,6 +1,13 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [3.2.0](https://github.com/filestack/filestack-react/compare/v3.1.0...v3.2.0) (2020-07-29)
+
+
+### Features
+
+* 🎸 add typescript type definitions ([f7a4e80](https://github.com/filestack/filestack-react/commit/f7a4e80ab44edb1e0e0858d65a9ed1c3e7214e8c))
 
 # [3.1.0](https://github.com/filestack/filestack-react/compare/v3.0.1...v3.1.0) (2019-07-29)
 
