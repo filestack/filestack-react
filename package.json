@@ -2,6 +2,7 @@
   "name": "filestack-react",
   "version": "3.2.1",
   "main": "dist/filestack-react.js",
+  "types": "src/index.d.ts",
   "description": "React component wrapper for filestack-js",
   "scripts": {
     "test": "jest --no-cache --coverage",
