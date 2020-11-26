@@ -1,41 +1,23 @@
-# Created by .ignore support plugin (hsz.mobi)
-logs
-*.log
-npm-debug.log*
-pids
-*.pid
-*.seed
-lib-cov
-.grunt
-.lock-wscript
-build/Release
+
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
 node_modules
-.idea
-jspm_packages
-.npm
-.node_repl_history
-.idea/tasks.xml
-.idea/dataSources.ids
-.idea/dataSources.xml
-.idea/dataSources.local.xml
-.idea/sqlDataSources.xml
-.idea/dynamic.xml
-.idea/uiDesigner.xml
-.idea/gradle.xml
-.idea/libraries
-.idea/mongoSettings.xml
-*.iws
-/out/
-.idea_modules/
-atlassian-ide-plugin.xml
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
-/dist/react-filepicker.js.map
-/dist/demo.js.map
+
+# builds
+build
+dist
+.rpt2_cache
+
+# misc
 .DS_Store
-/tests/__coverage__/
-/examples/demo/build/
-/examples/demo/package-lock.json
-/dist
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.idea
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

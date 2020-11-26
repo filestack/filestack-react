@@ -1,40 +1,46 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb", "prettier", "prettier/react"],
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "forOf": true,
-      "jsx": true,
-      "es6": true,
-      "experimentalObjectRestSpread": true
-    }
-  },
-  "rules": {
-    "import/no-extraneous-dependencies": 0,
-    "import/no-unresolved": 0,
-    "global-require": 0,
-    "no-console": 0,
-    "max-len": 0,
-    "no-param-reassign": ["error", { "props": false }],
-    "space-before-function-paren": 0,
-    "space-before-blocks": 0,
-    "no-else-return": 0
+  "extends": [
+    "standard",
+    "standard-react",
+    "plugin:prettier/recommended",
+    "prettier/standard",
+    "prettier/react"
+  ],
+  "env": {
+    "node": true
   },
   "overrides": [
     {
-      "files": ["tests/**/*spec.js"],
-      "rules": {
-        "no-global-assign": 0
+      "files": [
+        "**/*.test.js",
+        "**/*.test.jsx",
+        "**/*.spec.js",
+        "**/*.spec.jsx"
+      ],
+      "env": {
+        "jest": true
       }
     }
   ],
-  "plugins": ["react", "jsx-a11y", "babel"],
-  "env": {
-    "browser": true,
-    "jest": true,
-    "jasmine": true,
-    "node": true
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "legacyDecorators": true,
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "16"
+    }
+  },
+  "rules": {
+    "space-before-function-paren": 0,
+    "react/prop-types": 0,
+    "react/jsx-handler-names": 0,
+    "react/jsx-fragments": 0,
+    "react/no-unused-prop-types": 0,
+    "import/export": 0
   }
 }

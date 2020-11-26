@@ -1,5 +1,5 @@
-import * as client from 'filestack-js';
-import ReactFilestack from './ReactFilestack';
+import PickerOverlay from './picker/picker-overlay';
+import PickerInline from './picker/picker-inline';
+import PickerDropPane from './picker/picker-drop-pane';
 
-export default ReactFilestack;
-export { client };
+export { PickerOverlay, PickerInline, PickerDropPane };
