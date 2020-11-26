@@ -39,9 +39,9 @@ const App = () => {
         </button>
       </div>
       <div>
-        {isPickerDropPaneVisible && <PickerDropPane apikey='x'/>}
-        {isPickerInlineVisible && <PickerInline apikey='x'/>}
-        {isPickerOverlayVisible && <PickerOverlay apikey='x'/>}
+        {isPickerDropPaneVisible && <PickerDropPane apikey='YOUR_APIKEY'/>}
+        {isPickerInlineVisible && <PickerInline apikey='YOUR_APIKEY'/>}
+        {isPickerOverlayVisible && <PickerOverlay apikey='YOUR_APIKEY'/>}
       </div>
     </div>
   );
