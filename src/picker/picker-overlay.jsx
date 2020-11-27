@@ -23,7 +23,7 @@ const PickerOverlay = ({
     if (children) {
       return React.cloneElement(children, { id: containerId });
     }
-    return <div style={{ height: '500px' }} id={containerId} />;
+    return <div id={containerId} />;
   };
   return render();
 };

@@ -39,7 +39,7 @@ const App = () => {
         </button>
       </div>
       <div>
-        {isPickerDropPaneVisible && <PickerDropPane apikey='YOUR_APIKEY'/>}
+        {isPickerDropPaneVisible && <PickerDropPane apikey='YOUR_APIKEY'><div style={{height: '800px'}}/></PickerDropPane>}
         {isPickerInlineVisible && <PickerInline apikey='YOUR_APIKEY'/>}
         {isPickerOverlayVisible && <PickerOverlay apikey='YOUR_APIKEY'/>}
       </div>
