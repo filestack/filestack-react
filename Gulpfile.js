@@ -1,4 +1,5 @@
-const gulp     = require('gulp');
+/* eslint-disable */
+const gulp = require('gulp');
 const sri = require('gulp-sri');
 const git = require('git-rev-sync');
 const pkg = require('./package.json');
@@ -13,7 +14,7 @@ const pkgCurrentVersion = pkg.version;
 
 const source = ['dist/*.js', 'dist/*.js.map', 'dist/*.css', 'dist/*.json']; // source for deploy
 const sourceSRI = ['dist/*.js', 'dist/*.css']; // source for sri generation
-const bucket = process.env.DEPLOY_BUCKET || 'static.filestackapi.com' // upload bucked
+const bucket = process.env.DEPLOY_BUCKET || 'static.filestackapi.com'; // upload bucked
 const betaBranch = process.env.BETA_BRANCH || 'develop';
 const dryRun = process.env.DRY_RUN || false;
 
@@ -21,7 +22,8 @@ const putObjectParams = {
   ACL: 'public-read'
 };
 const deployPath = pkgName; // upload path
-const cacheControl = { // cache controll for each version
+// cache controll for each version
+const cacheControl = {
   latest: 1,
   version: 30,
   beta: 0,
@@ -69,10 +71,10 @@ const uploadFile = (version, CacheControl) => {
       CacheControl: `max-age=${CacheControl * 86400}`,
     },
     uploadPath: `${deployPath}/${version}`,
-    dryRun,
+    dryRun
   };
 
-  console.info('Upload files with option:', options)
+  console.info('Upload files with option:', options);
 
   return upload(S3Client, options);
 }
@@ -139,7 +141,7 @@ gulp.task('publish:beta', (done) => {
     return done();
   }
 
-  return gulp.src(source).pipe(uploadFile('beta', cacheControl.beta))
+  return gulp.src(source).pipe(uploadFile('beta', cacheControl.beta));
 });
 
 gulp.task('publish:latest', async () => {
