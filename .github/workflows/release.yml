@@ -13,15 +13,15 @@ jobs:
     - name: Setup repository env
       uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
+        node-version: '14.x'
     - name: Install deps
       run: npm install
     - name: Bundle packages
       run: npm run build:prod
     - name: Run tests
       run: npm run test
-    - name: Build Docs
-      run: npm run docs:build
+    # - name: Build Docs
+    #   run: npm run docs:build
     - name: Release packages
       run: npx gulp publish
       env:
