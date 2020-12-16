@@ -2,9 +2,9 @@ name: Filestack React deployment
 on:
   push:
     branches: [ develop ]
-    create:
-      tags:
-        - v*
+  create:
+    tags:
+      - v*
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,6 +14,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
+        registry-url: "https://registry.npmjs.org"
     - name: Install deps
       run: npm install
     - name: Bundle packages
@@ -30,7 +31,7 @@ jobs:
         AWS_REGION: ${{ secrets.AWS_REGION }}
     - name: Publush to NPM (only on tag)
       if: startsWith(github.ref, 'refs/tags/') && success()
-      run: npm publish
+      run: npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Deploy docs
