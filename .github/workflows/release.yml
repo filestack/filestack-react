@@ -1,0 +1,43 @@
+name: Picker Plugins
+on:
+  push:
+    branches: [ develop ]
+    create:
+      tags:
+        - v*
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup repository env
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+    - name: Install deps
+      run: npm install
+    - name: Bundle packages
+      run: npm run build:prod
+    - name: Run tests
+      run: npm run test
+    - name: Build Docs
+      run: npm run docs:build
+    - name: Release packages
+      run: npx gulp publish
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+    # - name: Publush to NPM (only on tag)
+    #   if: startsWith(github.ref, 'refs/tags/') && success()
+    #   run: npm publish
+    #   env:
+    #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Deploy docs
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+          target_branch: gh-pages
+          build_dir: example/build
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
