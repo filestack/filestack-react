@@ -8,6 +8,7 @@ const usePicker = ({
   pickerOptions = {},
   clientOptions = {},
   onSuccess = console.log,
+  onUploadDone = console.log,
   onError = console.error
 }) => {
   const _onError = (error) => {
@@ -18,12 +19,17 @@ const usePicker = ({
     onSuccess(result);
   };
 
+  const _onUploadDone = (result) => {
+    onUploadDone(result);
+  };
+
   const rootId = _generateRandomId();
   const containerId = _generateRandomId();
   const picker = filestack.Filestack(apikey, clientOptions).picker({
     rootId,
     container: `#${containerId}`,
     onUploadDone: _onSuccess,
+    onUploadDone: _onUploadDone,
     ...pickerOptions
   });
 

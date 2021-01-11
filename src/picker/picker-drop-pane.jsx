@@ -8,6 +8,7 @@ const PickerDropPane = ({
   pickerOptions,
   clientOptions,
   onSuccess,
+  onUploadDone,
   onError,
   children
 }) => {
@@ -19,6 +20,7 @@ const PickerDropPane = ({
     },
     clientOptions,
     onSuccess,
+    onUploadDone,
     onError
   });
 

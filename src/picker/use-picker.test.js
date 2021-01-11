@@ -32,6 +32,12 @@ describe('usePicker hook', () => {
     expect(onSuccess).toHaveBeenCalledTimes(1);
   });
 
+  it('should call passed onUploadDone function', async () => {
+    const onUploadDone = jest.fn();
+    renderHook(() => usePicker({ apikey: 'x', onUploadDone }));
+    expect(onUploadDone).toHaveBeenCalledTimes(1);
+  });
+
   it('should call passed onError function', async () => {
     const onError = jest.fn();
     renderHook(() => usePicker({ apikey: 'x', onError }));

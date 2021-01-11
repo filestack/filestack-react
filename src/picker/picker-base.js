@@ -5,5 +5,6 @@ export const pickerPropTypes = {
   pickerOptions: PropTypes.object,
   clientOptions: PropTypes.object,
   onSuccess: PropTypes.func,
+  onUploadDone: PropTypes.func,
   onError: PropTypes.func
 };

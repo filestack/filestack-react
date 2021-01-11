@@ -25,11 +25,12 @@
   - [Examples](#examples)
   - [filestack-js Client](#filestack-js-client)
   - [SSR](#ssr)
-  - [Migration from 1.x.x and 2.x.x](#migration-from-1.x.x-and-2.x.x)
+  - [Migration from 3.x.x and 4.x.x](#migration-from-3xx-and-4xx)
+  - [Migration from 1.x.x and 2.x.x](#migration-from-1xx-and-2xx)
 - [Live demo](#live-demo)
 - [Development](#development)
 - [Documentation](#documentation)
-- [Contributing](#contributing)
+- [Contribution](#contribution)
 - [Future](#future)
 
 ## Overview
@@ -47,6 +48,7 @@ import { PickerOverlay } from 'filestack-react';
 <PickerOverlay
   apikey={YOUR_API_KEY}
   onSuccess={(res) => console.log(res)}
+  onUploadDone={(res) => console.log(res)}
 />
 ```
 ### Props
@@ -55,7 +57,9 @@ import { PickerOverlay } from 'filestack-react';
 | apikey                           | String        |  true    |                               | Filestack api key                                                                                                                                                                                          |
 | clientOptions                    | Object        |  false   |                               | https://filestack.github.io/filestack-js/interfaces/clientoptions.html                                                                                                                                                          |
 | pickerOptions                    | Object        |  false   |                               | https://filestack.github.io/filestack-js/interfaces/pickeroptions.html                                                                                                                                                          |
-| onSuccess                        | Function      |  false   | result => console.log(result) | A function to be called after successful completed action                                                                                                                                                  |
+| @deprecated onSuccess            | Function      |  false   | result => console.log(result) |  Called when all files have been uploaded                                                                                                                                                  |
+| onError                          | Function      |  false   | error => console.error(error) | A function to be called when error occurs                                                                                                                                                                  |
+| onUploadDone                     | Function      |  false   | result => console.log(result) | A function to be called after successful completed action                                                                                                                                                  |
 | onError                          | Function      |  false   | error => console.error(error) | A function to be called when error occurs                                                                                                                                                                  |
 
 ### Examples
