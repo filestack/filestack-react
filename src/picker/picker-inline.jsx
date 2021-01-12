@@ -8,6 +8,7 @@ const PickerInline = ({
   pickerOptions,
   clientOptions,
   onSuccess,
+  onUploadDone,
   onError,
   children
 }) => {
@@ -16,6 +17,7 @@ const PickerInline = ({
     pickerOptions: { displayMode: PickerDisplayMode.inline, ...pickerOptions },
     clientOptions,
     onSuccess,
+    onUploadDone,
     onError
   });
 

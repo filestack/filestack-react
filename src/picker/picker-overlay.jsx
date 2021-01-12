@@ -8,6 +8,7 @@ const PickerOverlay = ({
   pickerOptions,
   clientOptions,
   onSuccess,
+  onUploadDone,
   onError,
   children
 }) => {
@@ -16,6 +17,7 @@ const PickerOverlay = ({
     pickerOptions: { displayMode: PickerDisplayMode.overlay, ...pickerOptions },
     clientOptions,
     onSuccess,
+    onUploadDone,
     onError
   });
 
