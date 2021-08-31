@@ -22,21 +22,21 @@ const usePicker = ({
 
   const rootId = _generateRandomId();
   const containerId = _generateRandomId();
-  const picker = filestack.Filestack(apikey, clientOptions).picker({
-    rootId,
-    container: `#${containerId}`,
-    onUploadDone: _onUploadDone,
-    ...pickerOptions
-  });
-
   useEffect(() => {
+    const picker = filestack.Filestack(apikey, clientOptions).picker({
+      rootId,
+      container: `#${containerId}`,
+      onUploadDone: _onUploadDone,
+      ...pickerOptions
+    });
+
     picker.open().then().catch(_onError);
     return () => {
       if (picker) {
         picker.close();
       }
     };
-  }, []);
+  }, [rootId, containerId, apikey, clientOptions, pickerOptions, _onUploadDone]);
 
   return { containerId };
 };
