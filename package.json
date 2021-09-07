@@ -41,7 +41,8 @@
     "release": "standard-version"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@testing-library/react": "^11.2.2",
