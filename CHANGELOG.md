@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/filestack/filestack-react/compare/v3.2.0...v4.0.0) (2020-12-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **whole project:** We've removed source, file, action props, actionOptions is now called
+pickerOptions, we've splitted picker component into 3 different one
+
+* **whole project:** - Remove webpack, reduce bundle size, bump version, rewrite all ([be2a01a](https://github.com/filestack/filestack-react/commit/be2a01a5e79c637d29de261a679752b0a34b3bf3)), closes [#103](https://github.com/filestack/filestack-react/issues/103) [#82](https://github.com/filestack/filestack-react/issues/82) [#77](https://github.com/filestack/filestack-react/issues/77) [#74](https://github.com/filestack/filestack-react/issues/74)
+
 ### [3.2.1](https://github.com/filestack/filestack-react/compare/v3.2.0...v3.2.1) (2020-07-29)
 
 ## [3.2.0](https://github.com/filestack/filestack-react/compare/v3.1.0...v3.2.0) (2020-07-29)
