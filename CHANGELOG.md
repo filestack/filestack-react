@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/filestack/filestack-react/compare/v4.0.0...v4.0.1) (2021-09-08)
+
+
+### Bug Fixes
+
+* **picker:** PickerInline && PickerDrop missing container ([#120](https://github.com/filestack/filestack-react/issues/120)) ([ec839c6](https://github.com/filestack/filestack-react/commit/ec839c68b71237a4dae20cb0e58eaa09c7694b88)), closes [#116](https://github.com/filestack/filestack-react/issues/116)
+
 ## [4.0.0](https://github.com/filestack/filestack-react/compare/v3.2.0...v4.0.0) (2020-12-16)
 
 

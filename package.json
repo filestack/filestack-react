@@ -1,6 +1,6 @@
 {
   "name": "filestack-react",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Official React component for Filestack - API and content management system that makes it easy to add powerful file uploading and transformation capabilities to any web or mobile application.",
   "author": "filestack",
   "license": "MIT",
