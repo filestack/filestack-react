@@ -41,43 +41,43 @@
     "release": "standard-version"
   },
   "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@testing-library/react": "^11.2.2",
-    "@testing-library/react-hooks": "^3.4.2",
-    "aws-sdk": "^2.808.0",
-    "babel-eslint": "^10.0.3",
-    "cross-env": "^7.0.2",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-config-standard-react": "^9.2.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-standard": "^4.0.1",
-    "gh-pages": "^2.2.0",
-    "git-rev-sync": "^3.0.1",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/preset-react": "^7.18.6",
+    "@testing-library/react": "^13.4.0",
+    "aws-sdk": "^2.1304.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-config-standard-react": "^13.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.1",
+    "eslint-plugin-standard": "^4.1.0",
+    "gh-pages": "^5.0.0",
+    "git-rev-sync": "^3.0.2",
     "gulp": "^4.0.2",
     "gulp-s3-publish": "^3.0.0",
     "gulp-sri": "^0.3.1",
-    "microbundle-crl": "^0.13.10",
+    "microbundle-crl": "^0.13.11",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.0.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1",
-    "react-test-renderer": "^16.14.0",
-    "standard-version": "^9.0.0"
+    "prettier": "^2.8.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "react-test-renderer": "^18.2.0",
+    "standard-version": "^9.5.0"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
-    "filestack-js": "^3.20.0"
+    "filestack-js": "^3.25.0"
   }
 }
