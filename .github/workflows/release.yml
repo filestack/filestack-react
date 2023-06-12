@@ -1,7 +1,7 @@
 name: Filestack React deployment
 on:
   push:
-    branches: [ develop ]
+    branches: [ FS-10385-upgrade-react-version ]
   create:
     tags:
       - v*
