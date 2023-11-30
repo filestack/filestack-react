@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import usePicker from './use-picker';
 
 jest.mock('filestack-js', () => ({
@@ -13,7 +13,7 @@ jest.mock('filestack-js', () => ({
   })
 }));
 
-const flushPromises = () => new Promise((resolve) => setImmediate(resolve));
+const flushPromises = () => new Promise((resolve) => setTimeout(resolve, 0));
 
 describe('usePicker hook', () => {
   it('should exist', () => {
