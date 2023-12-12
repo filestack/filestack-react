@@ -1,7 +1,7 @@
 name: Filestack React deployment
 on:
   push:
-    branches: [ FS-10385-upgrade-react-version ]
+    branches: [ develop ]
   create:
     tags:
       - v*
@@ -13,7 +13,7 @@ jobs:
     - name: Setup repository env
       uses: actions/setup-node@v1
       with:
-        node-version: '14.x'
+        node-version: '20.x'
         registry-url: "https://registry.npmjs.org"
     - name: Install deps
       run: npm install
