@@ -30,7 +30,9 @@
       "jsx": true
     },
     "babelOptions": {
-      "presets": ["@babel/preset-react"]
+      "presets": [
+        "@babel/preset-react"
+      ]
     },
     "requireConfigFile": false
   },
@@ -45,6 +47,12 @@
     "react/jsx-handler-names": 0,
     "react/jsx-fragments": 0,
     "react/no-unused-prop-types": 0,
-    "import/export": 0
+    "import/export": 0,
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }
