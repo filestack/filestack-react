@@ -44,6 +44,10 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
+  "overrides": {
+    "postcss": "^8.4.47",
+    "svgo": "^3.3.2"
+  },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -63,7 +67,7 @@
     "eslint-plugin-standard": "^4.1.0",
     "gh-pages": "^5.0.0",
     "git-rev-sync": "^3.0.2",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-s3-publish": "^3.0.0",
     "gulp-sri": "^0.3.1",
     "microbundle-crl": "^0.13.11",
