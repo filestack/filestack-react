@@ -1,6 +1,9 @@
 /* eslint-disable */
 const gulp = require('gulp');
-const sri = require('gulp-sri');
+const hashsum = require('gulp-hashsum');
+const through = require('through2');
+const fs = require('fs');
+const path = require('path');
 const git = require('git-rev-sync');
 const pkg = require('./package.json');
 const { upload } = require('gulp-s3-publish');
@@ -118,19 +121,18 @@ const canBeDeployedProd = async () => {
 
 // GENERATE SRI TAG
 gulp.task('sri', () => {
-  return gulp.src(sourceSRI)
-    .pipe(sri({
-      fileName: 'dist/manifest.json',
-      transform: (o) => {
-        let newOb = {};
-        for (const el in o) {
-          newOb[el.replace('dist/', '')] = { sri: o[el] };
-        };
-
-        return newOb;
-      }
+  const manifest = {};
+ 
+  return gulp.src(sourceSRI) // adjust to your `sourceSRI`
+    .pipe(hashsum({ hash: 'sha384', json: false }))
+    .pipe(through.obj((file, _, cb) => {
+      const fileName = path.relative('dist', file.relative);
+      manifest[fileName] = { sri: file.contents.toString() };
+      cb(null, file);
     }))
-    .pipe(gulp.dest('.'));
+    .on('end', () => {
+      fs.writeFileSync('dist/manifest.json', JSON.stringify(manifest, null, 2));
+    });
 });
 
 // DEPLOYMENTS
