@@ -28,9 +28,9 @@
     "server"
   ],
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
-    "build:prod": "microbundle-crl --compress --format modern,cjs",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "build": "microbundle --no-compress --format modern,cjs",
+    "build:prod": "microbundle --compress --format modern,cjs",
+    "start": "microbundle watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
@@ -68,16 +68,17 @@
     "gh-pages": "^5.0.0",
     "git-rev-sync": "^3.0.2",
     "gulp": "^5.0.0",
+    "gulp-hashsum": "^1.2.0",
     "gulp-s3-publish": "^3.0.0",
-    "gulp-sri": "^0.3.1",
-    "microbundle-crl": "^0.13.11",
+    "microbundle": "^0.15.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "^5.0.1",
     "react-test-renderer": "^18.3.1",
-    "standard-version": "^9.5.0"
+    "standard-version": "^9.5.0",
+    "through2": "^4.0.2"
   },
   "files": [
     "dist"
