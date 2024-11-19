@@ -29,7 +29,7 @@
   ],
   "scripts": {
     "build": "microbundle --jsx='React.createElement' --no-compress",
-    "build:prod": "microbundle --jsx='React.createElement' --no-compress",
+    "build:prod": "microbundle --jsx='React.createElement' --compress",
     "start": "microbundle watch --jsx='React.createElement' --no-compress",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
