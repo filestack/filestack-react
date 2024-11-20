@@ -28,9 +28,9 @@
     "server"
   ],
   "scripts": {
-    "build": "microbundle --jsx='React.createElement' --no-compress",
-    "build:prod": "microbundle --jsx='React.createElement' --compress",
-    "start": "microbundle watch --jsx='React.createElement' --no-compress",
+    "build": "microbundle --jsx React.createElement --format modern,cjs --no-compress",
+    "build:prod": "microbundle --jsx React.createElement --format modern,cjs",
+    "start": "microbundle watch --jsx React.createElement --format modern,cjs --no-compress",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
@@ -85,6 +85,6 @@
     "dist"
   ],
   "dependencies": {
-    "filestack-js": "^3.34.3-beta.1"
+    "filestack-js": "^3.35.4"
   }
 }
