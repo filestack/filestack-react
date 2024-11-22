@@ -85,6 +85,6 @@
     "dist"
   ],
   "dependencies": {
-    "filestack-js": "^3.35.4"
+    "filestack-js": "^3.35.4-beta.0"
   }
 }
