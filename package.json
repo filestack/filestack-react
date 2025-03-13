@@ -47,7 +47,9 @@
   "overrides": {
     "postcss": "^8.4.47",
     "svgo": "^3.3.2",
-    "cross-spawn": "^7.0.5"
+    "cross-spawn": "^7.0.5",
+    "serialize-javascript": "^6.0.2",
+    "rollup-plugin-visualizer": "5.12.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
