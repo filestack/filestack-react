@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.0](https://github.com/filestack/filestack-react/compare/v5.0.0...v6.0.0) (2025-03-31)
+- Update filestack-js to 3.39.5
+- Vulnerability fixes
+- React version upgrade
+
 ### [5.0.0](https://github.com/filestack/filestack-react/compare/v4.0.1...v5.0.0) (2023-12-12)
 
 * **Dependency** Upgraded packages to the latest possible version while maintaining backward compatibility.
