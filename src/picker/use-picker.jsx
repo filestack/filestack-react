@@ -1,7 +1,16 @@
 import * as filestack from 'filestack-js';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 const _generateRandomId = () => 'x' + Math.random().toString(36).substr(2, 5);
+
+const _useStableReference = (value) => {
+  const serialized = JSON.stringify(value);
+  const ref = useRef({ serialized, value });
+  if (ref.current.serialized !== serialized) {
+    ref.current = { serialized, value };
+  }
+  return ref.current.value;
+};
 
 const usePicker = ({
   apikey,
@@ -11,32 +20,38 @@ const usePicker = ({
   onUploadDone,
   onError = () => {}
 }) => {
-  const _onError = (error) => {
-    onError(error);
-  };
+  const rootId = useRef(_generateRandomId()).current;
+  const containerId = useRef(_generateRandomId()).current;
 
-  const _onUploadDone = (result) => {
+  const stablePickerOptions = _useStableReference(pickerOptions);
+  const stableClientOptions = _useStableReference(clientOptions);
+
+  const onUploadDoneRef = useRef();
+  onUploadDoneRef.current = (result) => {
     const handler = onUploadDone || onSuccess || (() => {});
     handler(result);
   };
 
-  const rootId = _generateRandomId();
-  const containerId = _generateRandomId();
+  const onErrorRef = useRef();
+  onErrorRef.current = (error) => {
+    onError(error);
+  };
+
   useEffect(() => {
-    const picker = filestack.Filestack(apikey, clientOptions).picker({
+    const picker = filestack.Filestack(apikey, stableClientOptions).picker({
       rootId,
       container: `#${containerId}`,
-      onUploadDone: _onUploadDone,
-      ...pickerOptions
+      onUploadDone: (result) => onUploadDoneRef.current(result),
+      ...stablePickerOptions
     });
 
-    picker.open().then().catch(_onError);
+    picker.open().then().catch((error) => onErrorRef.current(error));
     return () => {
       if (picker) {
         picker.close();
       }
     };
-  }, [rootId, containerId, apikey, clientOptions, pickerOptions, _onUploadDone]);
+  }, [apikey, stableClientOptions, stablePickerOptions]);
 
   return { containerId };
 };
