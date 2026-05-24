@@ -1,4 +1,4 @@
-import React from 'react';
+import { cloneElement } from 'react';
 import { PickerDisplayMode } from 'filestack-js';
 import { pickerPropTypes } from './picker-base';
 import usePicker from './use-picker';
@@ -23,7 +23,7 @@ const PickerOverlay = ({
 
   const render = () => {
     if (children) {
-      return React.cloneElement(children, { id: containerId });
+      return cloneElement(children, { id: containerId });
     }
     return <div id={containerId} />;
   };

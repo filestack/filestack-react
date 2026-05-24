@@ -4,6 +4,7 @@
     "standard",
     "standard-react",
     "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
     "plugin:prettier/recommended",
     "prettier"
   ],
@@ -31,7 +32,7 @@
     },
     "babelOptions": {
       "presets": [
-        "@babel/preset-react"
+        ["@babel/preset-react", { "runtime": "automatic" }]
       ]
     },
     "requireConfigFile": false

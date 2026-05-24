@@ -28,9 +28,9 @@
     "server"
   ],
   "scripts": {
-    "build": "microbundle --jsx React.createElement --format modern,cjs --no-compress",
-    "build:prod": "microbundle --jsx React.createElement --format modern,cjs",
-    "start": "microbundle watch --jsx React.createElement --format modern,cjs --no-compress",
+    "build": "microbundle --jsxImportSource react --format modern,cjs --no-compress",
+    "build:prod": "microbundle --jsxImportSource react --format modern,cjs",
+    "start": "microbundle watch --jsxImportSource react --format modern,cjs --no-compress",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
@@ -41,8 +41,9 @@
     "release": "standard-version"
   },
   "peerDependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^18.3.1 || ^19.0.0",
+    "react-dom": "^18.3.1 || ^19.0.0",
+    "filestack-js": "^4.0.0"
   },
   "overrides": {
     "postcss": "^8.4.47",
@@ -68,6 +69,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.1",
     "eslint-plugin-standard": "^4.1.0",
+    "filestack-js": "^4.0.0",
     "gh-pages": "^5.0.0",
     "git-rev-sync": "^3.0.2",
     "gulp": "^5.0.0",
@@ -86,7 +88,5 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "filestack-js": "^4.0.0"
-  }
+  "dependencies": {}
 }
