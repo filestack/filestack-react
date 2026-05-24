@@ -7,17 +7,17 @@ const usePicker = ({
   apikey,
   pickerOptions = {},
   clientOptions = {},
-  onSuccess = console.log,
-  onUploadDone = console.log,
-  onError = console.error
+  onSuccess,
+  onUploadDone,
+  onError = () => {}
 }) => {
   const _onError = (error) => {
     onError(error);
   };
 
   const _onUploadDone = (result) => {
-    onSuccess(result);
-    onUploadDone(result);
+    const handler = onUploadDone || onSuccess || (() => {});
+    handler(result);
   };
 
   const rootId = _generateRandomId();
