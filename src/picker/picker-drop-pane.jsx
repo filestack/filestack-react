@@ -2,31 +2,21 @@ import { cloneElement } from 'react';
 import { PickerDisplayMode } from 'filestack-js';
 import { pickerPropTypes } from './picker-base';
 import usePicker from './use-picker';
+import { useResolvedPickerProps } from '../filestack-provider';
 
-const PickerDropPane = ({
-  apikey,
-  pickerOptions,
-  clientOptions,
-  onSuccess,
-  onUploadDone,
-  onError,
-  children
-}) => {
+const PickerDropPane = (props) => {
+  const resolved = useResolvedPickerProps(props);
   const { containerId } = usePicker({
-    apikey,
+    ...resolved,
     pickerOptions: {
       displayMode: PickerDisplayMode.dropPane,
-      ...pickerOptions
-    },
-    clientOptions,
-    onSuccess,
-    onUploadDone,
-    onError
+      ...resolved.pickerOptions
+    }
   });
 
   const render = () => {
-    if (children) {
-      return cloneElement(children, { id: containerId });
+    if (props.children) {
+      return cloneElement(props.children, { id: containerId });
     }
     return <div id={containerId} />;
   };
