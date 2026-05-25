@@ -4,4 +4,10 @@ import PickerDropPane from './picker/picker-drop-pane';
 import FilestackProvider from './filestack-provider';
 import * as client from 'filestack-js';
 
-export { PickerOverlay, PickerInline, PickerDropPane, FilestackProvider, client };
+export {
+  PickerOverlay,
+  PickerInline,
+  PickerDropPane,
+  FilestackProvider,
+  client
+};
