@@ -1,0 +1,22 @@
+{
+  "name": "filestack-react-storybook",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o storybook-static"
+  },
+  "dependencies": {
+    "filestack-js": "^4.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "^10.4.1",
+    "@storybook/react-vite": "^10.4.1",
+    "@vitejs/plugin-react": "^5.0.0",
+    "storybook": "^10.4.1",
+    "vite": "^7.0.0"
+  }
+}
