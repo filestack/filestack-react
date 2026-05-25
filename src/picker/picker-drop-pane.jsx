@@ -1,3 +1,5 @@
+'use client';
+
 import { cloneElement } from 'react';
 import { PickerDisplayMode } from 'filestack-js';
 import { pickerPropTypes } from './picker-base';

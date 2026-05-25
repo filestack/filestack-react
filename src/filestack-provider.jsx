@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { pickerPropTypes } from './picker/picker-base';

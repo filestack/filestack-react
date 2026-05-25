@@ -1,3 +1,5 @@
+'use client';
+
 import * as filestack from 'filestack-js';
 import { useEffect, useRef } from 'react';
 
