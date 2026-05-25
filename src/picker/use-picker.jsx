@@ -1,9 +1,7 @@
 'use client';
 
 import * as filestack from 'filestack-js';
-import { useEffect, useRef } from 'react';
-
-const _generateRandomId = () => 'x' + Math.random().toString(36).substr(2, 5);
+import { useEffect, useId, useRef } from 'react';
 
 const _useStableReference = (value) => {
   const serialized = JSON.stringify(value);
@@ -22,8 +20,9 @@ const usePicker = ({
   onUploadDone,
   onError = () => {}
 }) => {
-  const rootId = useRef(_generateRandomId()).current;
-  const containerId = useRef(_generateRandomId()).current;
+  const id = useId().replace(/:/g, '');
+  const rootId = `fs-root-${id}`;
+  const containerId = `fs-container-${id}`;
 
   const stablePickerOptions = _useStableReference(pickerOptions);
   const stableClientOptions = _useStableReference(clientOptions);

@@ -9,7 +9,7 @@
     "url": "git+https://github.com/filestack/filestack-react.git"
   },
   "main": "dist/filestack-react.js",
-  "module": "dist/filestack-react.modern.js",
+  "module": "dist/filestack-react.modern.mjs",
   "source": "src/index.js",
   "engines": {
     "node": ">=18"
