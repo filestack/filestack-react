@@ -1,19 +1,20 @@
 import { renderHook } from '@testing-library/react';
+import type { PickerResponse } from 'filestack-js';
 import usePicker from './use-picker';
 
-let mockFilestackArgs;
-let mockPickerCallOpts;
-let mockPickerCalls;
-let mockClose;
+let mockFilestackArgs: unknown[] | null;
+let mockPickerCallOpts: Record<string, any> | null;
+let mockPickerCalls: number;
+let mockClose: jest.Mock;
 
 jest.mock('filestack-js', () => ({
-  Filestack: (...args) => {
+  Filestack: (...args: unknown[]) => {
     mockFilestackArgs = args;
     return {
-      picker: (opts) => {
+      picker: (opts: Record<string, any>) => {
         mockPickerCallOpts = opts;
         mockPickerCalls += 1;
-        opts.onUploadDone();
+        opts.onUploadDone({} as PickerResponse);
         return {
           open: () => Promise.reject(new Error('error')),
           close: mockClose
@@ -23,7 +24,8 @@ jest.mock('filestack-js', () => ({
   }
 }));
 
-const flushPromises = () => new Promise((resolve) => setTimeout(resolve, 0));
+const flushPromises = () =>
+  new Promise<void>((resolve) => setTimeout(resolve, 0));
 
 describe('usePicker hook', () => {
   beforeEach(() => {
@@ -75,7 +77,7 @@ describe('usePicker hook', () => {
         usePicker({ apikey: 'x', pickerOptions, clientOptions }),
       {
         initialProps: {
-          pickerOptions: { displayMode: 'overlay' },
+          pickerOptions: { displayMode: 'overlay' as const },
           clientOptions: { security: { policy: 'p', signature: 's' } }
         }
       }
@@ -83,7 +85,7 @@ describe('usePicker hook', () => {
     expect(mockPickerCalls).toBe(1);
     for (let i = 0; i < 5; i++) {
       rerender({
-        pickerOptions: { displayMode: 'overlay' },
+        pickerOptions: { displayMode: 'overlay' as const },
         clientOptions: { security: { policy: 'p', signature: 's' } }
       });
     }
@@ -93,7 +95,7 @@ describe('usePicker hook', () => {
   it('should initialize without throwing when apikey is missing', () => {
     expect(() => renderHook(() => usePicker({}))).not.toThrow();
     expect(mockFilestackArgs).not.toBeNull();
-    expect(mockFilestackArgs[0]).toBeUndefined();
+    expect((mockFilestackArgs as unknown[])[0]).toBeUndefined();
     expect(mockPickerCallOpts).not.toBeNull();
   });
 });

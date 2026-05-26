@@ -13,11 +13,45 @@
   },
   "overrides": [
     {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        }
+      },
+      "plugins": ["@typescript-eslint"],
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
+        "plugin:prettier/recommended",
+        "prettier"
+      ],
+      "rules": {
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          { "argsIgnorePattern": "^_" }
+        ]
+      }
+    },
+    {
       "files": [
         "**/*.test.js",
         "**/*.test.jsx",
+        "**/*.test.ts",
+        "**/*.test.tsx",
         "**/*.spec.js",
-        "**/*.spec.jsx"
+        "**/*.spec.jsx",
+        "**/*.spec.ts",
+        "**/*.spec.tsx",
+        "**/setupTests.ts"
       ],
       "env": {
         "jest": true

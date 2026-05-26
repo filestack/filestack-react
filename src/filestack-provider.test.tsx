@@ -1,9 +1,11 @@
 import { useContext } from 'react';
+import type { ReactNode } from 'react';
 import { render, renderHook } from '@testing-library/react';
 import FilestackProvider, {
   FilestackContext,
   useResolvedPickerProps
 } from './filestack-provider';
+import type { FilestackContextValue } from './filestack-provider';
 
 describe('FilestackProvider', () => {
   it('should expose the provided values via FilestackContext', () => {
@@ -13,7 +15,7 @@ describe('FilestackProvider', () => {
     const pickerOptions = { maxFiles: 3 };
     const clientOptions = { security: { policy: 'p', signature: 's' } };
 
-    let captured;
+    let captured: FilestackContextValue | null = null;
     const Probe = () => {
       captured = useContext(FilestackContext);
       return null;
@@ -82,7 +84,7 @@ describe('useResolvedPickerProps', () => {
     const ctxOnUploadDone = jest.fn();
     const ctxOnError = jest.fn();
     const ctxOnSuccess = jest.fn();
-    const wrapper = ({ children }) => (
+    const wrapper = ({ children }: { children: ReactNode }) => (
       <FilestackProvider
         apikey='ctx-key'
         pickerOptions={{ maxFiles: 5 }}
@@ -110,7 +112,7 @@ describe('useResolvedPickerProps', () => {
   it('should let prop scalars (apikey, callbacks) override context values', () => {
     const ctxOnUploadDone = jest.fn();
     const propOnUploadDone = jest.fn();
-    const wrapper = ({ children }) => (
+    const wrapper = ({ children }: { children: ReactNode }) => (
       <FilestackProvider apikey='ctx-key' onUploadDone={ctxOnUploadDone}>
         {children}
       </FilestackProvider>
@@ -130,7 +132,7 @@ describe('useResolvedPickerProps', () => {
   });
 
   it('should merge pickerOptions and clientOptions with props taking precedence', () => {
-    const wrapper = ({ children }) => (
+    const wrapper = ({ children }: { children: ReactNode }) => (
       <FilestackProvider
         apikey='ctx-key'
         pickerOptions={{ maxFiles: 5, accept: ['image/*'] }}
