@@ -1,7 +1,7 @@
-# filestack-react Next.js 14 example
+# filestack-react Next.js example
 
 App Router smoke-test app for verifying `filestack-react` works under Next.js
-14 + React Server Components. Sibling examples: [example/](../example/) (CRA),
+16 + React Server Components. Sibling examples: [example/](../example/) (CRA),
 [vite-example/](../vite-example/) (Vite SPA),
 [remix-example/](../remix-example/) (Remix SSR).
 
@@ -15,7 +15,7 @@ npm install
 npm run build
 
 # then in this directory
-cd nextjs-14-example
+cd nextjs-example
 npm install
 npm run dev
 ```

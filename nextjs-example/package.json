@@ -1,5 +1,5 @@
 {
-  "name": "filestack-react-nextjs-14-example",
+  "name": "filestack-react-nextjs-example",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -10,8 +10,8 @@
   "dependencies": {
     "filestack-js": "^4.0.0",
     "filestack-react": "file:..",
-    "next": "^14.2.18",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "next": "^16.2.6",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
   }
 }

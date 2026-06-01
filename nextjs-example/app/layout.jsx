@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'filestack-react next.js 14 example'
+  title: 'filestack-react next.js example'
 };
 
 export default function RootLayout({ children }) {

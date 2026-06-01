@@ -28,7 +28,7 @@
     "node_modules",
     "dist",
     "example",
-    "nextjs-14-example",
+    "nextjs-example",
     "remix-example",
     "vite-example",
     "storybook",
