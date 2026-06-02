@@ -9,9 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
     - name: Setup repository env
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v1
       with:
         node-version: '20.x'
         registry-url: "https://registry.npmjs.org"
@@ -29,24 +29,16 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
-    - name: Determine npm dist-tag
+    - name: Publush to NPM (only on tag)
       if: startsWith(github.ref, 'refs/tags/') && success()
-      id: npm_tag
-      run: |
-        TAG_NAME="${GITHUB_REF#refs/tags/v}"
-        if [[ "$TAG_NAME" == *-* ]]; then
-          echo "dist_tag=beta" >> "$GITHUB_OUTPUT"
-        else
-          echo "dist_tag=latest" >> "$GITHUB_OUTPUT"
-        fi
-    - name: Publish to NPM (only on tag)
-      if: startsWith(github.ref, 'refs/tags/') && success()
-      run: npm publish --access public --tag ${{ steps.npm_tag.outputs.dist_tag }}
+      run: npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Deploy docs
-      uses: peaceiris/actions-gh-pages@v4
+      uses: crazy-max/ghaction-github-pages@v2
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
-        publish_dir: example/build
+          target_branch: gh-pages
+          build_dir: example/build
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
