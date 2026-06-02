@@ -13,7 +13,7 @@ jobs:
     - name: Setup repository env
       uses: actions/setup-node@v4
       with:
-        node-version: '22.11.0'
+        node-version: '22.22.3'
         registry-url: "https://registry.npmjs.org"
     - name: Install deps
       run: npm install
