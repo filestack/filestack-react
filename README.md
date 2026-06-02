@@ -23,6 +23,7 @@
 - [Usage](#usage)
   - [Props](#props)
   - [Examples](#examples)
+  - [TypeScript](#typescript)
   - [filestack-js Client](#filestack-js-client)
   - [SSR](#ssr)
   - [Migration from 3.x.x and 4.x.x](#migration-from-3xx-and-4xx)
@@ -35,6 +36,8 @@
 
 ## Overview
 filestack-react is a wrapper on [filestack-js](https://github.com/filestack/filestack-js) sdk which allow you to integrate with Filestack service in just a few lines of code. Almost all you can do with [filestack-js](https://filestack.github.io/filestack-js/index.html) you can do with this component.
+
+The library is written in TypeScript and ships its own `.d.ts` declaration files — no `@types/filestack-react` package is needed.
 
 ## Usage
 Install it through NPM
@@ -80,6 +83,49 @@ import { PickerOverlay } from 'filestack-react';
 ```jsx
 <PickerInline apikey='YOUR_APIKEY'><div className="your-container"></div></PickerInline>
 ```
+
+### TypeScript
+
+`filestack-react` is written in TypeScript and bundles its own type declarations — just install the package and import. No additional `@types/*` package is required.
+
+```tsx
+import {
+  PickerOverlay,
+  FilestackProvider,
+  type PickerOverlayProps,
+  type PickerResponse,
+  type PickerOptions,
+  type ClientOptions
+} from 'filestack-react';
+
+const pickerOptions: PickerOptions = { maxFiles: 5, accept: ['image/*'] };
+const clientOptions: ClientOptions = { cname: 'cdn.example.com' };
+
+const handleUploadDone = (res: PickerResponse) => {
+  res.filesUploaded.forEach((file) => console.log(file.url));
+};
+
+const App = () => (
+  <FilestackProvider apikey={process.env.REACT_APP_FILESTACK_KEY!}>
+    <PickerOverlay
+      pickerOptions={pickerOptions}
+      clientOptions={clientOptions}
+      onUploadDone={handleUploadDone}
+      onError={(err: Error) => console.error(err)}
+    />
+  </FilestackProvider>
+);
+```
+
+You can also type a wrapper component that forwards props:
+
+```tsx
+import { PickerInline, type PickerInlineProps } from 'filestack-react';
+
+const MyPicker = (props: PickerInlineProps) => <PickerInline {...props} />;
+```
+
+All public types — `PickerBaseProps`, `PickerOverlayProps`, `PickerInlineProps`, `PickerDropPaneProps`, `FilestackProviderProps`, `FilestackContextValue`, `UsePickerResult` — are re-exported from the package root, along with the upstream `filestack-js` types (`PickerOptions`, `PickerResponse`, `ClientOptions`, etc.).
 
 ### filestack-js Client
 If you need to use Client just try

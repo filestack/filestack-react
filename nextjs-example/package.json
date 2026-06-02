@@ -1,0 +1,17 @@
+{
+  "name": "filestack-react-nextjs-example",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "next dev -p 3003",
+    "build": "next build",
+    "start": "next start -p 3003"
+  },
+  "dependencies": {
+    "filestack-js": "^4.0.0",
+    "filestack-react": "file:..",
+    "next": "^16.2.6",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  }
+}

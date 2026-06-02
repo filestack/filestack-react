@@ -1,5 +1,0 @@
-language: node_js
-node_js:
-  - 20
-  - 12
-  - 10

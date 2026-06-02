@@ -1,0 +1,26 @@
+{
+  "name": "filestack-react-remix-example",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "build": "remix vite:build",
+    "dev": "remix vite:dev",
+    "start": "remix-serve ./build/server/index.js"
+  },
+  "dependencies": {
+    "@remix-run/node": "^2.17.5",
+    "@remix-run/react": "^2.17.5",
+    "@remix-run/serve": "^2.17.5",
+    "filestack-js": "^4.0.0",
+    "filestack-react": "file:..",
+    "isbot": "^5.1.40",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.17.5",
+    "vite": "^6.4.3",
+    "vite-tsconfig-paths": "^6.1.1"
+  }
+}

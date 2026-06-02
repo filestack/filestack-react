@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# filestack-react
+
+Interactive demos for every component and hook in the library. The library code
+is read live from `../src` via a Vite alias, so edits in `src/` show up in
+Storybook with HMR — no rebuild of `dist/` required.
+
+## Using the demos
+
+Each picker story exposes the same Filestack API surface through the **Controls**
+panel:
+
+- **`apikey`** — defaults to `YOUR_APIKEY`. Paste a real key from your
+  [Filestack dashboard](https://dev.filestack.com/) to actually run the picker.
+  With the placeholder, the picker shell renders but the SDK will fail to
+  initialise and `onError` will fire in the **Actions** panel.
+- **`pickerOptions`** — the full
+  [`PickerOptions`](https://filestack.github.io/filestack-js/interfaces/pickeroptions.html)
+  object, edited as JSON.
+- **`clientOptions`** — the full
+  [`ClientOptions`](https://filestack.github.io/filestack-js/interfaces/clientoptions.html)
+  object.
+- **`onUploadDone`** / **`onError`** — wired to the **Actions** panel.
+
+Use the toolbar background toggle (top of the canvas) to preview each picker on
+**light** and **dark** page backgrounds.
+
+## What's covered
+
+- **Pickers/PickerOverlay** — modal overlay display mode.
+- **Pickers/PickerInline** — inline picker embedded in page flow.
+- **Pickers/PickerDropPane** — drag-and-drop target.
+- **Hooks/usePicker** — the underlying hook the three components share.
+- **Context/FilestackProvider** — providing shared `apikey` and options to many
+  pickers via React context.
