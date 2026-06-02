@@ -4,6 +4,8 @@
     "module": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",
+    "jsxFactory": "",
+    "jsxFragmentFactory": "",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
