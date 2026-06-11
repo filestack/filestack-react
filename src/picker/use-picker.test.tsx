@@ -1,3 +1,4 @@
+import { StrictMode } from 'react';
 import { renderHook } from '@testing-library/react';
 import type { PickerResponse } from 'filestack-js';
 import usePicker from './use-picker';
@@ -6,6 +7,9 @@ let mockFilestackArgs: unknown[] | null;
 let mockPickerCallOpts: Record<string, any> | null;
 let mockPickerCalls: number;
 let mockClose: jest.Mock;
+// Ordered log of lifecycle operations across all picker instances, used to
+// assert the open/close calls are serialized (open A → close A → open B).
+let mockOpsLog: string[];
 
 jest.mock('filestack-js', () => ({
   Filestack: (...args: unknown[]) => {
@@ -14,10 +18,17 @@ jest.mock('filestack-js', () => ({
       picker: (opts: Record<string, any>) => {
         mockPickerCallOpts = opts;
         mockPickerCalls += 1;
+        const instance = mockPickerCalls;
         opts.onUploadDone({} as PickerResponse);
         return {
-          open: () => Promise.reject(new Error('error')),
-          close: mockClose
+          open: () => {
+            mockOpsLog.push(`open:${instance}`);
+            return Promise.reject(new Error('error'));
+          },
+          close: () => {
+            mockOpsLog.push(`close:${instance}`);
+            return mockClose();
+          }
         };
       }
     };
@@ -32,6 +43,7 @@ describe('usePicker hook', () => {
     mockFilestackArgs = null;
     mockPickerCallOpts = null;
     mockPickerCalls = 0;
+    mockOpsLog = [];
     mockClose = jest.fn(() => Promise.resolve(true));
   });
 
@@ -64,11 +76,28 @@ describe('usePicker hook', () => {
     expect(onError).toHaveBeenCalledTimes(1);
   });
 
-  it('should call picker.close on unmount', () => {
+  it('should call picker.close on unmount once open settles', async () => {
     const { unmount } = renderHook(() => usePicker({ apikey: 'x' }));
     expect(mockClose).not.toHaveBeenCalled();
     unmount();
+    // close is deferred until open() settles, so it must not fire synchronously
+    expect(mockClose).not.toHaveBeenCalled();
+    await flushPromises();
     expect(mockClose).toHaveBeenCalledTimes(1);
+  });
+
+  it('should serialize open/close so only one picker survives StrictMode remount', async () => {
+    // StrictMode double-invokes the effect (setup → cleanup → setup). Because
+    // both instances target the same container id, their async open()/close()
+    // must be serialized; otherwise the first instance's close() tears down the
+    // container the second instance mounted into, leaving nothing rendered.
+    renderHook(() => usePicker({ apikey: 'x' }), { wrapper: StrictMode });
+    await flushPromises();
+
+    // Two instances were created, but operations ran in strict order:
+    // open the first, close the first, then open the second (which stays open).
+    expect(mockPickerCalls).toBe(2);
+    expect(mockOpsLog).toEqual(['open:1', 'close:1', 'open:2']);
   });
 
   it('should not recreate the picker when option objects are recreated with equal values', () => {
