@@ -56,6 +56,16 @@ const usePicker = ({
     onError(error);
   };
 
+  // Serializes picker `open()`/`close()` calls across effect runs. `open()` and
+  // `close()` are async, and the container DOM id (derived from `useId`) is
+  // stable across an effect's setup→cleanup→setup cycle — so without
+  // serialization the operations can interleave on the same container. In React
+  // StrictMode this manifests as the picker mounting twice, or the first
+  // instance's late `close()` tearing down the container the second instance
+  // just mounted into (leaving nothing rendered). Chaining guarantees the
+  // strict order: open A → close A → open B.
+  const operationChainRef = useRef<Promise<unknown>>(Promise.resolve());
+
   useEffect(() => {
     const picker: PickerInstance = filestack
       .Filestack(apikey as string, stableClientOptions)
@@ -67,14 +77,14 @@ const usePicker = ({
         ...stablePickerOptions
       });
 
-    picker
-      .open()
-      .then()
-      .catch((error: Error) => onErrorRef.current(error));
+    operationChainRef.current = operationChainRef.current.then(() =>
+      picker.open().catch((error: Error) => onErrorRef.current(error))
+    );
+
     return () => {
-      if (picker) {
-        picker.close();
-      }
+      operationChainRef.current = operationChainRef.current.then(() =>
+        picker.close().catch(() => {})
+      );
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apikey, stableClientOptions, stablePickerOptions]);
