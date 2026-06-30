@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.0.0](https://github.com/filestack/filestack-react/compare/v6.2.0...v7.0.0) (2026-06-30)
+- React SDK (filestack-react) — Modernization & Critical Fixes
+
+### [6.2.0](https://github.com/filestack/filestack-react/compare/v6.1.0...v6.2.0) (2026-04-09)
+- Update filestack-js to 3.47.4
+
 ### [6.1.0](https://github.com/filestack/filestack-react/compare/v6.0.0...v6.1.0) (2025-11-05)
 - Update filestack-js to 3.44.2
 
