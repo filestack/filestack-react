@@ -1,87 +1,141 @@
 <p align="center"><img src="logo.svg" align="center" width="80"/></p>
-<h1 align="center">
-  filestack-react
-</h1>
+<h1 align="center">filestack-react</h1>
 <p align="center">
-  React component which allow you to easily integrate powerful filestack-api into your app.
+  Official React components for <a href="https://www.filestack.com">Filestack</a> — upload, transform, and deliver files with a few lines of JSX.
 </p>
 <p align="center">
-  <a href="https://npmjs.com/package/filestack-react">
-    <img src="https://img.shields.io/npm/v/filestack-react.svg" />
+  <a href="https://github.com/filestack/filestack-react/actions/workflows/test.yml">
+    <img src="https://github.com/filestack/filestack-react/actions/workflows/test.yml/badge.svg" alt="Tests" />
   </a>
-  <img src="https://img.shields.io/bundlephobia/min/filestack-react.svg" />
+  <a href="https://npmjs.com/package/filestack-react">
+    <img src="https://img.shields.io/npm/v/filestack-react.svg" alt="npm version" />
+  </a>
+  <img src="https://img.shields.io/badge/types-included-blue.svg" alt="TypeScript types included" />
+  <img src="https://img.shields.io/bundlephobia/min/filestack-react.svg" alt="bundle size" />
 </p>
 <hr>
 
-**Table of Contents**
+**Contents**
 - [Overview](#overview)
-- [Usage](#usage)
-  - [Props](#props)
-  - [Examples](#examples)
-  - [TypeScript](#typescript)
-  - [filestack-js Client](#filestack-js-client)
-  - [SSR](#ssr)
-  - [Migration from 3.x.x and 4.x.x](#migration-from-3xx-and-4xx)
-  - [Migration from 1.x.x and 2.x.x](#migration-from-1xx-and-2xx)
-- [Live demo](#live-demo)
+- [Requirements](#requirements)
+- [Install](#install)
+- [Quick start](#quick-start)
+- [Components](#components)
+- [Props](#props)
+- [FilestackProvider](#filestackprovider)
+- [TypeScript](#typescript)
+- [The filestack-js client](#the-filestack-js-client)
+- [Server-side rendering & frameworks](#server-side-rendering--frameworks)
+- [Migrating from v6](#migrating-from-v6)
+- [Older migrations](#older-migrations)
 - [Development](#development)
 - [Documentation](#documentation)
-- [Contribution](#contribution)
-- [Future](#future)
+- [Contributing](#contributing)
 
 ## Overview
-filestack-react is a wrapper on [filestack-js](https://github.com/filestack/filestack-js) sdk which allow you to integrate with Filestack service in just a few lines of code. Almost all you can do with [filestack-js](https://filestack.github.io/filestack-js/index.html) you can do with this component.
 
-The library is written in TypeScript and ships its own `.d.ts` declaration files — no `@types/filestack-react` package is needed.
+`filestack-react` is a thin wrapper around [filestack-js](https://github.com/filestack/filestack-js). It gives you three picker components — overlay, inline, and drop pane — plus an optional context provider, and re-exports the full filestack-js client if you need the lower-level API. Anything you can do with filestack-js, you can do here.
 
-## Usage
-Install it through NPM
+The library is written in TypeScript and ships its own `.d.ts` files, so there's no `@types/filestack-react` to install.
+
+## Requirements
+
+| | Version |
+|---|---|
+| React / React DOM | `18.3+` or `19` |
+| filestack-js | `4.x` — installed by you as a peer dependency (see below) |
+| Node (to build/develop) | `18+` |
+
+## Install
+
+filestack-js is a **peer dependency** as of v7, so install both packages:
+
 ```bash
-npm install filestack-react
+npm install filestack-react filestack-js
 ```
-then just insert into your app
+
+If you skip `filestack-js`, npm will warn about an unmet peer dependency and the picker won't initialize.
+
+## Quick start
+
 ```jsx
 import { PickerOverlay } from 'filestack-react';
 
 <PickerOverlay
   apikey={YOUR_API_KEY}
-  onSuccess={(res) => console.log(res)}
-  onUploadDone={(res) => console.log(res)}
+  onUploadDone={(res) => console.log(res.filesUploaded)}
 />
 ```
-### Props
-| Key                              | Type          | Required | Default                       | Description                                                                                                                                                                                                |
-|----------------------------------|---------------|----------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| apikey                           | String        |  true    |                               | Filestack api key                                                                                                                                                                                          |
-| clientOptions                    | Object        |  false   |                               | https://filestack.github.io/filestack-js/interfaces/clientoptions.html                                                                                                                                                          |
-| pickerOptions                    | Object        |  false   |                               | https://filestack.github.io/filestack-js/interfaces/pickeroptions.html                                                                                                                                                          |
-| @deprecated onSuccess            | Function      |  false   | result => console.log(result) |  A function to be called after successful completed action                                                                                                                                                  |
-| onUploadDone                     | Function      |  false   | result => console.log(result) | Called when all files have been uploaded                                                                                                                                                  |
-| onError                          | Function      |  false   | error => console.error(error) | A function to be called when error occurs                                                                                                                                                                  |
-| onError                          | Function      |  false   | error => console.error(error) | A function to be called when error occurs                                                                                                                                                                  |
 
-### Examples
-**Render basic Overlay Picker**
+That's a working uploader. `apikey` is the only thing you have to pass (or set it once on a [`FilestackProvider`](#filestackprovider)).
+
+## Components
+
+All three components take the same props. The only difference is how the picker is presented.
+
+**Overlay** — opens the picker in a modal over your page:
+
 ```jsx
-<PickerOverlay apikey='YOUR_APIKEY'/>
-```
-**Render basic Inline Picker**
-```jsx
-<PickerInline apikey='YOUR_APIKEY'/>
-```
-**Render basic Drop Pane Picker**
-```jsx
-<PickerDropPane apikey='YOUR_APIKEY'/>
+<PickerOverlay apikey="YOUR_APIKEY" onUploadDone={handleUploadDone} />
 ```
 
-**Show picker directly and embed it inside specific container**
+**Inline** — renders the picker inside the page. Without a child container it draws a 500px-tall `<div>`:
+
 ```jsx
-<PickerInline apikey='YOUR_APIKEY'><div className="your-container"></div></PickerInline>
+<PickerInline apikey="YOUR_APIKEY" onUploadDone={handleUploadDone} />
 ```
 
-### TypeScript
+**Drop pane** — a drag-and-drop target:
 
-`filestack-react` is written in TypeScript and bundles its own type declarations — just install the package and import. No additional `@types/*` package is required.
+```jsx
+<PickerDropPane apikey="YOUR_APIKEY" onUploadDone={handleUploadDone} />
+```
+
+**Bring your own container.** Pass a single child element and the picker mounts into it (the component clones your element and gives it the id it needs):
+
+```jsx
+<PickerInline apikey="YOUR_APIKEY">
+  <div className="my-container" style={{ height: 400 }} />
+</PickerInline>
+```
+
+## Props
+
+| Prop | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `apikey` | `string` | Yes\* | — | Your Filestack API key. \*Optional on the component if a [`FilestackProvider`](#filestackprovider) supplies it. |
+| `pickerOptions` | `object` | No | `{}` | Passed to `client.picker(...)`. See [PickerOptions](https://filestack.github.io/filestack-js/interfaces/pickeroptions.html). `displayMode` is set for you per component. |
+| `clientOptions` | `object` | No | `{}` | Passed to `Filestack(apikey, ...)`. See [ClientOptions](https://filestack.github.io/filestack-js/interfaces/clientoptions.html). |
+| `onUploadDone` | `(res: PickerResponse) => void` | No | no-op | Called when all files finish uploading. |
+| `onError` | `(err) => void` | No | no-op | Called if `picker.open()` rejects. |
+| `onSuccess` | `(res: PickerResponse) => void` | No | no-op | **Deprecated** — use `onUploadDone`. Still works; if both are set, `onUploadDone` is the one that fires. |
+| `children` | `ReactElement` | No | — | Optional custom container. Cloned with the generated id so the picker mounts inside it. |
+
+Callbacks are silent by default in v7 — nothing is logged unless you pass a handler.
+
+## FilestackProvider
+
+New in v7. If you use pickers in more than one place, set the shared values once instead of repeating them:
+
+```tsx
+import { FilestackProvider, PickerOverlay, PickerInline } from 'filestack-react';
+
+<FilestackProvider apikey={process.env.REACT_APP_FILESTACK_KEY}>
+  <PickerOverlay onUploadDone={handleUploadDone} />
+  <PickerInline pickerOptions={{ maxFiles: 3 }} />
+</FilestackProvider>
+```
+
+How values resolve:
+
+- **Scalars** (`apikey`, `onUploadDone`, `onError`, `onSuccess`) — a prop set directly on a picker wins; otherwise the provider's value is used.
+- **`pickerOptions` / `clientOptions`** — shallow-merged, with the provider as the base and the component's options on top.
+
+It's entirely opt-in. If you'd rather pass `apikey` to each picker, keep doing that — you don't need the provider.
+
+## TypeScript
+
+The package bundles its own declarations — install it and import, no `@types/*` needed.
 
 ```tsx
 import {
@@ -106,103 +160,129 @@ const App = () => (
       pickerOptions={pickerOptions}
       clientOptions={clientOptions}
       onUploadDone={handleUploadDone}
-      onError={(err: Error) => console.error(err)}
+      onError={(err) => console.error(err)}
     />
   </FilestackProvider>
 );
 ```
 
-You can also type a wrapper component that forwards props:
+Because `PickerOptions`, `ClientOptions`, and `PickerResponse` come from filestack-js, you get autocomplete on every nested option (`maxFiles`, `accept`, `fromSources`, `transformations`, and the rest).
 
-```tsx
-import { PickerInline, type PickerInlineProps } from 'filestack-react';
+Every public type is exported from the package root: `PickerBaseProps`, `PickerOverlayProps`, `PickerInlineProps`, `PickerDropPaneProps`, `FilestackProviderProps`, `FilestackContextValue`, and `UsePickerResult`, alongside the upstream filestack-js types.
 
-const MyPicker = (props: PickerInlineProps) => <PickerInline {...props} />;
-```
+## The filestack-js client
 
-All public types — `PickerBaseProps`, `PickerOverlayProps`, `PickerInlineProps`, `PickerDropPaneProps`, `FilestackProviderProps`, `FilestackContextValue`, `UsePickerResult` — are re-exported from the package root, along with the upstream `filestack-js` types (`PickerOptions`, `PickerResponse`, `ClientOptions`, etc.).
+Need the lower-level SDK? It's re-exported:
 
-### filestack-js Client
-If you need to use Client just try
 ```jsx
 import { client } from 'filestack-react';
+
+const fsClient = client.init('YOUR_APIKEY');
+fsClient.upload(file);
 ```
 
-### SSR
-If you need to use filestack-react with SSR project or site generators like Gatsby check some workarounds in this issues
-<br>
-[issue57](https://github.com/filestack/filestack-react/issues/57)
-<br>
-[issue65](https://github.com/filestack/filestack-react/issues/65)
+## Server-side rendering & frameworks
 
-### Migration from 3.x.x and 4.x.x
+The picker runs in the browser — it initializes inside `useEffect`, so it never executes during a server render.
 
-| 3.x.x          | 4.0.0                            | Comment                                                                       |
-|----------------|----------------------------------|-------------------------------------------------------------------------------|
-| apikey         | apikey                           |                                                                               |
-| actionOptions  | pickerOptions                    | We want to be consistent with other filestack libs                            |
-| clientOptions  | clientOptions                    |                                                                               |
-| onSuccess      | onSuccess                        |                                                                               |
-| onError        | onError                          |                                                                               |
-| N/A            | children                         | Children prop will be used now in case you'll want to use specific container  |
-| action         | N/A                              | Default picker action will be 'pick' always                                   |
-| file           | N/A                              | Removed                                                                       |
-| source         | N/A                              | Removed                                                                       |
-| customRender   | N/A                              | Removed, from now on clients will be responsible for rendering                |
-| componentDisplayMode   | N/A                      | Removed, from now on clients will be responsible for rendering                |
+**Next.js App Router.** Every component ships with a `'use client'` directive, so you can import them straight into your App Router files without wrapping them yourself:
 
-### Migration from 1.x.x and 2.x.x
-One of the changes introduced in the new version are rethinked props that the component accepts, so that the use of the component is as straightforward as possible.
-Below you will find information about what happened to each of the options available in 2.x.x :
+```tsx
+// app/upload/page.tsx
+import { PickerOverlay } from 'filestack-react';
 
-| 2.x.x          | 3.0.0                            | Comment                                                                       |
-|----------------|----------------------------------|-------------------------------------------------------------------------------|
-| apikey         | apikey                           |                                                                               |
-| mode           | action                           |                                                                               |
-| options        | actionOptions                    | We want to emphasize that this option is associated with 'action'             |
-| preload        | N/A                              | Now, component is at default preloading necessary js assets, styles, images  |
-| file           | file                             |                                                                               |
-| onSuccess      | onSuccess                        |                                                                               |
-| onError        | onError                          |                                                                               |
-| options.handle | source                           | Handle or url used by specific action is now stored in separate prop           |
-| options.url    | source                           | Handle or url used by specific action is now stored in separate prop           |
-| security       | clientOptions.security           | Options used to initialize filestack client are now grouped in ‘clientOptions’ |
-| buttonText     | componentDisplayMode.customText  | Use componentDisplayMode option (see examples)                                |
-| buttonClass    | componentDisplayMode.customClass | Use componentDisplayMode option (see examples)                                |
-| cname          | clientOptions.cname              | Options used to initialize filestack client are now grouped in ‘clientOptions’ |
-| sessionCache   | clientOptions.sessionCache       | Options used to initialize filestack client are now grouped in ‘clientOptions’ |
-| render         | customRender                     |                                                                               |
-| children       | N/A                              | Use customRender instead                                                      |
+export default function UploadPage() {
+  return <PickerOverlay apikey={process.env.NEXT_PUBLIC_FILESTACK_KEY!} />;
+}
+```
 
+**Next.js Pages Router, Gatsby, and other SSG setups.** These generally work as-is. If a build step tries to evaluate the picker on the server, load it client-side only:
 
-## Live demo
-Check demo at codepen
-https://codepen.io/Filestack/pen/KEpVdR - needs to be updated for 4.0 version
+```tsx
+import dynamic from 'next/dynamic';
+
+const PickerOverlay = dynamic(
+  () => import('filestack-react').then((m) => m.PickerOverlay),
+  { ssr: false }
+);
+```
+
+## Migrating from v6
+
+Most v6 apps need two changes: install filestack-js, and (eventually) rename one callback.
+
+1. **Install filestack-js yourself.** It's a peer dependency now:
+   ```bash
+   npm install filestack-react@7 filestack-js@^4
+   ```
+2. **Check your React and Node versions** — React 18.3+ or 19, Node 18+. React 16/17 are no longer supported.
+3. **Remove `@types/filestack-react`** if you had it — types ship in the package now.
+4. **Move off `onSuccess`** when convenient. It still works but is deprecated; `onUploadDone` is the replacement.
+
+| v6 | v7 | Notes |
+|---|---|---|
+| `apikey`, `pickerOptions`, `clientOptions` | same | Unchanged |
+| `onUploadDone`, `onError` | same | Unchanged |
+| `onSuccess` | `onUploadDone` | `onSuccess` still works but is deprecated |
+| filestack-js bundled as a dependency | filestack-js `^4` peer dependency | Install it in your app |
+| React 16/17/18 | React 18.3+ / 19 | |
+| plain JavaScript | TypeScript types included | Drop `@types/filestack-react` |
+
+The picker UI itself now comes from filestack-js 4. If you relied on specific 3.x picker behavior, skim the [filestack-js changelog](https://github.com/filestack/filestack-js/blob/master/CHANGELOG.md).
+
+## Older migrations
+
+<details>
+<summary>Migrating from 3.x / 4.x</summary>
+
+| 3.x | 4.0.0 | Comment |
+|---|---|---|
+| apikey | apikey | |
+| actionOptions | pickerOptions | Consistent with other Filestack libs |
+| clientOptions | clientOptions | |
+| onSuccess | onSuccess | |
+| onError | onError | |
+| N/A | children | Used for a custom container |
+| action | N/A | Picker action is always `pick` |
+| file | N/A | Removed |
+| source | N/A | Removed |
+| customRender | N/A | Removed — you render the container |
+| componentDisplayMode | N/A | Removed — you render the container |
+
+</details>
+
+<details>
+<summary>Migrating from 1.x / 2.x</summary>
+
+| 2.x | 3.0.0 | Comment |
+|---|---|---|
+| apikey | apikey | |
+| mode | action | |
+| options | actionOptions | |
+| preload | N/A | Assets are preloaded by default |
+| onSuccess | onSuccess | |
+| onError | onError | |
+| security | clientOptions.security | Grouped under `clientOptions` |
+| cname | clientOptions.cname | Grouped under `clientOptions` |
+| sessionCache | clientOptions.sessionCache | Grouped under `clientOptions` |
+
+</details>
 
 ## Development
-All components are located inside src/picker/
 
-After you add some changes just type
+Components live in `src/picker/`. After making a change:
 
-```
-npm run build
-```
-
-Be sure that your change doesn't break existing tests and are compatible with linter
-
-```
-npm run test
+```bash
+npm run build   # bundle
+npm run test    # unit tests, lint, and a build check
+npm run test:types   # tsc --noEmit
 ```
 
 ## Documentation
-You can find info about available options for actions (Client class methods) in
+
+Full option reference (client methods, picker options) lives in the filestack-js docs:
 [https://filestack.github.io/filestack-js/](https://filestack.github.io/filestack-js/)
 
-## Contribution
-Any your contributions or ideas are more than welcome.
-Please consider that we follow the conventional commits specification to ensure consistent commit messages and changelog formatting.
+## Contributing
 
-## Future
-
-Current ideas:
-- Better support for SSR, static site generator and isomorphic apps
+Contributions and ideas are welcome. We follow the [Conventional Commits](https://www.conventionalcommits.org/) spec so the changelog stays consistent — please match it in your commit messages.
